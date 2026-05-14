@@ -1,0 +1,3967 @@
+<!DOCTYPE html>
+<!--
+  CHANGES SUMMARY (accessibility & performance tweaks):
+  1. Hero title clamp minimum reduced: 3.2rem → 2.5rem (prevents oversized text on 320px screens)
+  2. Touch targets enlarged to 44px (WCAG AA minimum):
+     - .card-chevron: 24px → 44px
+     - .srv-item-chevron: 20px → 44px
+     - .pop-cat-chevron: 28px → 44px
+     - .pop-sub-arrow: 20px → 44px
+  3. Google Maps iframe loading="lazy" confirmed present (no change needed)
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo</title>
+  <meta name="description" content="Centro de rehabilitación física y entrenamiento deportivo en Cuautla, Morelos. Especialistas en poblaciones especiales, adultos mayores, post-operatorios y enfermedades crónicas. Más de 12 años de experiencia." />
+  <meta property="og:title" content="ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo" />
+  <meta property="og:description" content="Recupera tu fuerza y muévete sin miedo. Rehabilitación física y entrenamiento especializado en Cuautla, Morelos." />
+  <!-- URL temporal GitHub Pages. Cuando compres dominio, reemplaza https://tajonarney.github.io/zp-web/ por tu dominio en las siguientes 4 líneas y en robots.txt y sitemap.xml -->
+  <meta property="og:url" content="https://tajonarney.github.io/zp-web/" />
+  <meta property="og:image" content="https://tajonarney.github.io/zp-web/imageneszpweb/imagenportada.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo" />
+  <meta name="twitter:description" content="Recupera tu fuerza y muévete sin miedo. Rehabilitación física y entrenamiento especializado en Cuautla, Morelos." />
+  <meta name="twitter:image" content="https://tajonarney.github.io/zp-web/imageneszpweb/imagenportada.jpg" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tajonarney.github.io/zp-web/" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><text x='16' y='24' font-family='Arial Black,Impact,sans-serif' font-size='19' font-weight='900' fill='%23FF1E1E' text-anchor='middle' letter-spacing='-1'>ZP</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ================================================
+       CSS RESET & VARIABLES
+    ================================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --red: #FF1E1E;
+      --red-dark: #CC0000;
+      --red-glow: rgba(255, 30, 30, 0.25);
+      --black: #000000;
+      --black-soft: #0A0A0A;
+      --black-card: #111111;
+      --black-border: #1A1A1A;
+      --white: #FFFFFF;
+      --white-dim: rgba(255,255,255,0.85);
+      --white-muted: rgba(255,255,255,0.45);
+      --white-faint: rgba(255,255,255,0.06);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-heading: 'Oswald', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius: 4px;
+      --radius-lg: 12px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    address { font-style: normal; }
+
+    /* ================================================
+       NAVIGATION
+    ================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--black-border);
+      transition: var(--transition);
+    }
+
+    nav.scrolled {
+      background: rgba(0,0,0,0.97);
+      border-bottom-color: rgba(255,30,30,0.3);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .nav-logo span {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--red);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: var(--transition) !important;
+      border-radius: var(--radius);
+    }
+
+    .nav-cta:hover {
+      background: var(--red-dark) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--red-glow);
+    }
+
+    .nav-cta::after { display: none !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      transition: var(--transition);
+    }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: rgba(0,0,0,0.98);
+      padding: 2rem;
+      z-index: 999;
+      border-bottom: 1px solid var(--black-border);
+      backdrop-filter: blur(20px);
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-menu ul a {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+
+    /* ================================================
+       HERO SECTION
+    ================================================ */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 72px;
+    }
+
+    /* Geometric background grid */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,30,30,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 50%, rgba(255,30,30,0.12) 0%, transparent 65%),
+        var(--black);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+    }
+
+    /* Vertical accent line */
+    .hero-accent-line {
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(255,30,30,0.4) 30%, rgba(255,30,30,0.4) 70%, transparent);
+      opacity: 0.4;
+    }
+
+    /* Diagonal slash decoration */
+    .hero-slash {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(14rem, 22vw, 24rem);
+      color: rgba(255,30,30,0.04);
+      letter-spacing: -0.05em;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-content { max-width: 620px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,30,30,0.12);
+      border: 1px solid rgba(255,30,30,0.35);
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s forwards;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      animation: pulse 2s infinite;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.35s forwards;
+    }
+
+    .hero-title .accent { color: var(--red); }
+
+    .hero-subtitle {
+      font-size: 1.12rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.65s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.8rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: var(--red-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px var(--red-glow);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.8rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--red);
+      color: var(--red);
+      transform: translateY(-3px);
+    }
+
+    /* Hero visual side */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeIn 1s 0.6s forwards;
+    }
+
+    .hero-img-frame {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 3/4;
+    }
+
+    .hero-img-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--white-muted);
+      font-size: 0.85rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,30,30,0.08) 0%, transparent 60%);
+    }
+
+    .placeholder-icon {
+      width: 60px; height: 60px;
+      border: 2px solid rgba(255,30,30,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .placeholder-icon svg { opacity: 0.5; }
+
+    .hero-img-frame::after {
+      content: '';
+      position: absolute;
+      top: 20px; left: 20px; right: -20px; bottom: -20px;
+      border: 1px solid rgba(255,30,30,0.2);
+      border-radius: var(--radius-lg);
+      z-index: -1;
+    }
+
+    /* Stats row */
+    .hero-stats {
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      border-left: 3px solid var(--red);
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius);
+      display: flex;
+      gap: 2rem;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--white-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.3rem;
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.5;
+      animation: fadeIn 1s 1.2s forwards, bounce 2s 1.5s infinite;
+    }
+
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+    }
+
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+    }
+
+    /* ================================================
+       SECTION UTILITIES
+    ================================================ */
+    section { padding: 6rem 2rem; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 28px; height: 2px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.62);
+      max-width: 540px;
+      line-height: 1.8;
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ================================================
+       ABOUT / HYBRID SECTION
+    ================================================ */
+    #sobre {
+      background: var(--black-soft);
+      border-top: 1px solid var(--black-border);
+      border-bottom: 1px solid var(--black-border);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .sobre-visual {
+      position: relative;
+    }
+
+    .sobre-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--white-muted);
+      font-size: 0.85rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sobre-img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(225deg, rgba(255,30,30,0.1) 0%, transparent 60%);
+    }
+
+    .sobre-badge {
+      position: absolute;
+      top: -20px; right: -20px;
+      background: var(--red);
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .sobre-badge-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .sobre-badge-text {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-top: 0.25rem;
+    }
+
+    .sobre-content .section-title { margin-bottom: 1.5rem; }
+
+    .sobre-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .hybrid-pills {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .pill-rehab {
+      background: rgba(255,30,30,0.12);
+      border: 1px solid rgba(255,30,30,0.35);
+      color: var(--red);
+    }
+
+    .pill-training {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white-dim);
+    }
+
+    .sobre-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .sobre-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--white-faint);
+      border-radius: var(--radius);
+      border-left: 3px solid transparent;
+      transition: var(--transition);
+    }
+
+    .sobre-feature:hover {
+      border-left-color: var(--red);
+      background: rgba(255,30,30,0.05);
+    }
+
+    .feature-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,30,30,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-text strong {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .feature-text span {
+      font-size: 0.8rem;
+      color: var(--white-muted);
+    }
+
+    /* ================================================
+       SPECIAL POPULATIONS – MAIN SECTION
+    ================================================ */
+    #poblaciones {
+      background: var(--black);
+    }
+
+    .poblaciones-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .poblaciones-header .section-tag { justify-content: center; }
+    .poblaciones-header .section-tag::before { display: none; }
+    .poblaciones-header .section-subtitle { margin: 0 auto; }
+
+    /* Cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Population card */
+    .pop-card {
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      position: relative;
+    }
+
+    .pop-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,30,30,0.2);
+      border-color: rgba(255,30,30,0.35);
+    }
+
+    .pop-card.active {
+      border-color: rgba(255,30,30,0.5);
+      box-shadow: 0 0 0 1px rgba(255,30,30,0.3), 0 10px 40px rgba(255,30,30,0.1);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .card-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .pop-card:hover .card-header::before,
+    .pop-card.active .card-header::before {
+      transform: scaleX(1);
+    }
+
+    .card-icon-wrap {
+      width: 48px; height: 48px;
+      background: rgba(255,30,30,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.3s ease;
+    }
+
+    .pop-card:hover .card-icon-wrap,
+    .pop-card.active .card-icon-wrap {
+      background: rgba(255,30,30,0.2);
+    }
+
+    .card-title-wrap { flex: 1; padding: 0 1rem; }
+
+    .card-num {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--red);
+      opacity: 0.7;
+      letter-spacing: 0.1em;
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      margin-top: 0.15rem;
+    }
+
+    .card-chevron {
+      width: 44px; height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease;
+      opacity: 0.4;
+      flex-shrink: 0;
+    }
+
+    .pop-card.active .card-chevron {
+      transform: rotate(180deg);
+      opacity: 1;
+    }
+
+    /* Expandable content */
+    .card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .pop-card.active .card-body {
+      max-height: 400px;
+    }
+
+    .card-body-inner {
+      padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid var(--black-border);
+      padding-top: 1.25rem;
+    }
+
+    .card-section-label {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .card-section-label:first-child { margin-top: 0; }
+
+    .card-text {
+      font-size: 0.82rem;
+      color: var(--white-muted);
+      line-height: 1.7;
+    }
+
+    /* ================================================
+       ADULTOS MAYORES – FEATURED SECTION
+    ================================================ */
+    #adultos {
+      background: var(--black-soft);
+      border-top: 1px solid var(--black-border);
+      border-bottom: 1px solid var(--black-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #adultos::before {
+      content: 'INDEPENDENCIA';
+      position: absolute;
+      right: -2rem;
+      bottom: -2rem;
+      font-family: var(--font-display);
+      font-size: clamp(8rem, 15vw, 16rem);
+      color: rgba(255,255,255,0.025);
+      letter-spacing: -0.05em;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .adultos-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .adultos-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+
+    .adultos-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .pillar-card {
+      background: var(--white-faint);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.5rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .pillar-card:hover {
+      background: rgba(255,30,30,0.05);
+      border-color: rgba(255,30,30,0.3);
+      transform: translateY(-4px);
+    }
+
+    .pillar-card:hover::after { transform: scaleX(1); }
+
+    .pillar-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,30,30,0.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .pillar-name {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.8rem;
+      color: var(--white-muted);
+      line-height: 1.65;
+    }
+
+    /* ================================================
+       TRAINER SECTION
+    ================================================ */
+    #entrenador {
+      background: var(--black);
+      padding: 6rem 2rem;
+    }
+
+    @media (max-width: 768px) {
+      #entrenador { padding: 4rem 1.5rem; }
+    }
+
+    .trainer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .trainer-photo {
+      width: 380px;
+      aspect-ratio: 3/4;
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--white-muted);
+      font-size: 0.85rem;
+      order: 2;
+    }
+
+    .trainer-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,30,30,0.1) 0%, transparent 60%);
+    }
+
+    .trainer-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+    }
+
+    .trainer-name-overlay {
+      position: absolute;
+      bottom: 1.5rem; left: 1.5rem;
+      z-index: 3;
+    }
+
+    .trainer-name-overlay .t-name {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.03em;
+      line-height: 1;
+    }
+
+    .trainer-name-overlay .t-role {
+      font-size: 0.75rem;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 0.3rem;
+    }
+
+    .trainer-info { max-width: 560px; order: 1; }
+
+    .trainer-info .section-title { margin-bottom: 1.25rem; }
+
+    .trainer-bio {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+
+    .trainer-credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .credential-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      background: var(--white-faint);
+      border: 1px solid var(--black-border);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      color: var(--white-dim);
+      font-weight: 500;
+    }
+
+    .credential-tag::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    /* ================================================
+       CTA SECTION
+    ================================================ */
+    #cta {
+      background: var(--red);
+      padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(0,0,0,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(0,0,0,0.2) 0%, transparent 60%);
+    }
+
+    #cta::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(10rem, 18vw, 22rem);
+      color: rgba(0,0,0,0.12);
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .cta-sub {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .btn-cta-big {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1.1rem 2.5rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-cta-big:hover {
+      background: #111;
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    /* ================================================
+       LOCATION SECTION
+    ================================================ */
+    #ubicacion {
+      background: var(--black-soft);
+      border-top: 1px solid var(--black-border);
+    }
+
+    .ubicacion-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .map-wrapper {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--black-border);
+      position: relative;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 380px;
+      min-height: 280px;
+      display: block;
+      filter: grayscale(1) invert(1) contrast(0.9) brightness(0.8);
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .map-wrapper iframe {
+        height: 320px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .map-wrapper iframe {
+        height: 260px;
+      }
+    }
+
+    .ubicacion-info { padding-top: 0.5rem; }
+
+    .info-block {
+      padding: 1.5rem;
+      background: var(--white-faint);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: var(--transition);
+    }
+
+    .info-block:hover {
+      border-color: rgba(255,30,30,0.3);
+      background: rgba(255,30,30,0.04);
+    }
+
+    .info-icon {
+      width: 40px; height: 40px;
+      background: rgba(255,30,30,0.12);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-text strong {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .info-text p {
+      font-size: 0.9rem;
+      color: var(--white-dim);
+      line-height: 1.5;
+    }
+
+    .schedule-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .schedule-row:last-child { border-bottom: none; }
+
+    .schedule-time {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white-dim);
+    }
+
+    .schedule-label {
+      font-size: 0.75rem;
+      color: var(--white-muted);
+    }
+
+    .btn-directions {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1.25rem;
+    }
+
+    .btn-directions:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px var(--red-glow);
+    }
+
+    .btn-ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .btn-ig:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(131, 58, 180, 0.4);
+    }
+
+    /* ================================================
+       FAQ
+    ================================================ */
+    #faq {
+      background: var(--black);
+      padding: 5rem 0;
+    }
+    .faq-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .faq-header .section-tag { justify-content: center; }
+    .faq-header .section-tag::before { display: none; }
+    .faq-header .section-subtitle { margin: 0 auto; max-width: 560px; }
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .faq-item {
+      background: var(--black-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--red); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, border-color 0.2s;
+    }
+    .faq-icon svg { transition: transform 0.3s ease; }
+    .faq-item.open .faq-icon { border-color: var(--red); }
+    .faq-item.open .faq-icon svg { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s ease;
+      padding: 0 1.5rem;
+    }
+    .faq-answer p {
+      font-family: var(--font-body);
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.75;
+      padding-bottom: 1.25rem;
+      margin: 0;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-top: 0;
+    }
+    .faq-footer {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .btn-review {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.75);
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-review:hover {
+      border-color: var(--red);
+      color: var(--white);
+    }
+    .btn-google-review {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--white);
+      color: #3c4043;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 0.85rem 1.8rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .btn-google-review:hover {
+      background: #f1f3f4;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      transform: translateY(-1px);
+    }
+
+    /* ================================================
+       FOOTER
+    ================================================ */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--black-border);
+      padding: 3rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-logo span { color: var(--red); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--white-muted);
+      text-align: center;
+    }
+
+    .footer-phone {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white-dim);
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-phone span { color: var(--red); }
+
+    /* ================================================
+       WHATSAPP FLOATING BUTTON
+    ================================================ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      width: 58px; height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.12) translateY(-3px);
+      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.55);
+    }
+
+    .whatsapp-float::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid rgba(37, 211, 102, 0.35);
+      animation: ripple 2.5s infinite;
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(8px);
+      transition: all 0.25s ease;
+    }
+
+    .whatsapp-float:hover .whatsapp-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ================================================
+       SERVICIOS – REHAB & TRAINING ACCORDION SECTION
+    ================================================ */
+    #servicios {
+      background: var(--black-soft);
+      border-top: 1px solid var(--black-border);
+      border-bottom: 1px solid var(--black-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #servicios::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(255,30,30,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,30,30,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .servicios-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .servicios-header .section-tag { justify-content: center; }
+    .servicios-header .section-tag::before { display: none; }
+    .servicios-header .section-subtitle { margin: 0 auto; max-width: 560px; }
+
+    /* Two-column layout for the two blocks */
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Each main block (Rehabilitación / Entrenamiento) */
+    .srv-block {
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.35s ease;
+    }
+
+    .srv-block:hover { border-color: rgba(255,30,30,0.25); }
+
+    /* Block header – click to expand/collapse */
+    .srv-block-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 2rem;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+    }
+
+    .srv-block-header::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .srv-block.open .srv-block-header::after,
+    .srv-block-header:hover::after { transform: scaleX(1); }
+
+    .srv-block-heading { flex: 1; }
+
+    .srv-block-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .srv-block-subtitle {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+    }
+
+    .srv-block-toggle {
+      width: 36px; height: 36px;
+      border: 1px solid var(--black-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition);
+      color: var(--white-muted);
+      margin-top: 0.25rem;
+    }
+
+    .srv-block.open .srv-block-toggle {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+
+    /* Block collapsible body */
+    .srv-block-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .srv-block.open .srv-block-body { max-height: 9999px; }
+
+    .srv-block-intro {
+      padding: 0 2rem 1.5rem;
+      border-top: 1px solid var(--black-border);
+    }
+
+    .srv-intro-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding-top: 1.5rem;
+    }
+
+    .srv-intro-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      line-height: 1.6;
+    }
+
+    .srv-intro-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+      margin-top: 0.45em;
+    }
+
+    /* Sub-accordion divider */
+    .srv-sub-label {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      padding: 1rem 2rem 0.75rem;
+      border-top: 1px solid var(--black-border);
+    }
+
+    /* Sub-accordion items */
+    .srv-accordion { padding: 0 1rem 1.5rem; }
+
+    .srv-item {
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius);
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .srv-item:last-child { margin-bottom: 0; }
+
+    .srv-item:hover { border-color: rgba(255,30,30,0.3); }
+
+    .srv-item.open {
+      border-color: rgba(255,30,30,0.45);
+      background: rgba(255,30,30,0.03);
+    }
+
+    .srv-item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.25s ease;
+    }
+
+    .srv-item-header:hover { background: rgba(255,255,255,0.03); }
+    .srv-item.open .srv-item-header { background: rgba(255,30,30,0.04); }
+
+    .srv-item-left {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex: 1;
+    }
+
+    .srv-item-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,30,30,0.35);
+      flex-shrink: 0;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .srv-item.open .srv-item-dot {
+      background: var(--red);
+      transform: scale(1.3);
+    }
+
+    .srv-item-name {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--white-dim);
+    }
+
+    .srv-item-chevron {
+      width: 44px; height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      opacity: 0.35;
+      transition: transform 0.35s ease, opacity 0.3s ease;
+    }
+
+    .srv-item.open .srv-item-chevron {
+      transform: rotate(180deg);
+      opacity: 0.9;
+    }
+
+    /* Sub-item expandable content */
+    .srv-item-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .srv-item.open .srv-item-body { max-height: 600px; }
+
+    .srv-item-inner {
+      padding: 0 1.25rem 1.25rem 2.75rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 1rem;
+    }
+
+    .srv-detail-label {
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.3rem;
+      margin-top: 0.85rem;
+    }
+
+    .srv-detail-label:first-child { margin-top: 0; }
+
+    .srv-detail-text {
+      font-size: 0.8rem;
+      color: var(--white-muted);
+      line-height: 1.7;
+    }
+
+    /* Responsive for servicios */
+    @media (max-width: 900px) {
+      .servicios-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================
+       ANIMATIONS
+    ================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    @keyframes ripple {
+      0%   { opacity: 0.8; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.6); }
+    }
+
+    /* ================================================
+       4-category accordion grid
+    ================================================ */
+    .pop-categories {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .pop-cat {
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+    }
+
+    .pop-cat:hover {
+      border-color: rgba(255,30,30,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+    }
+
+    .pop-cat.active {
+      border-color: rgba(255,30,30,0.5);
+      box-shadow: 0 0 0 1px rgba(255,30,30,0.18), 0 10px 35px rgba(0,0,0,0.45);
+      transform: none;
+    }
+
+    .pop-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      transition: background 0.3s ease;
+    }
+
+    .pop-cat-header:hover { background: rgba(255,30,30,0.03); }
+    .pop-cat.active .pop-cat-header { background: rgba(255,30,30,0.04); }
+
+    .pop-cat-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red), rgba(255,30,30,0.4));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .pop-cat:hover .pop-cat-header::before,
+    .pop-cat.active .pop-cat-header::before { transform: scaleX(1); }
+
+    .pop-cat-icon {
+      width: 50px; height: 50px;
+      background: rgba(255,30,30,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .pop-cat:hover .pop-cat-icon { background: rgba(255,30,30,0.18); transform: scale(1.05); }
+    .pop-cat.active .pop-cat-icon { background: rgba(255,30,30,0.22); }
+
+    .pop-cat-text { flex: 1; }
+
+    .pop-cat-num {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--red);
+      opacity: 0.7;
+      letter-spacing: 0.12em;
+    }
+
+    .pop-cat-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+      margin-top: 0.1rem;
+    }
+
+    .pop-cat-chevron {
+      width: 44px; height: 44px;
+      border: 1px solid var(--black-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+      flex-shrink: 0;
+      transition: transform 0.4s ease, opacity 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .pop-cat.active .pop-cat-chevron {
+      transform: rotate(180deg);
+      opacity: 1;
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .pop-cat-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .pop-cat.active .pop-cat-body { max-height: 1400px; }
+
+    .pop-cat-body-inner {
+      border-top: 1px solid var(--black-border);
+      padding: 1.1rem;
+    }
+
+    /* Oncológicos: direct text display */
+    .pop-cat-direct { padding: 0.25rem; }
+
+    .pop-cat-dlabel {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.35rem;
+      margin-top: 0.9rem;
+    }
+
+    .pop-cat-dlabel:first-child { margin-top: 0; }
+
+    .pop-cat-dtext {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+    }
+
+    /* Subgroup items */
+    .pop-sub {
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      margin-bottom: 0.45rem;
+      overflow: hidden;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .pop-sub:last-child { margin-bottom: 0; }
+
+    .pop-sub:hover { border-color: rgba(255,30,30,0.25); background: rgba(255,30,30,0.03); }
+
+    .pop-sub.active { border-color: rgba(255,30,30,0.4); background: rgba(255,30,30,0.04); }
+
+    .pop-sub-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.25s ease;
+    }
+
+    .pop-sub-header:hover { background: rgba(255,255,255,0.02); }
+
+    .pop-sub-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,30,30,0.4);
+      flex-shrink: 0;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .pop-sub.active .pop-sub-dot { background: var(--red); transform: scale(1.4); }
+
+    .pop-sub-name {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--white-dim);
+      flex: 1;
+    }
+
+    .pop-sub-arrow {
+      width: 44px; height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.3;
+      flex-shrink: 0;
+      transition: transform 0.35s ease, opacity 0.3s ease;
+    }
+
+    .pop-sub.active .pop-sub-arrow { transform: rotate(180deg); opacity: 0.85; }
+
+    .pop-sub-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .pop-sub.active .pop-sub-body { max-height: 600px; }
+
+    .pop-sub-inner {
+      padding: 0.9rem 1.1rem 1.1rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .pop-sub-label {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.35rem;
+      margin-top: 0.85rem;
+    }
+
+    .pop-sub-label:first-child { margin-top: 0; }
+
+    .pop-sub-text {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.75;
+    }
+
+    /* Trainer ID card (replaces photo placeholder) */
+    .trainer-id-card {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 3.5rem 2.5rem;
+      background: var(--black-card);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .trainer-id-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,30,30,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .trainer-id-icon {
+      width: 90px; height: 90px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      border: 2px solid rgba(255,30,30,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      background: rgba(255,30,30,0.05);
+    }
+
+    .trainer-id-name {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      letter-spacing: 0.03em;
+      line-height: 1.05;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+    }
+
+    .trainer-id-role {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      position: relative;
+      z-index: 1;
+    }
+
+    .trainer-id-divider {
+      width: 48px;
+      height: 1px;
+      background: rgba(255,30,30,0.35);
+      position: relative;
+      z-index: 1;
+    }
+
+    .trainer-id-cedula {
+      font-size: 0.88rem;
+      color: var(--white-muted);
+      letter-spacing: 0.04em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .trainer-id-horario {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white-dim);
+      line-height: 1.6;
+      letter-spacing: 0.04em;
+      padding: 0.9rem 1.5rem;
+      background: rgba(255,30,30,0.07);
+      border: 1px solid rgba(255,30,30,0.2);
+      border-radius: var(--radius);
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .trainer-id-horario svg {
+      color: var(--red);
+      margin-bottom: 0.15rem;
+    }
+
+    /* CTA ZP decorations */
+    .cta-zp-left, .cta-zp-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      opacity: 1;
+    }
+    .cta-zp-left { left: 0; }
+    .cta-zp-right { right: 0; }
+    .cta-zp-left span, .cta-zp-right span {
+      font-family: var(--font-display);
+      font-size: clamp(16rem, 28vw, 32rem);
+      line-height: 1;
+      color: rgba(0,0,0,0.18);
+      letter-spacing: -0.04em;
+      display: block;
+    }
+
+    /* ================================================
+       RESEÑAS Y CASOS DE ÉXITO
+    ================================================ */
+    #resenas {
+      background: var(--black-soft);
+      border-top: 1px solid var(--black-border);
+    }
+
+    .resenas-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .resenas-header .section-tag { justify-content: center; }
+    .resenas-header .section-tag::before { display: none; }
+    .resenas-header .section-subtitle { margin: 0 auto; }
+
+    .resenas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .resena-card {
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resena-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .resena-card:hover {
+      border-color: rgba(255,30,30,0.35);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    }
+
+    .resena-card:hover::before { transform: scaleX(1); }
+
+    .resena-quote-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,30,30,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .resena-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .resena-star {
+      color: var(--red);
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+
+    .resena-text {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.78;
+      flex: 1;
+      font-style: italic;
+    }
+
+    .resena-resultado {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.85rem 1rem;
+      background: rgba(255,30,30,0.07);
+      border: 1px solid rgba(255,30,30,0.2);
+      border-radius: var(--radius);
+    }
+
+    .resena-resultado-label {
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      white-space: nowrap;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+
+    .resena-resultado-text {
+      font-size: 0.82rem;
+      color: var(--white-dim);
+      line-height: 1.5;
+    }
+
+    .resena-author {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      border-top: 1px solid var(--black-border);
+      padding-top: 1rem;
+    }
+
+    .resena-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,30,30,0.12);
+      border: 1px solid rgba(255,30,30,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--red);
+      letter-spacing: 0.03em;
+    }
+
+    .resena-name {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--white-dim);
+      line-height: 1.2;
+    }
+
+    .resena-age {
+      font-size: 0.72rem;
+      color: var(--white-muted);
+      margin-top: 0.15rem;
+    }
+
+    /* Featured (wide) card */
+    .resena-card--wide {
+      grid-column: span 2;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .resena-card--wide .resena-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .resenas-grid { grid-template-columns: 1fr 1fr; }
+      .resena-card--wide { grid-column: span 2; flex-direction: column; }
+    }
+
+    /* ================================================
+       RESPONSIVE
+    ================================================ */
+    @media (max-width: 1024px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .trainer-grid { grid-template-columns: 1fr; }
+      .trainer-photo { width: 100%; max-width: 380px; margin: 0 auto; order: 2; }
+      .trainer-info { order: 1; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 4rem 1.5rem; }
+
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding-top: 2rem;
+        text-align: center;
+      }
+
+      .hero-visual { display: none; }
+
+      .hero-subtitle, .hero-buttons { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+
+      .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .sobre-visual { display: none; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .pop-categories { grid-template-columns: 1fr; }
+      .galeria-grid { grid-template-columns: 1fr; height: auto; }
+      .galeria-item { height: 220px; }
+      .galeria-col { grid-template-rows: auto; grid-template-columns: 1fr 1fr; }
+      .galeria-col .galeria-item { height: 190px; }
+      .resenas-grid { grid-template-columns: 1fr; }
+      .resena-card--wide { grid-column: span 1; flex-direction: column; }
+      .adultos-header { grid-template-columns: 1fr; gap: 2rem; }
+      .adultos-pillars { grid-template-columns: 1fr 1fr; }
+      .ubicacion-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .map-wrapper { width: 100%; }
+      .ubicacion-info { order: 2; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .trainer-grid { grid-template-columns: 1fr; text-align: center; }
+      .trainer-photo { order: 2; width: 100%; max-width: 380px; margin: 0 auto; }
+      .trainer-info { order: 1; }
+
+      #cta::after { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 3rem; }
+      .adultos-pillars { grid-template-columns: 1fr; }
+      .hero-stats { left: 0; right: 0; justify-content: center; position: relative; margin-top: 2rem; bottom: auto; }
+      .galeria-grid { grid-template-columns: 1fr; height: auto; }
+      .galeria-item { height: 210px; }
+      .galeria-col { grid-template-columns: 1fr; }
+      .galeria-col .galeria-item { height: 180px; }
+    }
+
+    /* ================================================
+       SERVICE IMAGE STRIPS
+    ================================================ */
+    .srv-img-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      padding: 0 1rem 0.75rem;
+    }
+
+    .srv-img-strip--2col {
+      grid-template-columns: repeat(2, 1fr);
+      padding-top: 0;
+    }
+
+    .srv-img-strip-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      aspect-ratio: 4/3;
+      background: var(--black-card);
+    }
+
+    .srv-img-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .srv-img-strip-item:hover img { transform: scale(1.05); }
+
+    .srv-img-strip-cap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.78), transparent);
+      padding: 0.6rem 0.6rem 0.4rem;
+      font-family: var(--font-heading);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
+
+    @media (max-width: 600px) {
+      .srv-img-strip { grid-template-columns: 1fr 1fr; }
+      .srv-img-strip--2col { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================
+       IMAGE PLACEHOLDER BLOCKS
+    ================================================ */
+    .img-placeholder-block {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-placeholder-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,30,30,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .img-placeholder-block span {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Column wrappers */
+    .srv-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .pop-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* ================================================
+       SPECIALISTS NETWORK
+    ================================================ */
+    .hero-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-top: 1.1rem;
+      transition: color 0.25s ease;
+      letter-spacing: 0.02em;
+    }
+    .hero-phone:hover { color: var(--white); }
+
+    .specialists-wrap {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--black-border);
+    }
+
+    .specialists-header {
+      margin-bottom: 2rem;
+    }
+
+    .specialists-intro {
+      font-size: 0.92rem;
+      color: var(--white-muted);
+      line-height: 1.75;
+      max-width: 680px;
+      margin-top: 0.75rem;
+    }
+
+    .specialists-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .spec-card {
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .spec-card:hover {
+      border-color: rgba(255, 30, 30, 0.3);
+      background: rgba(255, 30, 30, 0.03);
+    }
+
+    .spec-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 30, 30, 0.08);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .spec-name {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 900px) {
+      .specialists-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .specialists-grid { grid-template-columns: repeat(2, 1fr); gap: 0.55rem; }
+      .spec-card { padding: 0.9rem 0.75rem; gap: 0.65rem; }
+      .spec-icon { width: 30px; height: 30px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo",
+    "description": "Centro de rehabilitación física y entrenamiento deportivo en Cuautla, Morelos. Especialistas en poblaciones especiales, adultos mayores, post-operatorios y enfermedades crónicas. Más de 12 años de experiencia.",
+    "telephone": "+527353384250",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av Insurgentes #1098, Miguel Hidalgo",
+      "addressLocality": "Cuautla",
+      "addressRegion": "Morelos",
+      "postalCode": "62748",
+      "addressCountry": "MX"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "06:00",
+        "closes": "11:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "17:00",
+        "closes": "20:00"
+      }
+    ],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 18.8167,
+      "longitude": -98.9537
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios ZP Cuautla",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rehabilitación Física"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Entrenamiento Deportivo"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Entrenamiento en Poblaciones Especiales"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Láser de Alta Intensidad"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Terapia de Ondas de Choque"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electroterapia"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Presoterapia"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Masoterapia"}}
+      ]
+    },
+    "sameAs": ["https://wa.me/527353384250"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ================================================
+       NAVIGATION
+  ================================================ -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo"><img src="imageneszpweb/logozpblanco-removebg-preview.png" alt="ZP Cuautla" style="height:48px;width:auto;display:block;"></a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Nosotros</a></li>
+      <li><a href="#poblaciones">Especialidades</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#entrenador">Equipo</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://wa.me/527353384250?text=Hola,%20me%20gustaría%20agendar%20una%20sesión" target="_blank" rel="noopener noreferrer" class="nav-cta">Agendar</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#sobre" onclick="closeMobile()">Nosotros</a></li>
+      <li><a href="#poblaciones" onclick="closeMobile()">Especialidades</a></li>
+      <li><a href="#servicios" onclick="closeMobile()">Servicios</a></li>
+      <li><a href="#entrenador" onclick="closeMobile()">Equipo</a></li>
+      <li><a href="#ubicacion" onclick="closeMobile()">Ubicación</a></li>
+      <li><a href="#faq" onclick="closeMobile()">FAQ</a></li>
+      <li><a href="https://wa.me/527353384250?text=Hola,%20me%20gustaría%20agendar%20una%20sesión" target="_blank" rel="noopener noreferrer">Agendar sesión</a></li>
+    </ul>
+  </div>
+
+  <main id="contenido">
+
+  <!-- ================================================
+       HERO
+  ================================================ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-accent-line"></div>
+    <div class="hero-slash">ZP</div>
+
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">Rehabilitación + Entrenamiento</div>
+        <h1 class="hero-title">
+          Recupera<br/>
+          tu <span class="accent">fuerza.</span><br/>
+          Muévete<br/>
+          sin miedo.
+        </h1>
+        <p class="hero-subtitle">
+          Centro de rehabilitación física y entrenamiento deportivo en Cuautla, Morelos. Recupera tu movilidad, reduce el dolor y vuelve a moverte con confianza.
+        </p>
+        <div class="hero-buttons">
+          <a href="https://wa.me/527353384250?text=Hola,%20me%20gustaría%20agendar%20una%20sesión" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agenda por WhatsApp
+          </a>
+          <a href="#sobre" class="btn-secondary">
+            Conoce más
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <a href="tel:+527353384250" class="hero-phone">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+          O llámanos: 735 338 4250
+        </a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-frame">
+          <img
+            src="imageneszpweb/imagenportada.jpg"
+            alt="Fisioterapeuta y entrenador Héctor García en ZP Cuautla – Centro de rehabilitación física en Cuautla, Morelos"
+            width="440"
+            height="587"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);display:block;"
+            fetchpriority="high"
+          >
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-num">+12</div>
+              <div class="stat-label">Años de<br/>experiencia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SOBRE – ABOUT / HYBRID
+  ================================================ -->
+  <section id="sobre">
+    <div class="container">
+      <div class="sobre-grid">
+        <!-- Visual -->
+        <div class="sobre-visual reveal">
+          <div class="sobre-img-placeholder">
+            <img
+              src="imageneszpweb/imagencamillaelectricaygimnasio.jpg"
+              alt="Área de rehabilitación física con camilla eléctrica y gimnasio en ZP Cuautla, Cuautla Morelos"
+              loading="lazy"
+              width="480"
+              height="600"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);"
+            >
+          </div>
+          <div class="sobre-badge">
+            <div class="sobre-badge-num">2en1</div>
+            <div class="sobre-badge-text">Rehab + Training</div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="sobre-content reveal" style="transition-delay:0.15s">
+          <div class="section-tag">Quiénes somos</div>
+          <h2 class="section-title">Un enfoque que <span style="color:var(--red)">nadie más</span> tiene en Cuautla</h2>
+          <p class="sobre-desc">
+            <strong style="display:block;font-size:1.12rem;color:rgba(255,255,255,0.88);font-weight:500;margin-bottom:0.75rem;line-height:1.6;">ZP Cuautla nació de una idea simple: que recuperarte de una lesión y volverte más fuerte no deberían ser dos caminos separados.</strong> Combinamos terapia física y entrenamiento especializado en un solo lugar, con metodología adaptada a cada persona.
+          </p>
+          <div class="hybrid-pills">
+            <div class="pill pill-rehab">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Rehabilitación Física
+            </div>
+            <div class="pill pill-training">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5h11M17.5 6.5v11M6.5 17.5h11M6.5 6.5v11"/></svg>
+              Entrenamiento Deportivo
+            </div>
+            <div class="pill pill-training">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Programa Personalizado
+            </div>
+          </div>
+          <div class="sobre-features">
+            <div class="sobre-feature">
+              <div class="feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <div class="feature-text">
+                <strong>Evaluación Inicial Completa</strong>
+                <span>Comenzamos con un diagnóstico funcional para entender tu punto de partida y diseñar tu plan.</span>
+              </div>
+            </div>
+            <div class="sobre-feature">
+              <div class="feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div class="feature-text">
+                <strong>Atención Personalizada</strong>
+                <span>Sesiones individuales o en grupos pequeños para garantizar supervisión y progreso real.</span>
+              </div>
+            </div>
+            <div class="sobre-feature">
+              <div class="feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="feature-text">
+                <strong>Progresión Medible</strong>
+                <span>Seguimos tu evolución con métricas claras para ajustar y mejorar semana a semana.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       POBLACIONES ESPECIALES – MAIN SECTION
+  ================================================ -->
+  <section id="poblaciones">
+    <div class="container">
+      <div class="poblaciones-header reveal">
+        <div class="section-tag">Área principal</div>
+        <h2 class="section-title">Entrenamiento en<br/><span style="color:var(--red)">Poblaciones Especiales</span></h2>
+        <p class="section-subtitle">
+          Trabajamos con personas que necesitan más que un entrenamiento estándar. <strong style="color:rgba(255,255,255,0.75);font-weight:500;">Cada condición tiene su protocolo, su ritmo y sus metas.</strong>
+        </p>
+      </div>
+
+      <!-- 4 categories accordion -->
+      <div class="pop-categories" id="popCategories">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SERVICIOS – REHABILITACIÓN & ENTRENAMIENTO
+  ================================================ -->
+  <section id="servicios">
+    <div class="container">
+      <!-- Header -->
+      <div class="servicios-header reveal">
+        <div class="section-tag">Nuestros servicios</div>
+        <h2 class="section-title">Rehabilitación<br/><span style="color:var(--red)">y Entrenamiento</span></h2>
+        <p class="section-subtitle">
+          Dos áreas complementarias bajo el mismo techo. Elige la que necesitas o combínalas para un resultado óptimo.
+        </p>
+      </div>
+
+      <!-- Two main blocks -->
+      <div class="servicios-grid">
+
+        <!-- ── REHABILITACIÓN ── -->
+        <div class="srv-col">
+          <div class="img-placeholder-block reveal" style="overflow:hidden;">
+            <img src="imageneszpweb/imagenelectroterapia.jpg" alt="Sesión de electroterapia para rehabilitación física en ZP Cuautla" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="srv-block reveal" id="srvRehab">
+          <div class="srv-block-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleBlock('srvRehab')">
+            <div class="srv-block-heading">
+              <div class="srv-block-title">Rehabilitación</div>
+              <div class="srv-block-subtitle">Contamos con equipos de alta tecnología</div>
+            </div>
+            <div class="srv-block-toggle">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </div>
+          <div class="srv-block-body">
+            <!-- Intro bullets -->
+            <div class="srv-block-intro">
+              <ul class="srv-intro-list">
+                <li>Contamos con expertos en tratar diversas patologías que pueden afectar hombro, espalda y rodilla.</li>
+                <li>Somos de los pocos centros que integran gimnasio dentro del proceso de rehabilitación.</li>
+                <li>Más de 12 años de experiencia nos respaldan.</li>
+                <li>Todas las sesiones son personalizadas e individuales para la máxima comodidad del paciente.</li>
+              </ul>
+            </div>
+            <!-- Therapy images -->
+            <div class="srv-img-strip srv-img-strip--2col">
+              <div class="srv-img-strip-item">
+                <img src="imageneszpweb/imagenlaserdealtaintensidad.jpg" alt="Terapia de láser de alta intensidad para recuperación de lesiones en ZP Cuautla" loading="lazy">
+                <span class="srv-img-strip-cap">Láser Alta Intensidad</span>
+              </div>
+              <div class="srv-img-strip-item">
+                <img src="imageneszpweb/imagenterapiaondasdechoque.jpg" alt="Terapia de ondas de choque para tendinitis y calcificaciones en ZP Cuautla" loading="lazy">
+                <span class="srv-img-strip-cap">Ondas de Choque</span>
+              </div>
+              <div class="srv-img-strip-item">
+                <img src="imageneszpweb/imagenmicroelectrolisispercutanea.jpg" alt="Microelectrólisis percutánea para tratamiento musculoesquelético en ZP Cuautla" loading="lazy">
+                <span class="srv-img-strip-cap">Microelectrolisis percutánea</span>
+              </div>
+              <div class="srv-img-strip-item">
+                <img src="imageneszpweb/imagenecografiamusculoesqueleticamujer.jpg" alt="Ecografía musculoesquelética para diagnóstico de lesiones en ZP Cuautla" loading="lazy">
+                <span class="srv-img-strip-cap">Ecografía Musculoesquelética</span>
+              </div>
+            </div>
+            <!-- Sub-accordion -->
+            <div class="srv-sub-label">Tecnología & Técnicas</div>
+            <div class="srv-accordion" id="rehabAccordion">
+              <!-- Items rendered by JS -->
+            </div>
+          </div>
+        </div>
+        </div><!-- /srv-col rehab -->
+
+        <!-- ── ENTRENAMIENTO ── -->
+        <div class="srv-col">
+          <div class="img-placeholder-block reveal" style="overflow:hidden;transition-delay:0.12s;">
+            <img src="imageneszpweb/imagenparejaentrenadotrineoesqui.jpg" alt="Entrenamiento funcional y de fuerza en ZP Cuautla, Cuautla Morelos" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="srv-block reveal" id="srvTraining" style="transition-delay:0.12s;">
+          <div class="srv-block-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleBlock('srvTraining')">
+            <div class="srv-block-heading">
+              <div class="srv-block-title">Entrenamiento</div>
+              <div class="srv-block-subtitle">Fortalecerse no es solo hacer pesas</div>
+            </div>
+            <div class="srv-block-toggle">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </div>
+          <div class="srv-block-body">
+            <!-- Intro bullets -->
+            <div class="srv-block-intro">
+              <ul class="srv-intro-list">
+                <li>Nuestros entrenadores cuentan con amplio conocimiento para la correcta prescripción del ejercicio.</li>
+                <li>Trabajamos tanto con personas sanas como con poblaciones especiales.</li>
+                <li>Cada sesión cuenta con asesoramiento personalizado.</li>
+                <li>Utilizamos herramientas para dar seguimiento individualizado y medir tu progreso real.</li>
+              </ul>
+            </div>
+            <!-- Training images -->
+            <div class="srv-img-strip srv-img-strip--2col">
+              <div class="srv-img-strip-item">
+                <img src="imageneszpweb/imagenareadepesas.jpg" alt="Área de pesas para entrenamiento de fuerza en ZP Cuautla" loading="lazy">
+                <span class="srv-img-strip-cap">Área de pesas</span>
+              </div>
+              <div class="srv-img-strip-item">
+                <img src="imageneszpweb/imagenparejaentrenadotrineoesqui.jpg" alt="Entrenamiento funcional tipo Hyrox en ZP Cuautla, Cuautla Morelos" loading="lazy">
+                <span class="srv-img-strip-cap">Hyrox</span>
+              </div>
+            </div>
+            <div class="srv-img-strip srv-img-strip--2col">
+              <div class="srv-img-strip-item">
+                <img src="imageneszpweb/imagenfuerzalesionhombro.jpg" alt="Ejercicio de fuerza para lesión de hombro en ZP Cuautla" loading="lazy">
+                <span class="srv-img-strip-cap">Fuerza post-lesión</span>
+              </div>
+              <div class="srv-img-strip-item">
+                <img src="imageneszpweb/imagenmujeresmayoreshaciendofuerza.jpg" alt="Mujeres mayores haciendo ejercicio de fuerza en ZP Cuautla" loading="lazy">
+                <span class="srv-img-strip-cap">Fuerza adultos mayores</span>
+              </div>
+            </div>
+            <!-- Sub-accordion -->
+            <div class="srv-sub-label">Áreas & Programas</div>
+            <div class="srv-accordion" id="trainingAccordion">
+              <!-- Items rendered by JS -->
+            </div>
+          </div>
+        </div>
+        </div><!-- /srv-col training -->
+
+      </div><!-- /servicios-grid -->
+    </div>
+  </section>
+
+  <!-- ================================================
+       TRAINER
+  ================================================ -->
+  <section id="entrenador">
+    <div class="container">
+      <div class="trainer-grid">
+        <div class="trainer-photo reveal">
+          <div class="trainer-id-card">
+            <div class="trainer-id-icon">
+              <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="rgba(255,30,30,0.7)" stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>
+              </svg>
+            </div>
+            <div class="trainer-id-name">Héctor A. García</div>
+            <div class="trainer-id-role">KINESIÓLOGO Y ENTRENADOR</div>
+            <div class="trainer-id-divider"></div>
+            <div class="trainer-id-cedula">Cédula Profesional: 8896266</div>
+            <div class="trainer-id-horario">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Horario: 6:00 AM – 11:00 AM<br/>y 5:00 PM – 8:00 PM
+            </div>
+          </div>
+        </div>
+
+        <div class="trainer-info reveal" style="transition-delay:0.2s;">
+          <div class="section-tag">El equipo</div>
+          <h2 class="section-title">Experiencia que<br/><span style="color:var(--red)">marca la diferencia</span></h2>
+          <p class="trainer-bio">
+            El kinesiólogo Héctor combina formación en terapia física con entrenamiento deportivo especializado. Su enfoque va más allá del ejercicio: entiende el cuerpo humano como un sistema, y diseña programas que abordan la causa raíz de cada limitación.
+          </p>
+          <p class="trainer-bio" style="margin-top:-0.5rem;">
+            Ha trabajado con adultos mayores, pacientes post-operatorios, deportistas en recuperación y personas con condiciones crónicas como sarcopenia y osteoporosis. Su método une ciencia del movimiento con paciencia, empatía y resultados reales.
+          </p>
+          <div class="trainer-credentials">
+            <span class="credential-tag">Rehabilitación Física</span>
+            <span class="credential-tag">Entrenamiento Deportivo</span>
+            <span class="credential-tag">Poblaciones Especiales</span>
+            <span class="credential-tag">Adultos Mayores</span>
+            <span class="credential-tag">Prevención de Lesiones</span>
+          </div>
+          <a href="https://wa.me/527353384250?text=Hola,%20me%20gustaría%20agendar%20una%20sesión" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agenda ya tu cita
+          </a>
+        </div>
+      </div>
+
+      <!-- Red de Especialistas -->
+      <div class="specialists-wrap reveal">
+        <div class="specialists-header">
+          <div class="section-tag">Atención Multidisciplinaria</div>
+          <h3 style="font-family:var(--font-heading);font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:600;color:var(--white);margin-top:0.4rem;">Médicos especialistas</h3>
+          <p class="specialists-intro">
+            ZP Cuautla trabaja en coordinación con médicos especialistas de distintas áreas clínicas y deportivas. Esta red de profesionales nos permite ofrecer una atención integral, con criterio médico especializado detrás de cada plan de rehabilitación o entrenamiento.
+          </p>
+        </div>
+        <div class="specialists-grid">
+
+          <div class="spec-card">
+            <div class="spec-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="22"/><rect x="8" y="3" width="8" height="4" rx="1"/><rect x="8" y="9" width="8" height="4" rx="1"/><rect x="8" y="15" width="8" height="4" rx="1"/></svg>
+            </div>
+            <div class="spec-name">Columna<br/>Vertebral</div>
+          </div>
+
+          <div class="spec-card">
+            <div class="spec-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2" stroke-linecap="round"><path d="M10 3v7l-3 4v7"/><path d="M14 3v7l3 4v7"/><path d="M7 14h10"/><ellipse cx="12" cy="12" rx="3" ry="2"/></svg>
+            </div>
+            <div class="spec-name">Rodilla</div>
+          </div>
+
+          <div class="spec-card">
+            <div class="spec-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2" stroke-linecap="round"><path d="M12 3c-3 0-5 2-5 5s2 4 2 6"/><path d="M12 3c3 0 5 2 5 5s-2 4-2 6"/><path d="M9 14c0 2 1.5 4 3 7"/><path d="M15 14c0 2-1.5 4-3 7"/></svg>
+            </div>
+            <div class="spec-name">Cuello y<br/>Cervical</div>
+          </div>
+
+          <div class="spec-card">
+            <div class="spec-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M5 5l4 4M19 5l-4 4M5 19l4-4M19 19l-4-4"/><circle cx="12" cy="12" r="7"/></svg>
+            </div>
+            <div class="spec-name">Artroscopía<br/>de Rodilla</div>
+          </div>
+
+          <div class="spec-card">
+            <div class="spec-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2" stroke-linecap="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="spec-name">Lesiones<br/>Deportivas</div>
+          </div>
+
+          <div class="spec-card">
+            <div class="spec-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div class="spec-name">Medicina<br/>del Deporte</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       CTA
+  ================================================ -->
+  <section id="cta">
+    <div class="cta-zp-left" aria-hidden="true"><span>ZP</span></div>
+    <div class="cta-zp-right" aria-hidden="true"><span>ZP</span></div>
+    <div class="container cta-inner reveal">
+      <h2 class="cta-title">
+        Tu primera sesión<br/>te está esperando
+      </h2>
+      <p class="cta-sub">
+        Sin compromisos. Sin tecnicismos.<br/><strong style="color:rgba(255,255,255,0.95);font-weight:500;">Solo dinos cómo te sientes y empezamos juntos.</strong>
+      </p>
+      <a href="https://wa.me/527353384250?text=Hola,%20me%20gustaría%20agendar%20una%20sesión" target="_blank" rel="noopener noreferrer" class="btn-cta-big">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Agenda tu sesión por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- ================================================
+       RESEÑAS Y CASOS DE ÉXITO
+  ================================================ -->
+  <section id="resenas">
+    <div class="container">
+
+      <div class="resenas-header reveal">
+        <div class="section-tag">Lo que dicen nuestros pacientes</div>
+        <h2 class="section-title">Reseñas y<br/><span style="color:var(--red)">Casos de Éxito</span></h2>
+        <p class="section-subtitle">
+          Personas reales que recuperaron su movimiento, su fuerza y su confianza. Estos son algunos de sus caminos.
+        </p>
+      </div>
+
+      <div class="resenas-grid">
+
+        <!-- Nancy Sánchez – Destacado (wide) -->
+        <div class="resena-card resena-card--wide reveal">
+          <div class="resena-quote-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF1E1E"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          </div>
+          <div class="resena-body">
+            <div class="resena-stars">
+              <span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span>
+            </div>
+            <p class="resena-text">
+              "He avanzado bastante en mi proceso de recuperación. Tengo diagnóstico de hombro congelado más otras lesiones, sin evidencia de accidente — simplemente inició con un dolor simple. Estuve más de un año bajo revisión médica sin avance alguno. Hoy puedo decir con satisfacción que a casi 3 meses de rehabilitarme con los profesionales de ZP Cuautla, he avanzado en movilidad del brazo y hombro en un 65%. Todavía falta, pero voy por el 100% — y lo más importante: evitando por completo la cirugía."
+            </p>
+            <div class="resena-resultado">
+              <span class="resena-resultado-label">Resultado</span>
+              <span class="resena-resultado-text">65% de recuperación de movilidad en hombro congelado en menos de 3 meses, después de más de un año sin avance en otros centros. Sin cirugía.</span>
+            </div>
+            <div class="resena-author">
+              <div class="resena-avatar">NS</div>
+              <div>
+                <div class="resena-name">Nancy Sánchez</div>
+                <div class="resena-age">52 años · Hombro congelado</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonio 2 -->
+        <div class="resena-card reveal" style="transition-delay:0.1s;">
+          <div class="resena-quote-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF1E1E"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          </div>
+          <div class="resena-stars">
+            <span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span>
+          </div>
+          <p class="resena-text">
+            "Tengo osteoporosis y siempre tuve miedo de hacer ejercicio por las fracturas. Aquí me explicaron todo con claridad y me diseñaron un programa seguro. En seis meses mejoré mi densidad ósea y ya no me caigo como antes."
+          </p>
+          <div class="resena-resultado">
+            <span class="resena-resultado-label">Resultado</span>
+            <span class="resena-resultado-text">Mejora en densidad ósea. Cero caídas en los últimos 8 meses.</span>
+          </div>
+          <div class="resena-author">
+            <div class="resena-avatar">EL</div>
+            <div>
+              <div class="resena-name">Elena López</div>
+              <div class="resena-age">72 años · Osteoporosis</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonio 4 -->
+        <div class="resena-card reveal" style="transition-delay:0.08s;">
+          <div class="resena-quote-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF1E1E"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          </div>
+          <div class="resena-stars">
+            <span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span>
+          </div>
+          <p class="resena-text">
+            "Estoy muy contenta ya que llegué con problema de rodilla y les puedo decir que hasta el día de hoy no tengo dolor y ya bajo las escaleras como cualquier persona sana ya que eso no lo podía hacer. Llegué post operada mediante una artroscopia de rodilla."
+          </p>
+          <div class="resena-resultado">
+            <span class="resena-resultado-label">Resultado</span>
+            <span class="resena-resultado-text">Eliminó el dolor de rodilla post operatorio. Recuperó movilidad completa para bajar escaleras de forma autónoma.</span>
+          </div>
+          <div class="resena-author">
+            <div class="resena-avatar">LM</div>
+            <div>
+              <div class="resena-name">Lety Marino</div>
+              <div class="resena-age">56 años · Post operatoria de rodilla</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blanca Díaz -->
+        <div class="resena-card reveal" style="transition-delay:0.12s;">
+          <div class="resena-quote-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF1E1E"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          </div>
+          <div class="resena-stars">
+            <span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span>
+          </div>
+          <p class="resena-text">
+            "Estoy muy agradecida porque mi rodilla (Gonartrosis) no me molesta. Puedo caminar, subir escaleras, ir a comprar, subirme incluso en la combi, ser independiente. MUCHAS Gracias por fortalecer mis músculos, ligamentos y articulaciones 🙏"
+          </p>
+          <div class="resena-resultado">
+            <span class="resena-resultado-label">Resultado</span>
+            <span class="resena-resultado-text">Recuperó movilidad completa con Gonartrosis. Volvió a su vida independiente: camina, sube escaleras y usa transporte público sin dolor.</span>
+          </div>
+          <div class="resena-author">
+            <div class="resena-avatar">BD</div>
+            <div>
+              <div class="resena-name">Blanca Díaz</div>
+              <div class="resena-age">66 años · Gonartrosis de rodilla</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Minerva Medina -->
+        <div class="resena-card reveal" style="transition-delay:0.16s;">
+          <div class="resena-quote-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF1E1E"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          </div>
+          <div class="resena-stars">
+            <span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span><span class="resena-star">★</span>
+          </div>
+          <p class="resena-text">
+            "Hola, empecé a trabajar hace más de un año en ZP por una lesión en la rodilla y dificultad para realizar actividades básicas como levantarme de una silla, a partir de los ejercicios prescritos por el coach he tenido una mejor movilidad y calidad de vida, son muchos los beneficios de hacer ejercicio a cualquier edad!!"
+          </p>
+          <div class="resena-resultado">
+            <span class="resena-resultado-label">Resultado</span>
+            <span class="resena-resultado-text">Recuperó movilidad y calidad de vida tras lesión de rodilla. Retomó actividades básicas cotidianas con independencia.</span>
+          </div>
+          <div class="resena-author">
+            <div class="resena-avatar">MM</div>
+            <div>
+              <div class="resena-name">Minerva Medina</div>
+              <div class="resena-age">69 años · Lesión de rodilla</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /resenas-grid -->
+
+      <!-- CTA reseña Google -->
+      <div class="resenas-footer reveal" style="text-align:center;margin-top:3rem;transition-delay:0.15s;">
+        <p style="font-family:var(--font-body);font-size:0.95rem;color:rgba(255,255,255,0.5);margin-bottom:1.1rem;">¿Fuiste paciente o entrenas con nosotros? Tu opinión nos ayuda a llegar a más personas.</p>
+        <a href="https://www.google.com/search?q=Physical+Rehab+and+Sports+Training+Cuautla+Morelos" target="_blank" rel="noopener noreferrer" class="btn-google-review" aria-label="Déjanos una reseña en Google">
+          <!-- Google icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Déjanos una reseña en Google
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================
+       LOCATION
+  ================================================ -->
+  <section id="ubicacion">
+    <div class="container">
+      <div class="ubicacion-grid">
+        <div class="reveal">
+          <div class="section-tag">Encuéntranos</div>
+          <h2 class="section-title" style="margin-bottom:2rem;">¿Dónde<br/>estamos?</h2>
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.8!2d-98.9537!3d18.8167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce05a9c5b94c61%3A0x3cbb2b1e0a6e5e5!2sAv.%20Insurgentes%201098%2C%20Miguel%20Hidalgo%2C%2062748%20Cuautla%2C%20Mor.!5e0!3m2!1ses!2smx!4v1700000000000"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación ZP Cuautla"
+            ></iframe>
+          </div>
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=Av+Insurgentes+1098+Miguel+Hidalgo+62748+Cuautla+Morelos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-directions"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            Cómo llegar
+          </a>
+        </div>
+
+        <div class="ubicacion-info reveal" style="transition-delay:0.2s;">
+          <div class="section-tag" style="margin-bottom:1.5rem;">Información</div>
+
+          <div class="info-block">
+            <div class="info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="info-text">
+              <strong>Dirección</strong>
+              <p>Av Insurgentes #1098, Miguel Hidalgo<br/>Cuautla, Morelos, México CP 62748</p>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+            </div>
+            <div class="info-text">
+              <strong>Teléfono</strong>
+              <p><a href="tel:+527353384250" style="color:var(--red);font-weight:500;">735 338 4250</a></p>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="info-text">
+              <strong>Horario</strong>
+              <div style="margin-top:0.5rem;">
+                <div class="schedule-row">
+                  <span class="schedule-time">6:00 am – 11:00 am</span>
+                  <span class="schedule-label">Turno Mañana</span>
+                </div>
+                <div class="schedule-row">
+                  <span class="schedule-time">5:00 pm – 8:00 pm</span>
+                  <span class="schedule-label">Turno Tarde</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="info-text">
+              <strong>WhatsApp</strong>
+              <p>
+                <a href="https://wa.me/527353384250?text=Hola,%20me%20gustaría%20agendar%20una%20sesión" target="_blank" rel="noopener noreferrer" style="color:var(--red);">
+                  +52 735 338 4250
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <a href="https://instagram.com/zpcuautla" target="_blank" rel="noopener noreferrer" class="btn-ig" aria-label="Síguenos en Instagram @zpcuautla">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Síguenos en Instagram
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       FAQ
+  ================================================ -->
+  <section id="faq">
+    <div class="container">
+
+      <div class="faq-header reveal">
+        <div class="section-tag">Preguntas frecuentes</div>
+        <h2 class="section-title">Lo que más<br/><span style="color:var(--red)">nos preguntan</span></h2>
+        <p class="section-subtitle">
+          Si tienes dudas antes de agendar, aquí resolvemos las más comunes. También puedes escribirnos por WhatsApp.
+        </p>
+      </div>
+
+      <div class="faq-list reveal" style="transition-delay:0.1s;">
+
+        <div class="faq-item">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            ¿Necesito una orden médica para empezar?
+            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </div>
+          <div class="faq-answer">
+            <p>No es obligatorio, aunque si tienes una puede ser útil. Nuestro equipo hace una valoración inicial para entender tu condición, historial y objetivos. A partir de ahí diseñamos un plan personalizado. Si detectamos que necesitas atención médica previa, te lo decimos con claridad. Por esa razón trabajamos de la mano de especialistas; en caso de que necesitáramos un estudio o una valoración especializada te lo haremos saber y te daremos una línea directa con el especialista que necesites.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            ¿Cuántas sesiones necesito para ver resultados?
+            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </div>
+          <div class="faq-answer">
+            <p>Desde la primera sesión muchas personas comienzan a notar cambios, y entre la primera y la tercera sesión los resultados empiezan a ser evidentes. Para el entrenamiento, los cambios funcionales se consolidan entre las 4 y 8 semanas. En tu primera valoración te damos una estimación honesta y realista.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            ¿Puedo entrenar si nunca he hecho ejercicio?
+            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </div>
+          <div class="faq-answer">
+            <p>Sí, y de hecho es uno de los perfiles que más atendemos. Tenemos programas específicos para personas que comienzan desde cero, con progresiones seguras adaptadas a tu condición actual. No hace falta experiencia previa ni condición física mínima para comenzar.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            ¿Atienden a niños y adultos mayores?
+            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </div>
+          <div class="faq-answer">
+            <p>Sí. Trabajamos con poblaciones especiales, incluyendo adultos mayores con programas de fuerza y equilibrio para prevenir caídas, y con menores que requieren rehabilitación o acondicionamiento físico supervisado. Cada programa se adapta completamente a la edad y condición del paciente.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            ¿Qué diferencia hay entre rehabilitación y entrenamiento?
+            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </div>
+          <div class="faq-answer">
+            <p>La rehabilitación busca recuperar la función perdida por una lesión, cirugía o condición de salud. El entrenamiento desarrolla fuerza, resistencia y capacidad física en general. En ZP Cuautla los combinamos: cuando terminas tu rehabilitación, no te quedas en el punto de partida — te volvemos más fuerte de lo que eras antes.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            ¿Cómo sé si mi dolor necesita rehabilitación o solo ejercicio?
+            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </div>
+          <div class="faq-answer">
+            <p>Eso es exactamente lo que evaluamos en tu primera sesión. Si tienes dolor que limita tu movimiento, que lleva más de dos semanas sin mejorar, o que surgió tras una lesión o cirugía, lo más probable es que necesites rehabilitación primero. Pero eso es justo lo que podremos ver y determinaremos en tu primera consulta.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+            ¿Cómo agendo mi primera cita?
+            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </div>
+          <div class="faq-answer">
+            <p>Por WhatsApp al 735 338 4250. Es la forma más rápida. Cuéntanos brevemente qué sientes o qué quieres lograr, y te respondemos para coordinar horario y detalles. También puedes llamarnos directamente en ese mismo número.</p>
+          </div>
+        </div>
+
+      </div><!-- /faq-list -->
+
+      <div class="faq-footer reveal" style="transition-delay:0.2s;">
+        <p style="font-family:var(--font-body);font-size:0.95rem;color:rgba(255,255,255,0.5);margin-bottom:1rem;">¿Tu pregunta no está aquí? Escríbenos.</p>
+        <a href="https://wa.me/527353384250?text=Hola,%20tengo%20una%20pregunta%20antes%20de%20agendar" target="_blank" rel="noopener noreferrer" class="btn-review">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Preguntar por WhatsApp
+        </a>
+      </div>
+
+    </div><!-- /container -->
+  </section>
+
+  </main>
+
+  <!-- ================================================
+       FOOTER
+  ================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">ZP<span>.</span> Cuautla</div>
+      <div class="footer-copy">
+        © 2026 ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo<br/>
+        Cuautla, Morelos, México
+      </div>
+      <div class="footer-phone">
+        <span>Tel.</span> <a href="tel:+527353384250" style="color:inherit;">735 338 4250</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================
+       WHATSAPP FLOATING BUTTON
+  ================================================ -->
+  <a
+    href="https://wa.me/527353384250?text=Hola,%20me%20gustaría%20agendar%20una%20sesión"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-float"
+    aria-label="Contactar por WhatsApp"
+  >
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="whatsapp-tooltip">Escríbenos</span>
+  </a>
+
+  <!-- ================================================
+       JAVASCRIPT
+  ================================================ -->
+  <script>
+    /* ================================================
+       DATA – Rehabilitación items
+    ================================================ */
+    const rehabItems = [
+      {
+        name: 'Láser de alta intensidad',
+        que: 'Es una terapia que utiliza luz de alta potencia para penetrar tejidos profundos y acelerar la recuperación celular.',
+        para: 'Reduce el dolor, disminuye la inflamación y promueve la regeneración de tejidos dañados como tendones, músculos y articulaciones.',
+        importancia: 'Permite llegar a estructuras que otras terapias no alcanzan, acortando significativamente los tiempos de recuperación sin cirugía ni medicamentos.'
+      },
+      {
+        name: 'Terapia de ondas de choque',
+        que: 'Son impulsos de presión acústica que se aplican sobre la zona afectada para estimular los tejidos desde el interior.',
+        para: 'Trata calcificaciones, tendinitis crónicas, fascitis plantar y otras condiciones donde el tejido se ha deteriorado con el tiempo.',
+        importancia: 'Es especialmente eficaz en lesiones que no han respondido a tratamientos convencionales. Activa la reparación natural del cuerpo sin necesidad de reposo prolongado.'
+      },
+      {
+        name: 'Electroterapia',
+        que: 'Utiliza corrientes eléctricas controladas para actuar sobre el sistema nervioso y muscular de manera terapéutica.',
+        para: 'Alivia el dolor, reduce la inflamación, mejora la circulación y estimula la activación muscular en zonas débiles o inhibidas.',
+        importancia: 'Complementa perfectamente el ejercicio terapéutico, preparando al músculo para trabajar correctamente y reduciendo el dolor que limita el movimiento.'
+      },
+      {
+        name: 'Masoterapia',
+        que: 'Es el conjunto de técnicas de masaje terapéutico aplicadas de forma estructurada sobre tejidos blandos del cuerpo.',
+        para: 'Libera tensión muscular, mejora la circulación, reduce puntos de dolor miofasciales y prepara el cuerpo para el ejercicio.',
+        importancia: 'Un tejido tenso o adherido no responde bien al entrenamiento. La masoterapia restaura la calidad del tejido para que el movimiento sea libre y sin dolor.'
+      },
+      {
+        name: 'Presoterapia',
+        que: 'Es un tratamiento que usa presión de aire controlada para estimular el sistema linfático y circulatorio de las extremidades.',
+        para: 'Reduce la retención de líquidos, mejora la circulación de retorno, alivia la pesadez y apoya la recuperación muscular post-esfuerzo.',
+        importancia: 'Fundamental en pacientes con edema, circulación deficiente o que están en etapas de recuperación post-operatoria o post-lesión.'
+      },
+      {
+        name: 'Contraste de temperaturas',
+        que: 'Consiste en la aplicación alternada de frío y calor sobre las zonas afectadas para provocar cambios vasculares y circulatorios.',
+        para: 'Reduce la inflamación aguda, mejora la recuperación muscular, alivia el dolor y activa la circulación de forma natural.',
+        importancia: 'Es una herramienta sencilla pero muy eficaz para acelerar la recuperación entre sesiones de entrenamiento o en fases post-lesión.'
+      },
+      {
+        name: 'Camilla eléctrica de alta gama',
+        que: 'Es una camilla motorizada que permite posicionar al paciente de forma óptima y segura para cada procedimiento terapéutico.',
+        para: 'Facilita la aplicación de todas las terapias con ergonomía correcta, garantizando la comodidad del paciente y la precisión del terapeuta.',
+        importancia: 'La posición correcta durante una sesión no es un detalle menor: influye directamente en la efectividad del tratamiento y en la experiencia del paciente.'
+      }
+    ];
+
+    /* ================================================
+       DATA – Entrenamiento items
+    ================================================ */
+    const trainingItems = [
+      {
+        name: 'Área de pesas',
+        que: 'Zona equipada con material de resistencia para entrenamiento de fuerza libre y guiada.',
+        para: 'Desarrollar fuerza muscular, mejorar la composición corporal y fortalecer estructuras articulares para prevenir lesiones.',
+        importancia: 'El entrenamiento de fuerza es la herramienta más potente para combatir el envejecimiento muscular, mejorar la densidad ósea y mantener la independencia funcional a cualquier edad.'
+      },
+      {
+        name: 'Equipos de cardio',
+        que: 'Maquinaria de baja y alta intensidad diseñada para trabajar el sistema cardiovascular de forma controlada.',
+        para: 'Mejorar la resistencia, controlar el peso, fortalecer el corazón y mantener activo el metabolismo.',
+        importancia: 'Un sistema cardiovascular sano se traduce en más energía, mejor recuperación y menor riesgo de enfermedades crónicas. Lo adaptamos a tu nivel y condición actual.'
+      },
+      {
+        name: 'Rutinas tipo Hyrox',
+        que: 'Son entrenamientos funcionales de alta intensidad que combinan carrera y estaciones de ejercicio variadas.',
+        para: 'Desarrollar resistencia, fuerza y capacidad funcional al mismo tiempo, con un enfoque competitivo pero adaptable.',
+        importancia: 'Este tipo de entrenamiento es ideal para personas activas que buscan desafíos reales y mejoras medibles en su condición física general.'
+      },
+      {
+        name: 'Fortalecimiento post lesión',
+        que: 'Programa de entrenamiento diseñado específicamente para recuperar fuerza y función después de una lesión o cirugía.',
+        para: 'Reintegrar el movimiento correcto, recuperar la fuerza perdida y devolver la confianza al cuerpo para volver a la actividad.',
+        importancia: 'Sin un fortalecimiento adecuado tras una lesión, el riesgo de recaída es muy alto. Este programa cierra la brecha entre la rehabilitación y el regreso pleno a la actividad.'
+      },
+      {
+        name: 'Programas para adultos mayores',
+        que: 'Protocolos diseñados específicamente para las necesidades funcionales y físicas de personas mayores de 60 años.',
+        para: 'Mantener la independencia, evitar caídas, conservar la masa muscular y mejorar la calidad de vida en general.',
+        importancia: 'A partir de los 60 años, el músculo se pierde 2-3 veces más rápido sin entrenamiento. Nuestros programas frenan este proceso, mejoran el equilibrio y la coordinación, y permiten que el adulto mayor siga haciendo lo que más disfruta sin limitaciones. Más independencia, más vida.'
+      }
+    ];
+
+    /* ================================================
+       RENDER – Sub-accordion items
+    ================================================ */
+    function renderSubAccordion(items, containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      items.forEach((item, i) => {
+        const el = document.createElement('div');
+        el.className = 'srv-item';
+        el.dataset.index = i;
+        el.innerHTML = `
+          <div class="srv-item-header">
+            <div class="srv-item-left">
+              <div class="srv-item-dot"></div>
+              <div class="srv-item-name">${item.name}</div>
+            </div>
+            <div class="srv-item-chevron">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </div>
+          </div>
+          <div class="srv-item-body">
+            <div class="srv-item-inner">
+              <div class="srv-detail-label">¿Qué es?</div>
+              <p class="srv-detail-text">${item.que}</p>
+              <div class="srv-detail-label">¿Para qué sirve?</div>
+              <p class="srv-detail-text">${item.para}</p>
+              <div class="srv-detail-label">¿Por qué es importante?</div>
+              <p class="srv-detail-text">${item.importancia}</p>
+            </div>
+          </div>
+        `;
+
+        const itemHeader = el.querySelector('.srv-item-header');
+        itemHeader.setAttribute('role', 'button');
+        itemHeader.setAttribute('tabindex', '0');
+        itemHeader.setAttribute('aria-expanded', 'false');
+        itemHeader.addEventListener('click', () => {
+          const isOpen = el.classList.contains('open');
+          container.querySelectorAll('.srv-item').forEach(s => {
+            s.classList.remove('open');
+            s.querySelector('.srv-item-header').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            el.classList.add('open');
+            itemHeader.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        container.appendChild(el);
+      });
+    }
+
+    /* ================================================
+       TOGGLE – Main block open/close
+    ================================================ */
+    function toggleBlock(id) {
+      const block = document.getElementById(id);
+      if (!block) return;
+      const isOpen = block.classList.toggle('open');
+      const header = block.querySelector('.srv-block-header');
+      if (header) header.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    /* ================================================
+       DATA – Poblaciones Especiales (4 categories)
+    ================================================ */
+    const categoriesData = [
+      {
+        num: '01',
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>`,
+        title: 'Adultos Mayores',
+        type: 'sub',
+        subs: [
+          {
+            name: 'Osteoporosis',
+            que: 'Pérdida progresiva de densidad ósea que vuelve los huesos más frágiles y propensos a fracturarse.',
+            importancia: 'Sin intervención, el riesgo de fracturas graves aumenta y puede comprometer la independencia de forma definitiva.',
+            como: 'Aplicamos ejercicios de carga y resistencia controlada que estimulan la formación ósea y reducen el riesgo de fractura.'
+          },
+          {
+            name: 'Sarcopenia',
+            que: 'Pérdida progresiva de masa y fuerza muscular ligada al envejecimiento, que muchas veces pasa desapercibida.',
+            importancia: 'Reduce la capacidad para actividades cotidianas, genera cansancio constante y eleva el riesgo de caídas.',
+            como: 'Entrenamiento de resistencia bien dosificado que frena la pérdida muscular y recupera fuerza funcional de forma medible.'
+          },
+          {
+            name: 'Prevención de Caídas',
+            que: 'Conjunto de estrategias de ejercicio para reducir el riesgo de caídas mediante fuerza, equilibrio y coordinación.',
+            importancia: 'Una caída puede iniciar un deterioro grave. El miedo a caer también lleva a moverse menos, agravando el problema.',
+            como: 'Mejoramos equilibrio, coordinación y fuerza de piernas para que te muevas con seguridad y sin miedo.'
+          }
+        ]
+      },
+      {
+        num: '02',
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
+        title: 'Oncológicos',
+        type: 'direct',
+        que: 'El ejercicio durante y después del tratamiento oncológico mejora significativamente la calidad de vida y apoya la recuperación.',
+        porque: 'Los tratamientos como quimioterapia y radioterapia generan fatiga, pérdida muscular, dolor y deterioro funcional.',
+        como: 'Aplicamos protocolos de ejercicio oncológico validados científicamente, adaptados a la etapa y condición de cada persona, siempre en coordinación con su equipo médico.'
+      },
+      {
+        num: '03',
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+        title: 'Enfermedades Crónico-Degenerativas',
+        type: 'sub',
+        subs: [
+          {
+            name: 'Diabetes',
+            que: 'Condición crónica que afecta el control del azúcar en sangre y puede deteriorar músculos, articulaciones y sistema cardiovascular.',
+            importancia: 'El sedentarismo agrava la resistencia a la insulina y acelera las complicaciones asociadas a largo plazo.',
+            como: 'El ejercicio estructurado mejora la sensibilidad a la insulina, contribuye al control del peso y reduce complicaciones de forma natural.'
+          },
+          {
+            name: 'Hipertensión',
+            que: 'Presión arterial elevada de forma crónica que aumenta significativamente el riesgo cardiovascular.',
+            importancia: 'Sin manejo adecuado puede derivar en infartos, derrames o daño renal. La actividad física es una herramienta terapéutica clave.',
+            como: 'El ejercicio aeróbico y de fuerza bien prescrito reduce la presión arterial y mejora la salud cardiovascular de manera sostenida.'
+          }
+        ]
+      },
+      {
+        num: '04',
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF1E1E" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+        title: 'Post-Lesiones',
+        type: 'sub',
+        subs: [
+          {
+            name: 'Post Operatorio',
+            que: 'Proceso de recuperación tras una cirugía ortopédica o de tejidos blandos que requiere guía profesional.',
+            importancia: 'Sin rehabilitación activa se pierde fuerza, movilidad y confianza en el movimiento, alargando innecesariamente la recuperación.',
+            como: 'Diseñamos protocolos graduales alineados con indicaciones médicas para una recuperación segura y completa.'
+          },
+          {
+            name: 'Posterior a Lesión Músculo Esquelética',
+            que: 'Recuperación tras esguinces, desgarros, tendinitis u otras lesiones del sistema musculoesquelético.',
+            importancia: 'Un retorno prematuro sin rehabilitación es la causa más común de re-lesión y dolor crónico.',
+            como: 'Acompañamos todo el proceso, desde la fase aguda hasta el retorno pleno a la actividad, más fuerte que antes.'
+          }
+        ]
+      }
+    ];
+
+    /* ================================================
+       RENDER – 4-category accordion with subgroups
+    ================================================ */
+    function renderPoblaciones() {
+      const container = document.getElementById('popCategories');
+      if (!container) return;
+
+      categoriesData.forEach((cat, ci) => {
+        const el = document.createElement('div');
+        el.className = 'pop-cat reveal';
+        el.style.transitionDelay = `${(ci % 2) * 0.1}s`;
+
+        let bodyContent = '';
+
+        if (cat.type === 'direct') {
+          bodyContent = `
+            <div class="pop-cat-direct">
+              <div class="pop-cat-dlabel">¿Qué es?</div>
+              <p class="pop-cat-dtext">${cat.que}</p>
+              <div class="pop-cat-dlabel">¿Por qué ocurre?</div>
+              <p class="pop-cat-dtext">${cat.porque}</p>
+              <div class="pop-cat-dlabel">¿Cómo ayudamos?</div>
+              <p class="pop-cat-dtext">${cat.como}</p>
+            </div>`;
+        } else {
+          bodyContent = cat.subs.map((sub, si) => `
+            <div class="pop-sub" data-cat="${ci}" data-sub="${si}">
+              <div class="pop-sub-header">
+                <div class="pop-sub-dot"></div>
+                <div class="pop-sub-name">${sub.name}</div>
+                <div class="pop-sub-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+              <div class="pop-sub-body">
+                <div class="pop-sub-inner">
+                  <div class="pop-sub-label">¿Qué es?</div>
+                  <p class="pop-sub-text">${sub.que}</p>
+                  <div class="pop-sub-label">¿Por qué es importante tratarlo?</div>
+                  <p class="pop-sub-text">${sub.importancia}</p>
+                  <div class="pop-sub-label">¿Cómo ayuda el entrenamiento?</div>
+                  <p class="pop-sub-text">${sub.como}</p>
+                </div>
+              </div>
+            </div>`).join('');
+        }
+
+        el.innerHTML = `
+          <div class="pop-cat-header" role="button" tabindex="0" aria-expanded="false">
+            <div class="pop-cat-icon">${cat.icon}</div>
+            <div class="pop-cat-text">
+              <div class="pop-cat-num">${cat.num}</div>
+              <div class="pop-cat-title">${cat.title}</div>
+            </div>
+            <div class="pop-cat-chevron">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="pop-cat-body">
+            <div class="pop-cat-body-inner">${bodyContent}</div>
+          </div>`;
+
+        const popHeader = el.querySelector('.pop-cat-header');
+        popHeader.addEventListener('click', () => {
+          const isActive = el.classList.contains('active');
+          document.querySelectorAll('.pop-cat').forEach(c => {
+            c.classList.remove('active');
+            const h = c.querySelector('.pop-cat-header');
+            if (h) h.setAttribute('aria-expanded', 'false');
+          });
+          if (!isActive) {
+            el.classList.add('active');
+            popHeader.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        el.querySelectorAll('.pop-sub-header').forEach(sh => {
+          sh.setAttribute('role', 'button');
+          sh.setAttribute('tabindex', '0');
+          sh.setAttribute('aria-expanded', 'false');
+          sh.addEventListener('click', e => {
+            e.stopPropagation();
+            const sub = sh.parentElement;
+            const isActive = sub.classList.contains('active');
+            el.querySelectorAll('.pop-sub').forEach(s => {
+              s.classList.remove('active');
+              s.querySelector('.pop-sub-header').setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+              sub.classList.add('active');
+              sh.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+
+        if (ci < 2) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'pop-col';
+          const ph = document.createElement('div');
+          ph.className = 'img-placeholder-block reveal';
+          ph.style.transitionDelay = `${(ci % 2) * 0.1}s`;
+          const popImgs = [
+            'imageneszpweb/imagengrupodeadultosmayoresentrenando.jpg',
+            'imageneszpweb/imagenpostoperacionderodilla.jpg'
+          ];
+          const popAlts = [
+            'Grupo de adultos mayores entrenando en ZP Cuautla',
+            'Rehabilitación post-operatoria de rodilla en ZP Cuautla'
+          ];
+          ph.innerHTML = `<img src="${popImgs[ci]}" alt="${popAlts[ci]}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">`;
+          wrapper.appendChild(ph);
+          wrapper.appendChild(el);
+          container.appendChild(wrapper);
+        } else {
+          container.appendChild(el);
+        }
+      });
+    }
+
+    /* ================================================
+       NAVBAR – scroll effect
+    ================================================ */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ================================================
+       HAMBURGER – mobile menu
+    ================================================ */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobile() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+    }
+
+    /* ================================================
+       REVEAL on scroll – IntersectionObserver
+    ================================================ */
+    function initReveal() {
+      const elements = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      elements.forEach(el => observer.observe(el));
+    }
+
+    /* ================================================
+       INIT
+    ================================================ */
+    /* ================================================
+       FAQ ACCORDION
+    ================================================ */
+    function initFaq() {
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        const item = btn.closest('.faq-item');
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          // Close all
+          document.querySelectorAll('.faq-item.open').forEach(el => {
+            el.classList.remove('open');
+            el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+        btn.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSubAccordion(rehabItems, 'rehabAccordion');
+      renderSubAccordion(trainingItems, 'trainingAccordion');
+      renderPoblaciones();
+      initFaq();
+      // Small delay to let cards render before observing
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          initReveal();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
