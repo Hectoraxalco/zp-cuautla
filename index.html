@@ -13,6 +13,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; frame-src https://www.google.com; connect-src 'none'; object-src 'none'; base-uri 'self';" />
   <title>ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo</title>
   <meta name="description" content="Centro de rehabilitación física y entrenamiento deportivo en Cuautla, Morelos. Especialistas en poblaciones especiales, adultos mayores, post-operatorios y enfermedades crónicas. Más de 12 años de experiencia." />
   <meta property="og:title" content="ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo" />
@@ -28,9 +29,7 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://tajonarney.github.io/zp-web/" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><text x='16' y='24' font-family='Arial Black,Impact,sans-serif' font-size='19' font-weight='900' fill='%23FF1E1E' text-anchor='middle' letter-spacing='-1'>ZP</text></svg>" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="fonts.css" />
   <style>
     /* ================================================
        CSS RESET & VARIABLES
@@ -3314,6 +3313,7 @@
           <div class="map-wrapper">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.8!2d-98.9537!3d18.8167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce05a9c5b94c61%3A0x3cbb2b1e0a6e5e5!2sAv.%20Insurgentes%201098%2C%20Miguel%20Hidalgo%2C%2062748%20Cuautla%2C%20Mor.!5e0!3m2!1ses!2smx!4v1700000000000"
+              sandbox="allow-scripts allow-same-origin"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
@@ -3615,31 +3615,51 @@
         const el = document.createElement('div');
         el.className = 'srv-item';
         el.dataset.index = i;
-        el.innerHTML = `
-          <div class="srv-item-header">
-            <div class="srv-item-left">
-              <div class="srv-item-dot"></div>
-              <div class="srv-item-name">${item.name}</div>
-            </div>
-            <div class="srv-item-chevron">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
-            </div>
-          </div>
-          <div class="srv-item-body">
-            <div class="srv-item-inner">
-              <div class="srv-detail-label">¿Qué es?</div>
-              <p class="srv-detail-text">${item.que}</p>
-              <div class="srv-detail-label">¿Para qué sirve?</div>
-              <p class="srv-detail-text">${item.para}</p>
-              <div class="srv-detail-label">¿Por qué es importante?</div>
-              <p class="srv-detail-text">${item.importancia}</p>
-            </div>
-          </div>
-        `;
 
-        const itemHeader = el.querySelector('.srv-item-header');
+        const itemHeader = document.createElement('div');
+        itemHeader.className = 'srv-item-header';
+
+        const left = document.createElement('div');
+        left.className = 'srv-item-left';
+        const dot = document.createElement('div');
+        dot.className = 'srv-item-dot';
+        const nameEl = document.createElement('div');
+        nameEl.className = 'srv-item-name';
+        nameEl.textContent = item.name;
+        left.appendChild(dot);
+        left.appendChild(nameEl);
+
+        const chevron = document.createElement('div');
+        chevron.className = 'srv-item-chevron';
+        chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>';
+
+        itemHeader.appendChild(left);
+        itemHeader.appendChild(chevron);
+
+        const body = document.createElement('div');
+        body.className = 'srv-item-body';
+        const inner = document.createElement('div');
+        inner.className = 'srv-item-inner';
+
+        [
+          ['¿Qué es?', item.que],
+          ['¿Para qué sirve?', item.para],
+          ['¿Por qué es importante?', item.importancia]
+        ].forEach(([labelText, valueText]) => {
+          const label = document.createElement('div');
+          label.className = 'srv-detail-label';
+          label.textContent = labelText;
+          const p = document.createElement('p');
+          p.className = 'srv-detail-text';
+          p.textContent = valueText;
+          inner.appendChild(label);
+          inner.appendChild(p);
+        });
+
+        body.appendChild(inner);
+        el.appendChild(itemHeader);
+        el.appendChild(body);
+
         itemHeader.setAttribute('role', 'button');
         itemHeader.setAttribute('tabindex', '0');
         itemHeader.setAttribute('aria-expanded', 'false');
@@ -3758,62 +3778,124 @@
       const container = document.getElementById('popCategories');
       if (!container) return;
 
+      const popImgs = [
+        'imageneszpweb/imagengrupodeadultosmayoresentrenando.jpg',
+        'imageneszpweb/imagenpostoperacionderodilla.jpg'
+      ];
+      const popAlts = [
+        'Grupo de adultos mayores entrenando en ZP Cuautla',
+        'Rehabilitación post-operatoria de rodilla en ZP Cuautla'
+      ];
+
       categoriesData.forEach((cat, ci) => {
         const el = document.createElement('div');
         el.className = 'pop-cat reveal';
         el.style.transitionDelay = `${(ci % 2) * 0.1}s`;
 
-        let bodyContent = '';
+        // Header
+        const popHeader = document.createElement('div');
+        popHeader.className = 'pop-cat-header';
+        popHeader.setAttribute('role', 'button');
+        popHeader.setAttribute('tabindex', '0');
+        popHeader.setAttribute('aria-expanded', 'false');
+
+        const iconEl = document.createElement('div');
+        iconEl.className = 'pop-cat-icon';
+        iconEl.innerHTML = cat.icon;
+
+        const textEl = document.createElement('div');
+        textEl.className = 'pop-cat-text';
+        const numEl = document.createElement('div');
+        numEl.className = 'pop-cat-num';
+        numEl.textContent = cat.num;
+        const titleEl = document.createElement('div');
+        titleEl.className = 'pop-cat-title';
+        titleEl.textContent = cat.title;
+        textEl.appendChild(numEl);
+        textEl.appendChild(titleEl);
+
+        const chevronEl = document.createElement('div');
+        chevronEl.className = 'pop-cat-chevron';
+        chevronEl.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+
+        popHeader.appendChild(iconEl);
+        popHeader.appendChild(textEl);
+        popHeader.appendChild(chevronEl);
+
+        // Body
+        const bodyEl = document.createElement('div');
+        bodyEl.className = 'pop-cat-body';
+        const bodyInner = document.createElement('div');
+        bodyInner.className = 'pop-cat-body-inner';
 
         if (cat.type === 'direct') {
-          bodyContent = `
-            <div class="pop-cat-direct">
-              <div class="pop-cat-dlabel">¿Qué es?</div>
-              <p class="pop-cat-dtext">${cat.que}</p>
-              <div class="pop-cat-dlabel">¿Por qué ocurre?</div>
-              <p class="pop-cat-dtext">${cat.porque}</p>
-              <div class="pop-cat-dlabel">¿Cómo ayudamos?</div>
-              <p class="pop-cat-dtext">${cat.como}</p>
-            </div>`;
+          const direct = document.createElement('div');
+          direct.className = 'pop-cat-direct';
+          [
+            ['¿Qué es?', cat.que],
+            ['¿Por qué ocurre?', cat.porque],
+            ['¿Cómo ayudamos?', cat.como]
+          ].forEach(([labelText, valueText]) => {
+            const label = document.createElement('div');
+            label.className = 'pop-cat-dlabel';
+            label.textContent = labelText;
+            const p = document.createElement('p');
+            p.className = 'pop-cat-dtext';
+            p.textContent = valueText;
+            direct.appendChild(label);
+            direct.appendChild(p);
+          });
+          bodyInner.appendChild(direct);
         } else {
-          bodyContent = cat.subs.map((sub, si) => `
-            <div class="pop-sub" data-cat="${ci}" data-sub="${si}">
-              <div class="pop-sub-header">
-                <div class="pop-sub-dot"></div>
-                <div class="pop-sub-name">${sub.name}</div>
-                <div class="pop-sub-arrow">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-              </div>
-              <div class="pop-sub-body">
-                <div class="pop-sub-inner">
-                  <div class="pop-sub-label">¿Qué es?</div>
-                  <p class="pop-sub-text">${sub.que}</p>
-                  <div class="pop-sub-label">¿Por qué es importante tratarlo?</div>
-                  <p class="pop-sub-text">${sub.importancia}</p>
-                  <div class="pop-sub-label">¿Cómo ayuda el entrenamiento?</div>
-                  <p class="pop-sub-text">${sub.como}</p>
-                </div>
-              </div>
-            </div>`).join('');
+          cat.subs.forEach((sub, si) => {
+            const subEl = document.createElement('div');
+            subEl.className = 'pop-sub';
+            subEl.dataset.cat = ci;
+            subEl.dataset.sub = si;
+
+            const subHeader = document.createElement('div');
+            subHeader.className = 'pop-sub-header';
+            const subDot = document.createElement('div');
+            subDot.className = 'pop-sub-dot';
+            const subName = document.createElement('div');
+            subName.className = 'pop-sub-name';
+            subName.textContent = sub.name;
+            const subArrow = document.createElement('div');
+            subArrow.className = 'pop-sub-arrow';
+            subArrow.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>';
+            subHeader.appendChild(subDot);
+            subHeader.appendChild(subName);
+            subHeader.appendChild(subArrow);
+
+            const subBody = document.createElement('div');
+            subBody.className = 'pop-sub-body';
+            const subInner = document.createElement('div');
+            subInner.className = 'pop-sub-inner';
+            [
+              ['¿Qué es?', sub.que],
+              ['¿Por qué es importante tratarlo?', sub.importancia],
+              ['¿Cómo ayuda el entrenamiento?', sub.como]
+            ].forEach(([labelText, valueText]) => {
+              const label = document.createElement('div');
+              label.className = 'pop-sub-label';
+              label.textContent = labelText;
+              const p = document.createElement('p');
+              p.className = 'pop-sub-text';
+              p.textContent = valueText;
+              subInner.appendChild(label);
+              subInner.appendChild(p);
+            });
+            subBody.appendChild(subInner);
+            subEl.appendChild(subHeader);
+            subEl.appendChild(subBody);
+            bodyInner.appendChild(subEl);
+          });
         }
 
-        el.innerHTML = `
-          <div class="pop-cat-header" role="button" tabindex="0" aria-expanded="false">
-            <div class="pop-cat-icon">${cat.icon}</div>
-            <div class="pop-cat-text">
-              <div class="pop-cat-num">${cat.num}</div>
-              <div class="pop-cat-title">${cat.title}</div>
-            </div>
-            <div class="pop-cat-chevron">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-          </div>
-          <div class="pop-cat-body">
-            <div class="pop-cat-body-inner">${bodyContent}</div>
-          </div>`;
+        bodyEl.appendChild(bodyInner);
+        el.appendChild(popHeader);
+        el.appendChild(bodyEl);
 
-        const popHeader = el.querySelector('.pop-cat-header');
         popHeader.addEventListener('click', () => {
           const isActive = el.classList.contains('active');
           document.querySelectorAll('.pop-cat').forEach(c => {
@@ -3852,15 +3934,12 @@
           const ph = document.createElement('div');
           ph.className = 'img-placeholder-block reveal';
           ph.style.transitionDelay = `${(ci % 2) * 0.1}s`;
-          const popImgs = [
-            'imageneszpweb/imagengrupodeadultosmayoresentrenando.jpg',
-            'imageneszpweb/imagenpostoperacionderodilla.jpg'
-          ];
-          const popAlts = [
-            'Grupo de adultos mayores entrenando en ZP Cuautla',
-            'Rehabilitación post-operatoria de rodilla en ZP Cuautla'
-          ];
-          ph.innerHTML = `<img src="${popImgs[ci]}" alt="${popAlts[ci]}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">`;
+          const img = document.createElement('img');
+          img.src = popImgs[ci];
+          img.alt = popAlts[ci];
+          img.loading = 'lazy';
+          img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
+          ph.appendChild(img);
           wrapper.appendChild(ph);
           wrapper.appendChild(el);
           container.appendChild(wrapper);
