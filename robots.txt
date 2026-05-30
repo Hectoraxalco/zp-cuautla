@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tajonarney.github.io/zp-web/sitemap.xml
+Sitemap: https://zpcuautla.com.mx/sitemap.xml
