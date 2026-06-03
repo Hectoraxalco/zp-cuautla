@@ -1,9 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://zpcuautla.com.mx/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenportada.jpg</image:loc>
+      <image:title>Fisioterapeuta Héctor García en ZP Cuautla — Centro de Rehabilitación Física en Cuautla, Morelos</image:title>
+      <image:caption>ZP Cuautla: centro de rehabilitación física y entrenamiento deportivo en Av. Insurgentes 1098, Cuautla, Morelos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenlaserdealtaintensidad.jpg</image:loc>
+      <image:title>Terapia de láser de alta intensidad para rehabilitación física en ZP Cuautla</image:title>
+      <image:caption>Terapia de láser de alta intensidad para recuperación de lesiones musculoesqueléticas en Cuautla, Morelos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenterapiaondasdechoque.jpg</image:loc>
+      <image:title>Terapia de ondas de choque para tendinitis y calcificaciones en ZP Cuautla</image:title>
+      <image:caption>Tratamiento con ondas de choque extracorpóreas para tendinitis crónica y fascitis plantar en Cuautla, Morelos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenelectroterapia.jpg</image:loc>
+      <image:title>Electroterapia para rehabilitación física en ZP Cuautla</image:title>
+      <image:caption>Sesión de electroterapia para alivio del dolor e inflamación en ZP Cuautla, Cuautla Morelos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenmicroelectrolisispercutanea.jpg</image:loc>
+      <image:title>Microelectrólisis percutánea para lesiones musculoesqueléticas en ZP Cuautla</image:title>
+      <image:caption>Técnica de microelectrólisis percutánea (MEP) para tratamiento de lesiones crónicas en Cuautla, Morelos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenecografiamusculoesqueleticamujer.jpg</image:loc>
+      <image:title>Ecografía musculoesquelética para diagnóstico de lesiones en ZP Cuautla</image:title>
+      <image:caption>Diagnóstico por ecografía musculoesquelética para evaluación de tendones, músculos y articulaciones en ZP Cuautla</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagengrupodeadultosmayoresentrenando.jpg</image:loc>
+      <image:title>Adultos mayores entrenando en ZP Cuautla, Cuautla Morelos</image:title>
+      <image:caption>Programa de entrenamiento para adultos mayores enfocado en prevención de caídas y sarcopenia en ZP Cuautla</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagencamillaelectricaygimnasio.jpg</image:loc>
+      <image:title>Camilla eléctrica de alta gama y área de gimnasio en ZP Cuautla</image:title>
+      <image:caption>Instalaciones de rehabilitación: camilla eléctrica y gimnasio integrado en ZP Cuautla, Cuautla Morelos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenparejaentrenadotrineoesqui.jpg</image:loc>
+      <image:title>Entrenamiento funcional tipo Hyrox en ZP Cuautla, Cuautla Morelos</image:title>
+      <image:caption>Rutinas de entrenamiento funcional de alta intensidad tipo Hyrox en ZP Cuautla, Morelos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenbotaspresoterapia.jpg</image:loc>
+      <image:title>Presoterapia con botas de compresión en ZP Cuautla</image:title>
+      <image:caption>Tratamiento de presoterapia para edema, retención de líquidos y recuperación post-operatoria en ZP Cuautla</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenpostoperacionderodilla.jpg</image:loc>
+      <image:title>Rehabilitación post-operatoria de rodilla en ZP Cuautla</image:title>
+      <image:caption>Protocolo de rehabilitación post-operatoria de rodilla (artroscopia, LCA) en ZP Cuautla, Cuautla Morelos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenfuerzalesionhombro.jpg</image:loc>
+      <image:title>Ejercicio de fuerza para lesión de hombro en ZP Cuautla</image:title>
+      <image:caption>Fortalecimiento post-lesión de hombro y recuperación de movilidad en ZP Cuautla, Morelos</image:caption>
+    </image:image>
   </url>
 </urlset>
