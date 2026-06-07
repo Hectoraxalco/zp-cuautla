@@ -152,7 +152,26 @@ function initPopAccordions() {
   });
 }
 
+function initSrvBlocks() {
+  document.querySelectorAll('.srv-block-header').forEach(header => {
+    const block = header.closest('.srv-block');
+    if (!block) return;
+    header.addEventListener('click', () => toggleBlock(block.id));
+    header.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleBlock(block.id); }
+    });
+  });
+}
+
+function initMobileNavLinks() {
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', closeMobile);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initSrvBlocks();
+  initMobileNavLinks();
   initSrvAccordions();
   initPopAccordions();
   initFaq();
