@@ -1511,6 +1511,27 @@
 
     .footer-phone span { color: var(--red); }
 
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      align-items: flex-end;
+    }
+
+    .footer-email {
+      font-size: 0.8rem;
+      color: var(--white-muted);
+    }
+
+    .footer-email a { color: var(--white-muted); text-decoration: none; }
+    .footer-email a:hover { color: var(--white); }
+
+    .footer-address {
+      font-size: 0.75rem;
+      color: var(--white-muted);
+      font-style: normal;
+    }
+
     /* ================================================
        WHATSAPP FLOATING BUTTON
     ================================================ */
@@ -4342,12 +4363,19 @@
     <div class="footer-inner">
       <div class="footer-logo">ZP<span>.</span> Cuautla</div>
       <div class="footer-copy">
-        © 2026 ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo<br/>
-        Cuautla, Morelos, México — by ORSPLET
+        © 2026 ZP Cuautla – Rehabilitación Física &amp; Entrenamiento Deportivo<br/>
+        Cuautla, Morelos, México — by ORSPLET<br/>
+        <a href="/aviso-de-privacidad.html" style="color:inherit;text-decoration:underline;font-size:0.75rem;">Aviso de Privacidad</a>
       </div>
       <address>
-        <div class="footer-phone">
-          <span>Tel.</span> <a href="tel:+527353384250" style="color:inherit;">735 338 4250</a>
+        <div class="footer-contact">
+          <div class="footer-phone">
+            <span>Tel.</span> <a href="tel:+527353384250" style="color:inherit;">735 338 4250</a>
+          </div>
+          <div class="footer-email">
+            <a href="mailto:hectoraxalco2@gmail.com">hectoraxalco2@gmail.com</a>
+          </div>
+          <div class="footer-address">Av Insurgentes #1098, Miguel Hidalgo, Cuautla, Morelos</div>
         </div>
       </address>
     </div>
