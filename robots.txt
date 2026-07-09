@@ -1,4 +1,5 @@
-# AI Search Crawlers — explicitly welcomed
+# AI Search & Answer-Engine Crawlers — explicitly welcomed
+# OpenAI
 User-agent: GPTBot
 Allow: /
 
@@ -8,25 +9,76 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
+# Anthropic
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: BraveBot
+# Google (search + Gemini grounding)
+User-agent: Googlebot
 Allow: /
 
 User-agent: GoogleOther
 Allow: /
 
-User-agent: Googlebot
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft / Bing (Copilot)
+User-agent: Bingbot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Apple (Siri / Apple Intelligence)
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# Otros asistentes de búsqueda IA
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: BraveBot
 Allow: /
 
 User-agent: *
 Allow: /
 
 Sitemap: https://zpcuautla.com.mx/sitemap.xml
+
+# AI-readable site summary: https://zpcuautla.com.mx/llms.txt

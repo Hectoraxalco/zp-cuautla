@@ -30,6 +30,7 @@
   <meta property="og:site_name" content="ZP Cuautla" />
   <meta property="og:image:width" content="896" />
   <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Fisioterapeuta de ZP Cuautla atendiendo a un paciente en el centro de rehabilitación física en Cuautla, Morelos" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo" />
   <meta name="twitter:description" content="Recupera tu fuerza y muévete sin miedo. Rehabilitación física y entrenamiento especializado en Cuautla, Morelos." />
@@ -2689,13 +2690,25 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
+    "@type": ["MedicalBusiness", "Physiotherapy", "SportsActivityLocation"],
     "@id": "https://zpcuautla.com.mx/#organization",
     "name": "ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo",
     "description": "Centro de rehabilitación física y entrenamiento deportivo en Cuautla, Morelos. Especialistas en poblaciones especiales, adultos mayores, post-operatorios y enfermedades crónicas. Más de 12 años de experiencia.",
+    "slogan": "Recupera tu salud. Muévete sin miedo.",
     "url": "https://zpcuautla.com.mx/",
     "image": "https://zpcuautla.com.mx/imageneszpweb/imagenportada.jpg",
     "telephone": "+527353384250",
+    "email": "hectoraxalco2@gmail.com",
+    "priceRange": "$$",
+    "currenciesAccepted": "MXN",
+    "medicalSpecialty": ["Physiotherapy", "Musculoskeletal", "Geriatric"],
+    "hasMap": "https://www.google.com/maps/place/Physical+Rehab+and+Sports+Training/@18.8408265,-98.941605,17z/data=!3m1!4b1!4m6!3m5!1s0x85ce6f86cd3d2b59:0xbf119cf6869ca742!8m2!3d18.8408265!4d-98.941605!16s%2Fg%2F11j12sl36h",
+    "areaServed": [
+      {"@type": "City", "name": "Cuautla", "containedInPlace": {"@type": "AdministrativeArea", "name": "Morelos, México"}},
+      {"@type": "AdministrativeArea", "name": "Oriente de Morelos, México"}
+    ],
+    "founder": {"@id": "https://zpcuautla.com.mx/#hector-garcia"},
+    "employee": {"@id": "https://zpcuautla.com.mx/#hector-garcia"},
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Av Insurgentes #1098, Miguel Hidalgo",
@@ -2745,14 +2758,16 @@
       "@type": "OfferCatalog",
       "name": "Servicios ZP Cuautla",
       "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rehabilitación Física"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Entrenamiento Deportivo"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Entrenamiento en Poblaciones Especiales"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Láser de Alta Intensidad"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Terapia de Ondas de Choque"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electroterapia"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Presoterapia"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Masoterapia"}}
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rehabilitación Física", "description": "Rehabilitación post-operatoria (rodilla, LCA, artroscopia, hombro) y de lesiones musculoesqueléticas: esguinces, desgarros, tendinitis. Protocolos graduales alineados con indicaciones médicas.", "provider": {"@id": "https://zpcuautla.com.mx/#organization"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Entrenamiento Deportivo", "description": "Entrenamiento de fuerza con pesas, entrenamiento funcional de alta intensidad tipo Hyrox y fortalecimiento post-lesión para retorno seguro a la actividad.", "provider": {"@id": "https://zpcuautla.com.mx/#organization"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Entrenamiento en Poblaciones Especiales", "description": "Programas para adultos mayores (osteoporosis, sarcopenia, prevención de caídas), pacientes oncológicos y personas con enfermedades crónicas como diabetes e hipertensión.", "provider": {"@id": "https://zpcuautla.com.mx/#organization"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Láser de Alta Intensidad", "description": "Terapia con luz de alta potencia que penetra tejidos profundos: reduce dolor e inflamación y acelera la regeneración de tendones, músculos y articulaciones.", "provider": {"@id": "https://zpcuautla.com.mx/#organization"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Terapia de Ondas de Choque", "description": "Impulsos de presión acústica para calcificaciones, tendinitis crónicas y fascitis plantar; eficaz en lesiones que no responden a tratamientos convencionales.", "provider": {"@id": "https://zpcuautla.com.mx/#organization"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electroterapia", "description": "Corrientes eléctricas controladas que alivian dolor, reducen inflamación, mejoran circulación y estimulan la activación muscular en zonas débiles.", "provider": {"@id": "https://zpcuautla.com.mx/#organization"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Presoterapia", "description": "Presión de aire controlada que estimula el sistema linfático y circulatorio; indicada en edema, retención de líquidos y recuperación post-operatoria.", "provider": {"@id": "https://zpcuautla.com.mx/#organization"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Masoterapia", "description": "Masaje terapéutico para liberar tensión muscular, mejorar circulación y complementar los procesos de rehabilitación y entrenamiento.", "provider": {"@id": "https://zpcuautla.com.mx/#organization"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ecografía Musculoesquelética", "description": "Diagnóstico por imagen de tendones, músculos y articulaciones para evaluar lesiones y guiar el tratamiento con precisión.", "provider": {"@id": "https://zpcuautla.com.mx/#organization"}}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Microelectrólisis Percutánea (MEP)", "description": "Técnica para el tratamiento de lesiones musculoesqueléticas crónicas mediante corriente galvánica aplicada con aguja sobre el tejido dañado.", "provider": {"@id": "https://zpcuautla.com.mx/#organization"}}}
       ]
     },
     "aggregateRating": {
@@ -3007,7 +3022,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://zpcuautla.com.mx/#hector-garcia",
     "name": "Héctor A. García",
+    "url": "https://zpcuautla.com.mx/#entrenador",
+    "description": "Kinesiólogo con cédula profesional 8896266 y más de 12 años de experiencia en rehabilitación física y entrenamiento deportivo. Fundador de ZP Cuautla, en Cuautla, Morelos.",
     "jobTitle": "Kinesiólogo y Entrenador Deportivo",
     "hasCredential": {
       "@type": "EducationalOccupationalCredential",
@@ -3059,6 +3077,8 @@
           "postalCode": "62748",
           "addressCountry": "MX"
         },
+        "email": "hectoraxalco2@gmail.com",
+        "founder": {"@id": "https://zpcuautla.com.mx/#hector-garcia"},
         "sameAs": [
           "https://instagram.com/zpcuautla",
           "https://wa.me/527353384250"
@@ -3074,6 +3094,25 @@
           "@id": "https://zpcuautla.com.mx/#organization"
         },
         "inLanguage": "es-MX"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://zpcuautla.com.mx/#webpage",
+        "url": "https://zpcuautla.com.mx/",
+        "name": "ZP Cuautla | Rehabilitación Física y Entrenamiento Deportivo en Cuautla, Morelos",
+        "isPartOf": {"@id": "https://zpcuautla.com.mx/#website"},
+        "about": {"@id": "https://zpcuautla.com.mx/#organization"},
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://zpcuautla.com.mx/imageneszpweb/imagenportada.jpg"
+        },
+        "datePublished": "2026-05-30",
+        "dateModified": "2026-07-09",
+        "inLanguage": "es-MX",
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero-title", ".hero-subtitle"]
+        }
       }
     ]
   }
