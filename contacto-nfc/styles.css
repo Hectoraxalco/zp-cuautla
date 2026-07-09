@@ -1,0 +1,238 @@
+/* ==========================================================
+   ZP Cuautla — Tarjeta de Contacto NFC (standalone)
+   Paleta y tipografía según especificación Premium Dark
+   ========================================================== */
+
+:root {
+  --bg-main: #000000;
+  --bg-soft: #0A0A0A;
+  --bg-card: #111111;
+  --border: #1A1A1A;
+  --accent: #FF1E1E;
+  --accent-hover: #CC0000;
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-tertiary: rgba(255, 255, 255, 0.45);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-main);
+  background-image: radial-gradient(circle at 50% 0%, var(--bg-soft) 0%, var(--bg-main) 70%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Layout ---------- */
+
+.nfc-wrap {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.nfc-card {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.25rem 1.75rem 1.5rem;
+  text-align: center;
+}
+
+/* ---------- Marca ---------- */
+
+.nfc-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nfc-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.nfc-brand-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.nfc-divider {
+  width: 40px;
+  height: 2px;
+  background-color: var(--accent);
+  margin: 1.5rem auto;
+  border-radius: 1px;
+}
+
+/* ---------- Identidad ---------- */
+
+.nfc-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 10vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+}
+
+.nfc-role {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 0.4rem;
+}
+
+/* ---------- Datos de contacto ---------- */
+
+.nfc-info {
+  list-style: none;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nfc-info-item {
+  background-color: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+
+.nfc-info-label {
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.3rem;
+}
+
+.nfc-info-value {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+a.nfc-info-value:hover,
+a.nfc-info-value:focus-visible {
+  color: var(--text-primary);
+}
+
+.nfc-address {
+  font-style: normal;
+}
+
+/* ---------- Acciones ---------- */
+
+.nfc-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nfc-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 52px;
+  padding: 0.85rem 1.25rem;
+  border-radius: 12px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.nfc-btn-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.nfc-btn-primary {
+  background-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.nfc-btn-primary:hover,
+.nfc-btn-primary:focus-visible {
+  background-color: var(--accent-hover);
+}
+
+.nfc-btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.nfc-btn-secondary:hover,
+.nfc-btn-secondary:focus-visible {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+/* ---------- Footer / Badge ---------- */
+
+.nfc-footer {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.nfc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-tertiary);
+}
+
+.nfc-badge-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ---------- Pantallas muy pequeñas ---------- */
+
+@media (max-width: 360px) {
+  .nfc-card {
+    padding: 1.75rem 1.25rem 1.25rem;
+  }
+}
