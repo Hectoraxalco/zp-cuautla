@@ -153,44 +153,6 @@ a.nfc-info-value:focus-visible {
   font-style: normal;
 }
 
-.nfc-info-link {
-  display: block;
-  text-decoration: none;
-  margin: -0.9rem -1rem;
-  padding: 0.9rem 1rem;
-  border-radius: 12px;
-  transition: background-color 0.2s ease;
-}
-
-.nfc-info-link:hover,
-.nfc-info-link:focus-visible {
-  background-color: var(--bg-card);
-}
-
-.nfc-directions {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.55rem;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 500;
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.nfc-info-link:hover .nfc-directions,
-.nfc-info-link:focus-visible .nfc-directions {
-  color: var(--accent-hover);
-}
-
-.nfc-directions-icon {
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
 /* ---------- Acciones ---------- */
 
 .nfc-actions {
