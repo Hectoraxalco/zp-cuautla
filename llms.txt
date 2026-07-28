@@ -66,5 +66,7 @@
 
 ## Páginas
 
-- [Inicio](https://zpcuautla.com.mx/): servicios, especialidades, equipo, ubicación y FAQ
+- [Inicio](https://zpcuautla.com.mx/): quiénes somos, poblaciones especiales, equipo, reseñas, ubicación y FAQ
+- [Rehabilitación física en Cuautla](https://zpcuautla.com.mx/rehabilitacion-fisica-cuautla/): rehabilitación post-operatoria y de lesiones, láser de alta intensidad, ondas de choque, electroterapia, presoterapia, microelectrólisis percutánea y ecografía musculoesquelética
+- [Gimnasio y entrenamiento en Cuautla](https://zpcuautla.com.mx/gimnasio-entrenamiento-cuautla/): área de pesas, equipos de cardio, rutinas tipo Hyrox, fortalecimiento post-lesión y programas para adultos mayores
 - [Aviso de Privacidad](https://zpcuautla.com.mx/aviso-de-privacidad.html)
