@@ -1,6 +1,6 @@
 # ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo
 
-> Centro de rehabilitación física y entrenamiento deportivo en Cuautla, Morelos, México. Dirigido por el kinesiólogo Héctor A. García (cédula profesional 8896266, SEP), con más de 12 años de experiencia. Especializado en rehabilitación post-operatoria, entrenamiento en poblaciones especiales (adultos mayores, pacientes oncológicos, enfermedades crónicas) y tecnología de fisioterapia avanzada.
+> Centro de rehabilitación física y entrenamiento deportivo en Cuautla, Morelos, México. Dirigido por el fisioterapeuta Héctor A. García (cédula profesional 8896266, SEP), con más de 12 años de experiencia. Especializado en rehabilitación post-operatoria, entrenamiento en poblaciones especiales (adultos mayores, pacientes oncológicos, enfermedades crónicas) y tecnología de fisioterapia avanzada.
 
 ## Datos del negocio
 
@@ -17,7 +17,7 @@
 
 ## Responsable clínico
 
-- Héctor A. García — Kinesiólogo y entrenador deportivo
+- Héctor A. García — Fisioterapeuta y entrenador deportivo
 - Cédula profesional: 8896266 (Secretaría de Educación Pública, México)
 - Más de 12 años de experiencia
 - Trabaja en coordinación con médicos especialistas: si el paciente requiere estudios o valoración médica, se le canaliza directamente

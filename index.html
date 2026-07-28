@@ -18,8 +18,8 @@
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R8CPSSXHQD"></script>
   <script defer src="gtag.js"></script>
-  <title>ZP Cuautla | Rehabilitación Física y Entrenamiento Deportivo en Cuautla, Morelos</title>
-  <meta name="description" content="ZP Cuautla — rehabilitación física y entrenamiento deportivo en Av Insurgentes #1098, Cuautla, Morelos. Kinesiólogo Héctor García (Cédula 8896266). Rehabilitación post-operatoria, osteoporosis, sarcopenia, láser de alta intensidad y ondas de choque. Lun–Sáb 6–11 am y 5–8 pm." />
+  <title>Fisioterapia, Rehabilitación y Gimnasio en Cuautla | ZP</title>
+  <meta name="description" content="Fisioterapia, rehabilitación física y gimnasio en Cuautla, Morelos. Héctor A. García, cédula profesional 8896266. Agenda tu valoración por WhatsApp." />
   <meta property="og:title" content="ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo" />
   <meta property="og:description" content="Recupera tu fuerza y muévete sin miedo. Rehabilitación física y entrenamiento especializado en Cuautla, Morelos." />
   <!-- URL temporal GitHub Pages. Cuando compres dominio, reemplaza https://zpcuautla.com.mx/ por tu dominio en las siguientes 4 líneas y en robots.txt y sitemap.xml -->
@@ -30,7 +30,7 @@
   <meta property="og:site_name" content="ZP Cuautla" />
   <meta property="og:image:width" content="896" />
   <meta property="og:image:height" content="1200" />
-  <meta property="og:image:alt" content="Fisioterapeuta de ZP Cuautla atendiendo a un paciente en el centro de rehabilitación física en Cuautla, Morelos" />
+  <meta property="og:image:alt" content="Ilustración de una sesión de fisioterapia y rehabilitación física en ZP Cuautla, Cuautla, Morelos" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo" />
   <meta name="twitter:description" content="Recupera tu fuerza y muévete sin miedo. Rehabilitación física y entrenamiento especializado en Cuautla, Morelos." />
@@ -45,6 +45,15 @@
   <link rel="preload" as="font" href="fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><text x='16' y='24' font-family='Arial Black,Impact,sans-serif' font-size='19' font-weight='900' fill='%23FF1E1E' text-anchor='middle' letter-spacing='-1'>ZP</text></svg>" />
   <link rel="stylesheet" href="fonts.css" />
+  <noscript>
+    <style>
+      /* Sin JavaScript los acordeones no abren: se muestra todo el contenido. */
+      .reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .srv-block-body, .srv-item-body, .pop-cat-body, .pop-sub-body, .faq-answer { max-height: none !important; }
+      .srv-block-toggle, .srv-item-chevron, .pop-cat-chevron, .pop-sub-arrow, .faq-icon, .hamburger { display: none !important; }
+      .mobile-menu { display: none !important; }
+    </style>
+  </noscript>
   <style>
     /* ================================================
        CSS RESET & VARIABLES
@@ -59,6 +68,11 @@
       --red: #FF1E1E;
       --red-dark: #CC0000;
       --red-glow: rgba(255, 30, 30, 0.25);
+      /* Fondo de botones sólidos con texto blanco.
+         #FF1E1E sobre blanco da 3.8:1 y no alcanza el mínimo WCAG AA (4.5:1);
+         #CC0000 da 5.9:1. --red se conserva para textos, bordes e iconos sobre negro. */
+      --red-cta: #CC0000;
+      --red-cta-hover: #A30000;
       --black: #000000;
       --black-soft: #0A0A0A;
       --black-card: #111111;
@@ -158,7 +172,7 @@
     .nav-links a:hover::after { width: 100%; }
 
     .nav-cta {
-      background: var(--red);
+      background: var(--red-cta);
       color: var(--white) !important;
       padding: 0.5rem 1.25rem;
       font-family: var(--font-heading);
@@ -171,7 +185,7 @@
     }
 
     .nav-cta:hover {
-      background: var(--red-dark) !important;
+      background: var(--red-cta-hover) !important;
       transform: translateY(-1px);
       box-shadow: 0 6px 20px var(--red-glow);
     }
@@ -365,7 +379,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      background: var(--red);
+      background: var(--red-cta);
       color: var(--white);
       font-family: var(--font-heading);
       font-size: 0.9rem;
@@ -380,7 +394,7 @@
     }
 
     .btn-primary:hover {
-      background: var(--red-dark);
+      background: var(--red-cta-hover);
       transform: translateY(-3px);
       box-shadow: 0 12px 30px var(--red-glow);
     }
@@ -575,16 +589,29 @@
       line-height: 1.8;
     }
 
-    /* Reveal animation */
+    /* Reveal animation.
+       Red de seguridad: si main.js no carga o falla, el IntersectionObserver
+       nunca marca .visible y la página quedaría en blanco bajo el hero.
+       Esta animación fuerza la aparición a los 2.5 s pase lo que pase. */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s ease;
+      animation: revealFallback 0.01s linear 2.5s forwards;
     }
 
     .reveal.visible {
       opacity: 1;
       transform: none;
+      animation: none;
+    }
+
+    @keyframes revealFallback {
+      to { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; animation: none; transition: none; }
     }
 
     /* ================================================
@@ -634,7 +661,7 @@
     .sobre-badge {
       position: absolute;
       top: -20px; right: -20px;
-      background: var(--red);
+      background: var(--red-cta);
       padding: 1.25rem;
       border-radius: var(--radius);
       text-align: center;
@@ -1108,7 +1135,7 @@
        CTA SECTION
     ================================================ */
     #cta {
-      background: var(--red);
+      background: var(--red-cta);
       padding: 5rem 2rem;
       position: relative;
       overflow: hidden;
@@ -1299,7 +1326,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      background: var(--red);
+      background: var(--red-cta);
       color: var(--white);
       font-family: var(--font-heading);
       font-size: 0.85rem;
@@ -1315,7 +1342,7 @@
     }
 
     .btn-directions:hover {
-      background: var(--red-dark);
+      background: var(--red-cta-hover);
       transform: translateY(-2px);
       box-shadow: 0 8px 25px var(--red-glow);
     }
@@ -1711,8 +1738,8 @@
     }
 
     .srv-block.open .srv-block-toggle {
-      background: var(--red);
-      border-color: var(--red);
+      background: var(--red-cta);
+      border-color: var(--red-cta);
       color: var(--white);
       transform: rotate(45deg);
     }
@@ -2733,8 +2760,8 @@
     ],
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 18.8167,
-      "longitude": -98.9537
+      "latitude": 18.8408265,
+      "longitude": -98.941605
     },
     "knowsAbout": [
       "Rehabilitación física post-operatoria",
@@ -3025,8 +3052,8 @@
     "@id": "https://zpcuautla.com.mx/#hector-garcia",
     "name": "Héctor A. García",
     "url": "https://zpcuautla.com.mx/#entrenador",
-    "description": "Kinesiólogo con cédula profesional 8896266 y más de 12 años de experiencia en rehabilitación física y entrenamiento deportivo. Fundador de ZP Cuautla, en Cuautla, Morelos.",
-    "jobTitle": "Kinesiólogo y Entrenador Deportivo",
+    "description": "Fisioterapeuta con cédula profesional 8896266 y más de 12 años de experiencia en rehabilitación física y entrenamiento deportivo. Fundador de ZP Cuautla, en Cuautla, Morelos.",
+    "jobTitle": "Fisioterapeuta y Entrenador Deportivo",
     "hasCredential": {
       "@type": "EducationalOccupationalCredential",
       "credentialCategory": "Cédula Profesional",
@@ -3040,7 +3067,7 @@
       "@id": "https://zpcuautla.com.mx/#organization"
     },
     "knowsAbout": [
-      "Kinesiología",
+      "Fisioterapia",
       "Rehabilitación física",
       "Entrenamiento deportivo",
       "Poblaciones especiales",
@@ -3107,7 +3134,7 @@
           "url": "https://zpcuautla.com.mx/imageneszpweb/imagenportada.jpg"
         },
         "datePublished": "2026-05-30",
-        "dateModified": "2026-07-09",
+        "dateModified": "2026-07-28",
         "inLanguage": "es-MX",
         "speakable": {
           "@type": "SpeakableSpecification",
@@ -3247,7 +3274,7 @@
         <div class="hero-img-frame">
           <img
             src="imageneszpweb/imagenportada.jpg"
-            alt="Fisioterapeuta y entrenador Héctor García en ZP Cuautla – Centro de rehabilitación física en Cuautla, Morelos"
+            alt="Ilustración de una sesión de fisioterapia y rehabilitación física en ZP Cuautla, Cuautla, Morelos"
             width="440"
             height="587"
             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);display:block;"
@@ -3938,7 +3965,7 @@
               </svg>
             </div>
             <div class="trainer-id-name">Héctor A. García</div>
-            <div class="trainer-id-role">KINESIÓLOGO Y ENTRENADOR</div>
+            <div class="trainer-id-role">FISIOTERAPEUTA Y ENTRENADOR</div>
             <div class="trainer-id-divider"></div>
             <div class="trainer-id-cedula">Cédula Profesional: 8896266</div>
             <div class="trainer-id-horario">
@@ -3952,7 +3979,7 @@
           <div class="section-tag">El equipo</div>
           <h2 class="section-title">Experiencia que<br/><span style="color:var(--red)">marca la diferencia</span></h2>
           <p class="trainer-bio">
-            El kinesiólogo Héctor combina formación en terapia física con entrenamiento deportivo especializado. Su enfoque va más allá del ejercicio: entiende el cuerpo humano como un sistema, y diseña programas que abordan la causa raíz de cada limitación.
+            El fisioterapeuta Héctor combina formación en terapia física con entrenamiento deportivo especializado. Su enfoque va más allá del ejercicio: entiende el cuerpo humano como un sistema, y diseña programas que abordan la causa raíz de cada limitación.
           </p>
           <p class="trainer-bio" style="margin-top:-0.5rem;">
             Ha trabajado con adultos mayores, pacientes post-operatorios, deportistas en recuperación y personas con condiciones crónicas como sarcopenia y osteoporosis. Su método une ciencia del movimiento con paciencia, empatía y resultados reales.
@@ -4218,7 +4245,7 @@
           <h2 class="section-title" style="margin-bottom:2rem;">¿Dónde<br/>estamos?</h2>
           <div class="map-wrapper">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.8!2d-98.9537!3d18.8167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce05a9c5b94c61%3A0x3cbb2b1e0a6e5e5!2sAv.%20Insurgentes%201098%2C%20Miguel%20Hidalgo%2C%2062748%20Cuautla%2C%20Mor.!5e0!3m2!1ses!2smx!4v1700000000000"
+              src="https://www.google.com/maps?q=18.8408265,-98.941605&amp;hl=es&amp;z=17&amp;output=embed"
               sandbox="allow-scripts allow-same-origin"
               allowfullscreen=""
               loading="lazy"
@@ -4227,7 +4254,7 @@
             ></iframe>
           </div>
           <a
-            href="https://www.google.com/maps/dir/?api=1&destination=Av+Insurgentes+1098+Miguel+Hidalgo+62748+Cuautla+Morelos"
+            href="https://www.google.com/maps/dir/?api=1&destination=18.8408265%2C-98.941605"
             target="_blank"
             rel="noopener noreferrer"
             class="btn-directions"

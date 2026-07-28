@@ -169,7 +169,43 @@ function initMobileNavLinks() {
   });
 }
 
+/* ================================================
+   CONVERSIONES – eventos GA4 en cada punto de contacto
+   Identifica el origen por la sección que contiene el enlace,
+   para saber qué parte de la página genera cada conversación.
+================================================ */
+function origenDelEnlace(el) {
+  if (el.closest('.whatsapp-float')) return 'boton_flotante';
+  if (el.closest('#navbar') || el.closest('#mobileMenu')) return 'nav';
+  if (el.closest('footer')) return 'footer';
+  const seccion = el.closest('section');
+  return seccion && seccion.id ? seccion.id : 'sin_seccion';
+}
+
+function initConversionTracking() {
+  document.addEventListener('click', e => {
+    const enlace = e.target.closest('a[href]');
+    if (!enlace) return;
+
+    const href = enlace.getAttribute('href') || '';
+    let evento = null;
+
+    if (href.includes('wa.me/')) evento = 'contacto_whatsapp';
+    else if (href.startsWith('tel:')) evento = 'contacto_llamada';
+    else if (href.includes('google.com/maps/dir')) evento = 'como_llegar';
+    else if (href.includes('instagram.com')) evento = 'visita_instagram';
+
+    if (!evento || typeof gtag !== 'function') return;
+
+    gtag('event', evento, {
+      origen: origenDelEnlace(enlace),
+      etiqueta: (enlace.textContent || '').trim().slice(0, 60)
+    });
+  }, { passive: true });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initConversionTracking();
   initSrvBlocks();
   initMobileNavLinks();
   initSrvAccordions();
