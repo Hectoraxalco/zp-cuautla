@@ -204,8 +204,29 @@ function initConversionTracking() {
   }, { passive: true });
 }
 
+/* ================================================
+   BIFURCACIÓN – garantiza que el bloque elegido esté abierto
+   antes del salto al ancla, y registra qué camino se eligió.
+================================================ */
+function initBifurcacion() {
+  document.querySelectorAll('[data-abrir]').forEach(enlace => {
+    enlace.addEventListener('click', () => {
+      const id = enlace.getAttribute('data-abrir');
+      const bloque = document.getElementById(id);
+      if (bloque && !bloque.classList.contains('open')) toggleBlock(id);
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'eleccion_camino', {
+          camino: id === 'srvRehab' ? 'rehabilitacion' : 'entrenamiento'
+        });
+      }
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initConversionTracking();
+  initBifurcacion();
   initSrvBlocks();
   initMobileNavLinks();
   initSrvAccordions();

@@ -36,6 +36,9 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      /* La barra de navegación es fija y mide 72px. Sin esto, cualquier salto
+         a un ancla deja el título de la sección oculto detrás de ella. */
+      scroll-padding-top: 88px;
     }
 
     body {
@@ -2658,3 +2661,204 @@
       .spec-icon { width: 30px; height: 30px; }
     }
   
+
+/* ================================================
+   BIFURCACIÓN DE INTENCIÓN
+   Dos caminos asimétricos (55/45) con anclaje vertical opuesto,
+   para que no se lean como dos tarjetas gemelas.
+================================================ */
+#bifurcacion {
+  padding: 5rem 2rem 4.5rem;
+  background: var(--black-soft);
+  border-top: 1px solid var(--black-border);
+}
+
+.bif-titulo {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+}
+
+.bif-titulo-acento { color: var(--red); }
+
+.bif-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.22fr 1fr;
+  gap: 1.25rem;
+}
+
+.bif-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--black-border);
+  min-height: 27rem;
+  display: flex;
+  isolation: isolate;
+  transition: border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Anclaje vertical opuesto: rompe la simetría espejo. */
+.bif-panel--rehab    { align-items: flex-end; }
+.bif-panel--training { align-items: flex-start; }
+
+.bif-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transform: scale(1.02);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bif-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.94) 0%,
+    rgba(0,0,0,0.78) 38%,
+    rgba(0,0,0,0.42) 100%
+  );
+}
+
+.bif-panel--training::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.94) 0%,
+    rgba(0,0,0,0.78) 38%,
+    rgba(0,0,0,0.42) 100%
+  );
+}
+
+.bif-contenido {
+  position: relative;
+  padding: 2.25rem;
+  max-width: 34rem;
+}
+
+.bif-kicker {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.85rem;
+}
+
+.bif-panel--training .bif-kicker { color: rgba(255,255,255,0.62); }
+
+.bif-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 0.9rem;
+}
+
+.bif-desc {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.78);
+  max-width: 42ch;
+  margin-bottom: 1.6rem;
+}
+
+.bif-accion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--red);
+}
+
+.bif-panel--training .bif-accion { border-bottom-color: rgba(255,255,255,0.45); }
+
+.bif-accion svg {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover / focus */
+.bif-panel:hover, .bif-panel:focus-visible {
+  border-color: rgba(255,30,30,0.45);
+}
+.bif-panel:hover .bif-img, .bif-panel:focus-visible .bif-img {
+  transform: scale(1.07);
+}
+.bif-panel:hover .bif-accion svg, .bif-panel:focus-visible .bif-accion svg {
+  transform: translateX(6px);
+}
+.bif-panel:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+.bif-nota {
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.bif-nota-link {
+  color: var(--white);
+  border-bottom: 1px solid var(--red);
+  padding-bottom: 1px;
+}
+.bif-nota-link:hover { color: var(--red); }
+
+@media (max-width: 860px) {
+  #bifurcacion { padding: 3.5rem 1.25rem 3rem; }
+  .bif-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .bif-panel { min-height: 21rem; align-items: flex-end; }
+  .bif-panel--training::after {
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.94) 0%,
+      rgba(0,0,0,0.78) 38%,
+      rgba(0,0,0,0.42) 100%
+    );
+  }
+  .bif-contenido { padding: 1.5rem; }
+  .bif-desc { font-size: 0.95rem; margin-bottom: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bif-img, .bif-accion svg { transition: none; }
+  .bif-panel:hover .bif-img { transform: scale(1.02); }
+}
+
+/* ================================================
+   CIERRE DE BLOQUE DE SERVICIO – CTA contextual
+================================================ */
+.srv-cierre {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--black-border);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.srv-cierre-texto {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.72);
+  max-width: 46ch;
+}
