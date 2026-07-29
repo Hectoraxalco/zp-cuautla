@@ -359,3 +359,108 @@
   .pg-ficha-media img { transition: none; }
   .pg-ficha:hover .pg-ficha-media img { transform: none; }
 }
+
+/* ================================================================
+   ANTI-SCROLL-INFINITO
+   El problema no era la longitud sino la falta de jerarquía: seis
+   fichas idénticas se leen como una sola unidad repetida y la página
+   no da señal de avance. Tres respuestas: jerarquía en el contenido,
+   orientación permanente, y una ruptura de ritmo a mitad de página.
+================================================================ */
+
+/* ── Barra de progreso de lectura ───────────────────────────── */
+.pg-progreso {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--red);
+  z-index: 1200;
+  transition: width 0.1s linear;
+}
+
+/* ── Sección activa en la subnavegación (scrollspy) ─────────── */
+.pg-subnav a.activo {
+  color: var(--white);
+  border-bottom-color: var(--red);
+}
+
+/* ── Fichas destacadas: las dos de mayor peso ───────────────── */
+.pg-destacadas { margin-top: 3rem; display: flex; flex-direction: column; gap: clamp(2.5rem, 6vw, 4.5rem); }
+
+/* ── Bloque compacto: el resto, en rejilla densa ────────────── */
+.pg-compactas {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--black-border);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.pg-compactas-titulo {
+  grid-column: 1 / -1;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.62);
+  margin-bottom: 0.25rem;
+}
+
+.pg-compacta-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 1px solid var(--black-border);
+}
+.pg-compacta-media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pg-compacta:hover .pg-compacta-media img { transform: scale(1.05); }
+
+.pg-compacta h3 {
+  font-family: var(--font-heading);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.pg-compacta p { font-size: 0.98rem; line-height: 1.6; color: rgba(255,255,255,0.72); }
+
+/* ── Banda de declaración: la ruptura de ritmo ──────────────── */
+.pg-declaracion {
+  padding: clamp(4rem, 10vw, 8rem) 0;
+  border-top: 1px solid var(--black-border);
+  border-bottom: 1px solid var(--black-border);
+  background:
+    radial-gradient(120% 100% at 50% 0%, rgba(255,30,30,0.10) 0%, rgba(255,30,30,0) 62%),
+    var(--black);
+}
+.pg-declaracion p {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5.2vw, 3.6rem);
+  line-height: 1.06;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  max-width: 20ch;
+}
+.pg-declaracion p em { font-style: normal; color: var(--red); }
+.pg-declaracion cite {
+  display: block;
+  margin-top: 1.5rem;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-progreso { transition: none; }
+  .pg-compacta-media img { transition: none; }
+  .pg-compacta:hover .pg-compacta-media img { transform: none; }
+}

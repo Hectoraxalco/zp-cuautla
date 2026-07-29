@@ -219,8 +219,57 @@ function initBifurcacion() {
   });
 }
 
+/* ================================================
+   SUBPÁGINAS – barra de progreso y sección activa.
+   Solo actúan si los elementos existen, así que en la home no hacen nada.
+================================================ */
+function initProgresoLectura() {
+  const barra = document.querySelector('.pg-progreso');
+  if (!barra) return;
+
+  let pendiente = false;
+  const pintar = () => {
+    const alto = document.documentElement.scrollHeight - window.innerHeight;
+    barra.style.width = (alto > 0 ? Math.min(window.scrollY / alto, 1) * 100 : 0) + '%';
+    pendiente = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (pendiente) return;
+    pendiente = true;
+    requestAnimationFrame(pintar);
+  }, { passive: true });
+  pintar();
+}
+
+function initSeccionActiva() {
+  const enlaces = document.querySelectorAll('.pg-subnav a[href^="#"]');
+  if (!enlaces.length) return;
+
+  const porId = new Map();
+  const observadas = [];
+  enlaces.forEach(a => {
+    const seccion = document.getElementById(a.getAttribute('href').slice(1));
+    if (!seccion) return;
+    porId.set(seccion.id, a);
+    observadas.push(seccion);
+  });
+  if (!observadas.length) return;
+
+  const visibles = new Set();
+  const observador = new IntersectionObserver(entradas => {
+    entradas.forEach(e => e.isIntersecting ? visibles.add(e.target.id) : visibles.delete(e.target.id));
+    const actual = observadas.find(s => visibles.has(s.id));
+    enlaces.forEach(a => a.classList.remove('activo'));
+    if (actual && porId.get(actual.id)) porId.get(actual.id).classList.add('activo');
+  }, { rootMargin: '-40% 0px -50% 0px' });
+
+  observadas.forEach(s => observador.observe(s));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initConversionTracking();
+  initProgresoLectura();
+  initSeccionActiva();
   initBifurcacion();
   initSrvBlocks();
   initMobileNavLinks();
