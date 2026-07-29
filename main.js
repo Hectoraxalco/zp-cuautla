@@ -205,21 +205,16 @@ function initConversionTracking() {
 }
 
 /* ================================================
-   BIFURCACIÓN – garantiza que el bloque elegido esté abierto
-   antes del salto al ancla, y registra qué camino se eligió.
+   BIFURCACIÓN – registra qué camino eligió la persona.
+   Los paneles llevan a páginas propias, así que aquí solo se mide.
 ================================================ */
 function initBifurcacion() {
   document.querySelectorAll('[data-abrir]').forEach(enlace => {
     enlace.addEventListener('click', () => {
-      const id = enlace.getAttribute('data-abrir');
-      const bloque = document.getElementById(id);
-      if (bloque && !bloque.classList.contains('open')) toggleBlock(id);
-
-      if (typeof gtag === 'function') {
-        gtag('event', 'eleccion_camino', {
-          camino: id === 'srvRehab' ? 'rehabilitacion' : 'entrenamiento'
-        });
-      }
+      if (typeof gtag !== 'function') return;
+      gtag('event', 'eleccion_camino', {
+        camino: enlace.getAttribute('data-abrir') === 'srvRehab' ? 'rehabilitacion' : 'entrenamiento'
+      });
     });
   });
 }
