@@ -1,6 +1,6 @@
-# ZP Cuautla – Rehabilitación Física & Entrenamiento Deportivo
+# ZP Cuautla
 
-> Centro de rehabilitación física y entrenamiento deportivo en Cuautla, Morelos, México. Dirigido por el fisioterapeuta Héctor A. García (cédula profesional 8896266, SEP), con más de 12 años de experiencia. Especializado en rehabilitación post-operatoria, entrenamiento en poblaciones especiales (adultos mayores, pacientes oncológicos, enfermedades crónicas) y tecnología de fisioterapia avanzada.
+> Centro de Cuautla, Morelos, que integra rehabilitación y entrenamiento en un mismo lugar, con seguimiento del mismo profesional. Dirigido por el fisioterapeuta Héctor A. García (cédula profesional 8896266, SEP), con más de 12 años de experiencia.
 
 ## Datos del negocio
 
@@ -22,7 +22,9 @@
 - Más de 12 años de experiencia
 - Trabaja en coordinación con médicos especialistas: si el paciente requiere estudios o valoración médica, se le canaliza directamente
 
-## Servicios de rehabilitación
+## Rehabilitación física
+
+Contenido detallado en: https://zpcuautla.com.mx/rehabilitacion-fisica-cuautla/
 
 - Rehabilitación post-operatoria: rodilla (artroscopia, LCA), hombro y otras cirugías ortopédicas; protocolos graduales alineados con indicaciones médicas
 - Rehabilitación de lesiones musculoesqueléticas: esguinces, desgarros, tendinitis; acompañamiento desde fase aguda hasta retorno pleno a la actividad
@@ -34,7 +36,9 @@
 - Ecografía musculoesquelética: diagnóstico por imagen de tendones, músculos y articulaciones
 - Masoterapia: masaje terapéutico complementario
 
-## Entrenamiento en poblaciones especiales (área principal)
+## Poblaciones especiales
+
+Contenido detallado en la página de inicio: https://zpcuautla.com.mx/
 
 - Adultos mayores (60+): programas de fuerza, equilibrio y coordinación; tratamiento de osteoporosis (ejercicio de carga que estimula formación ósea), sarcopenia (entrenamiento de resistencia dosificado) y prevención de caídas
 - Pacientes oncológicos: protocolos de ejercicio validados científicamente durante y después de quimioterapia/radioterapia, en coordinación con el equipo médico
@@ -43,18 +47,37 @@
 
 ## Entrenamiento deportivo
 
-- Entrenamiento de fuerza con pesas: área equipada para entrenamiento libre y guiado
+Contenido detallado en: https://zpcuautla.com.mx/gimnasio-entrenamiento-cuautla/
+
+- Entrenamiento de fuerza con pesas y equipos de cardio
 - Rutinas funcionales de alta intensidad tipo Hyrox: carrera + estaciones de ejercicio
 - Fortalecimiento post-lesión: cierre de la brecha entre rehabilitación y retorno pleno a la actividad
+- Programas desde cero y entrenamiento adaptado para adultos mayores
 
 ## Preguntas frecuentes
 
-- ¿Necesito orden médica? No es obligatoria; se hace valoración inicial y, si se requiere atención médica previa, se canaliza con especialistas.
-- ¿Cuántas sesiones para ver resultados? Cambios perceptibles entre la 1.ª y 3.ª sesión; cambios funcionales de entrenamiento se consolidan en 4–8 semanas.
-- ¿Puedo entrenar sin experiencia? Sí; hay programas desde cero con progresiones seguras.
-- ¿Atienden niños y adultos mayores? Sí, con programas adaptados a edad y condición.
-- ¿Rehabilitación vs. entrenamiento? La rehabilitación recupera función perdida; el entrenamiento desarrolla capacidad física. ZP Cuautla combina ambos.
-- ¿Cómo agendar? WhatsApp al 735 338 4250.
+### Inicio
+
+- ¿Necesito una orden médica para empezar?
+- ¿Cuántas sesiones necesito para ver resultados?
+- ¿Puedo entrenar si nunca he hecho ejercicio?
+- ¿Atienden a niños y adultos mayores?
+- ¿Qué diferencia hay entre rehabilitación y entrenamiento?
+- ¿Cómo sé si mi dolor necesita rehabilitación o solo ejercicio?
+- ¿Cómo agendo mi primera cita?
+
+### Rehabilitación física
+
+- ¿Necesito una orden médica para empezar?
+- ¿Cuántas sesiones necesito para ver resultados?
+- ¿Qué diferencia hay entre rehabilitación y entrenamiento?
+- ¿Cómo sé si mi dolor necesita rehabilitación o solo ejercicio?
+
+### Gimnasio y entrenamiento
+
+- ¿Puedo entrenar si nunca he hecho ejercicio?
+- ¿Atienden a niños y adultos mayores?
+- ¿Qué diferencia hay entre rehabilitación y entrenamiento?
 
 ## Resultados reportados por pacientes
 
@@ -62,11 +85,9 @@
 - Osteoporosis: mejora de densidad ósea y reducción de caídas en 6 meses
 - Post-artroscopia de rodilla: eliminación de dolor y recuperación funcional completa (escaleras)
 - Gonartrosis: recuperación de independencia funcional
-- Calificación promedio: 5/5 (reseñas verificables en Google Maps)
 
-## Páginas
+## Páginas principales
 
 - [Inicio](https://zpcuautla.com.mx/): quiénes somos, poblaciones especiales, equipo, reseñas, ubicación y FAQ
 - [Rehabilitación física en Cuautla](https://zpcuautla.com.mx/rehabilitacion-fisica-cuautla/): rehabilitación post-operatoria y de lesiones, láser de alta intensidad, ondas de choque, electroterapia, presoterapia, microelectrólisis percutánea y ecografía musculoesquelética
 - [Gimnasio y entrenamiento en Cuautla](https://zpcuautla.com.mx/gimnasio-entrenamiento-cuautla/): área de pesas, equipos de cardio, rutinas tipo Hyrox, fortalecimiento post-lesión y programas para adultos mayores
-- [Aviso de Privacidad](https://zpcuautla.com.mx/aviso-de-privacidad.html)
