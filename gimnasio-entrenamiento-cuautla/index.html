@@ -33,6 +33,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><text x='16' y='24' font-family='Arial Black,Impact,sans-serif' font-size='19' font-weight='900' fill='%23FF1E1E' text-anchor='middle' letter-spacing='-1'>ZP</text></svg>" />
   <link rel="stylesheet" href="/fonts.css" />
   <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/subpaginas.css" />
   <noscript>
     <style>
       /* Sin JavaScript los acordeones no abren: se muestra todo el contenido. */
@@ -116,9 +117,10 @@
        NAVIGATION
   ================================================ -->
   <nav id="navbar" aria-label="Navegación principal">
-    <a href="/" class="nav-logo"><img src="/imageneszpweb/logozpblanco-removebg-preview.png" alt="ZP Cuautla" style="height:48px;width:auto;display:block;"></a>
+    <a href="/" class="nav-logo"><img src="/imageneszpweb/logozpblanco-removebg-preview.png" alt="ZP Cuautla" height="48"></a>
     <ul class="nav-links">
-      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/rehabilitacion-fisica-cuautla/">Rehabilitación</a></li>
+      <li><a href="/gimnasio-entrenamiento-cuautla/">Gimnasio</a></li>
       <li><a href="/#sobre">Nosotros</a></li>
       <li><a href="/#poblaciones">Especialidades</a></li>
       <li><a href="/#entrenador">Equipo</a></li>
@@ -134,7 +136,8 @@
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/rehabilitacion-fisica-cuautla/">Rehabilitación</a></li>
+      <li><a href="/gimnasio-entrenamiento-cuautla/">Gimnasio</a></li>
       <li><a href="/#sobre">Nosotros</a></li>
       <li><a href="/#poblaciones">Especialidades</a></li>
       <li><a href="/#entrenador">Equipo</a></li>
@@ -146,223 +149,268 @@
 
 
   <main id="contenido">
-    <section id="servicios">
-      <div class="container">
-        <h1 class="section-title">Gimnasio y entrenamiento personalizado en Cuautla, Morelos</h1>
-        <div class="servicios-grid">
-        <div class="srv-col">
-          <div class="img-placeholder-block reveal" style="overflow:hidden;transition-delay:0.12s;">
-            <img src="/imageneszpweb/imagenparejaentrenadotrineoesqui.jpg" alt="Entrenamiento funcional y de fuerza en ZP Cuautla, Cuautla Morelos" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          </div>
-          <div class="srv-block reveal open" id="srvTraining" style="transition-delay:0.12s;">
-          <div class="srv-block-header" role="button" tabindex="0" aria-expanded="true">
-            <div class="srv-block-heading">
-              <div class="srv-block-title">Entrenamiento</div>
-              <div class="srv-block-subtitle">Fortalecerse no es solo hacer pesas</div>
-            </div>
-            <div class="srv-block-toggle">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
-          </div>
-          <div class="srv-block-body">
-            <!-- Intro bullets -->
-            <div class="srv-block-intro">
-              <ul class="srv-intro-list">
-                <li>Nuestros entrenadores cuentan con amplio conocimiento para la correcta prescripción del ejercicio.</li>
-                <li>Trabajamos tanto con personas sanas como con poblaciones especiales.</li>
-                <li>Cada sesión cuenta con asesoramiento personalizado.</li>
-                <li>Utilizamos herramientas para dar seguimiento individualizado y medir tu progreso real.</li>
-              </ul>
-            </div>
-            <!-- Training images -->
-            <div class="srv-img-strip srv-img-strip--2col">
-              <div class="srv-img-strip-item">
-                <img src="/imageneszpweb/imagenareadepesas.jpg" alt="Área de pesas para entrenamiento de fuerza en ZP Cuautla" loading="lazy">
-                <span class="srv-img-strip-cap">Área de pesas</span>
-              </div>
-              <div class="srv-img-strip-item">
-                <img src="/imageneszpweb/imagenparejaentrenadotrineoesqui.jpg" alt="Entrenamiento funcional tipo Hyrox en ZP Cuautla, Cuautla Morelos" loading="lazy">
-                <span class="srv-img-strip-cap">Hyrox</span>
-              </div>
-            </div>
-            <div class="srv-img-strip srv-img-strip--2col">
-              <div class="srv-img-strip-item">
-                <img src="/imageneszpweb/imagenfuerzalesionhombro.jpg" alt="Ejercicio de fuerza para lesión de hombro en ZP Cuautla" loading="lazy">
-                <span class="srv-img-strip-cap">Fuerza post-lesión</span>
-              </div>
-              <div class="srv-img-strip-item">
-                <img src="/imageneszpweb/imagenmujeresmayoreshaciendofuerza.jpg" alt="Mujeres mayores haciendo ejercicio de fuerza en ZP Cuautla" loading="lazy">
-                <span class="srv-img-strip-cap">Fuerza adultos mayores</span>
-              </div>
-            </div>
-            <!-- Sub-accordion -->
-            <h3 class="srv-sub-label">Áreas &amp; Programas</h3>
-            <div class="srv-accordion" id="trainingAccordion">
-
-              <div class="srv-item">
-                <div class="srv-item-header" role="button" tabindex="0" aria-expanded="false">
-                  <div class="srv-item-left">
-                    <div class="srv-item-dot"></div>
-                    <div class="srv-item-name">Área de pesas</div>
-                  </div>
-                  <div class="srv-item-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-                </div>
-                <div class="srv-item-body">
-                  <div class="srv-item-inner">
-                    <div class="srv-detail-label">¿Qué es?</div>
-                    <p class="srv-detail-text">Zona equipada con material de resistencia para entrenamiento de fuerza libre y guiada.</p>
-                    <div class="srv-detail-label">¿Para qué sirve?</div>
-                    <p class="srv-detail-text">Desarrollar fuerza muscular, mejorar la composición corporal y fortalecer estructuras articulares para prevenir lesiones.</p>
-                    <div class="srv-detail-label">¿Por qué es importante?</div>
-                    <p class="srv-detail-text">El entrenamiento de fuerza es la herramienta más potente para combatir el envejecimiento muscular, mejorar la densidad ósea y mantener la independencia funcional a cualquier edad.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="srv-item">
-                <div class="srv-item-header" role="button" tabindex="0" aria-expanded="false">
-                  <div class="srv-item-left">
-                    <div class="srv-item-dot"></div>
-                    <div class="srv-item-name">Equipos de cardio</div>
-                  </div>
-                  <div class="srv-item-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-                </div>
-                <div class="srv-item-body">
-                  <div class="srv-item-inner">
-                    <div class="srv-detail-label">¿Qué es?</div>
-                    <p class="srv-detail-text">Maquinaria de baja y alta intensidad diseñada para trabajar el sistema cardiovascular de forma controlada.</p>
-                    <div class="srv-detail-label">¿Para qué sirve?</div>
-                    <p class="srv-detail-text">Mejorar la resistencia, controlar el peso, fortalecer el corazón y mantener activo el metabolismo.</p>
-                    <div class="srv-detail-label">¿Por qué es importante?</div>
-                    <p class="srv-detail-text">Un sistema cardiovascular sano se traduce en más energía, mejor recuperación y menor riesgo de enfermedades crónicas. Lo adaptamos a tu nivel y condición actual.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="srv-item">
-                <div class="srv-item-header" role="button" tabindex="0" aria-expanded="false">
-                  <div class="srv-item-left">
-                    <div class="srv-item-dot"></div>
-                    <div class="srv-item-name">Rutinas tipo Hyrox</div>
-                  </div>
-                  <div class="srv-item-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-                </div>
-                <div class="srv-item-body">
-                  <div class="srv-item-inner">
-                    <div class="srv-detail-label">¿Qué es?</div>
-                    <p class="srv-detail-text">Son entrenamientos funcionales de alta intensidad que combinan carrera y estaciones de ejercicio variadas.</p>
-                    <div class="srv-detail-label">¿Para qué sirve?</div>
-                    <p class="srv-detail-text">Desarrollar resistencia, fuerza y capacidad funcional al mismo tiempo, con un enfoque competitivo pero adaptable.</p>
-                    <div class="srv-detail-label">¿Por qué es importante?</div>
-                    <p class="srv-detail-text">Este tipo de entrenamiento es ideal para personas activas que buscan desafíos reales y mejoras medibles en su condición física general.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="srv-item">
-                <div class="srv-item-header" role="button" tabindex="0" aria-expanded="false">
-                  <div class="srv-item-left">
-                    <div class="srv-item-dot"></div>
-                    <div class="srv-item-name">Fortalecimiento post lesión</div>
-                  </div>
-                  <div class="srv-item-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-                </div>
-                <div class="srv-item-body">
-                  <div class="srv-item-inner">
-                    <div class="srv-detail-label">¿Qué es?</div>
-                    <p class="srv-detail-text">Programa de entrenamiento diseñado específicamente para recuperar fuerza y función después de una lesión o cirugía.</p>
-                    <div class="srv-detail-label">¿Para qué sirve?</div>
-                    <p class="srv-detail-text">Reintegrar el movimiento correcto, recuperar la fuerza perdida y devolver la confianza al cuerpo para volver a la actividad.</p>
-                    <div class="srv-detail-label">¿Por qué es importante?</div>
-                    <p class="srv-detail-text">Sin un fortalecimiento adecuado tras una lesión, el riesgo de recaída es muy alto. Este programa cierra la brecha entre la rehabilitación y el regreso pleno a la actividad.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="srv-item">
-                <div class="srv-item-header" role="button" tabindex="0" aria-expanded="false">
-                  <div class="srv-item-left">
-                    <div class="srv-item-dot"></div>
-                    <div class="srv-item-name">Programas para adultos mayores</div>
-                  </div>
-                  <div class="srv-item-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-                </div>
-                <div class="srv-item-body">
-                  <div class="srv-item-inner">
-                    <div class="srv-detail-label">¿Qué es?</div>
-                    <p class="srv-detail-text">Protocolos diseñados específicamente para las necesidades funcionales y físicas de personas mayores de 60 años.</p>
-                    <div class="srv-detail-label">¿Para qué sirve?</div>
-                    <p class="srv-detail-text">Mantener la independencia, evitar caídas, conservar la masa muscular y mejorar la calidad de vida en general.</p>
-                    <div class="srv-detail-label">¿Por qué es importante?</div>
-                    <p class="srv-detail-text">A partir de los 60 años, el músculo se pierde 2-3 veces más rápido sin entrenamiento. Nuestros programas frenan este proceso, mejoran el equilibrio y la coordinación, y permiten que el adulto mayor siga haciendo lo que más disfruta sin limitaciones. Más independencia, más vida.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="srv-cierre">
-              <p class="srv-cierre-texto">Dinos qué quieres lograr y te decimos con qué programa empezar.</p>
-              <a href="https://wa.me/527353384250?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20entrenar%20en%20ZP%20Cuautla.%20Mi%20objetivo%20es%3A%20" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Pedir información
-              </a>
-            </div>
-          </div>
-        </div>
-        </div><!-- /srv-col training -->
-
+    <section class="pg-hero">
+      <img class="pg-hero-img" src="/imageneszpweb/imagenareadepesas.jpg" alt="Área oscura de entrenamiento con pesas, bancos y equipo de fuerza">
+      <div class="pg-wrap">
+        <div class="pg-breadcrumb"><a href="/">Inicio</a><span>/</span>Gimnasio y entrenamiento</div>
+        <h1 class="pg-h1">Entrena con un <em>plan</em>, no al azar</h1>
+        <p class="pg-lead">Construye fuerza, resistencia y confianza con un programa basado en tu punto de partida y acompañado en cada sesión.</p>
+        <div class="pg-actions">
+          <a href="https://wa.me/527353384250?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20entrenar%20en%20ZP%20Cuautla.%20Mi%20objetivo%20es%3A%20" target="_blank" rel="noopener noreferrer" class="btn-primary">Cuéntanos tu objetivo</a>
+          <a href="tel:+527353384250" class="btn-secondary">Llamar al 735 338 4250</a>
         </div>
       </div>
     </section>
 
-    <section id="siguiente-paso">
-      <div class="container">
-        <div class="srv-cierre" style="border-top:none;padding-top:0;">
-          <p class="srv-cierre-texto">¿Tienes dolor o una lesión sin resolver? Conviene tratarla antes de entrenar.</p>
-          <a href="/rehabilitacion-fisica-cuautla/" class="btn-secondary">
-            Ver rehabilitación física
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <p class="srv-cierre-texto" style="margin-top:0.5rem;">Trabajamos con adultos mayores, pacientes oncológicos y enfermedades crónicas. <a href="/#poblaciones" style="color:var(--red);">Ver poblaciones especiales</a>.</p>
+    <nav class="pg-subnav" aria-label="Secciones de entrenamiento">
+      <div class="pg-subnav-inner">
+        <a href="#para-ti">¿Es para ti?</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#programas">Programas</a>
+        <a href="#confianza">Confianza</a>
+        <a href="#preguntas">Preguntas</a>
+      </div>
+    </nav>
+
+    <section class="pg-section" id="para-ti">
+      <div class="pg-wrap">
+        <div class="pg-eyebrow">Entrenamiento con contexto</div>
+        <h2 class="pg-h2">Un programa que empieza donde estás</h2>
+        <p class="pg-intro">No necesitas llegar en forma ni adaptarte a una rutina genérica. Primero entendemos qué puedes hacer hoy, qué te limita y qué quieres recuperar o desarrollar.</p>
+        <div class="pg-casos-grid">
+          <div class="pg-caso">
+            <div class="pg-caso-marca">01</div>
+            <p>Nunca has entrenado y te preocupa hacer mal un ejercicio o lesionarte al comenzar.</p>
+          </div>
+          <div class="pg-caso">
+            <div class="pg-caso-marca">02</div>
+            <p>Terminaste rehabilitación y no quieres volver al punto en el que ocurrió tu lesión.</p>
+          </div>
+          <div class="pg-caso">
+            <div class="pg-caso-marca">03</div>
+            <p>Tienes más de 60 años y quieres conservar fuerza, equilibrio e independencia.</p>
+          </div>
+          <div class="pg-caso">
+            <div class="pg-caso-marca">04</div>
+            <p>Entrenas por tu cuenta, pero te estancaste o aparece dolor durante ciertos movimientos.</p>
+          </div>
+          <div class="pg-caso">
+            <div class="pg-caso-marca">05</div>
+            <p>Tienes diabetes o hipertensión y te recomendaron hacer ejercicio con supervisión.</p>
+          </div>
+          <div class="pg-caso">
+            <div class="pg-caso-marca">06</div>
+            <p>Buscas un reto tipo Hyrox y quieres prepararlo con progresión, técnica y criterio.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="faq">
-      <div class="container">
-        <div class="faq-list reveal" style="transition-delay:0.1s;">
-        <div class="faq-item">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-            ¿Puedo entrenar si nunca he hecho ejercicio?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+    <section class="pg-section pg-section--tinted" id="proceso">
+      <div class="pg-wrap">
+        <div class="pg-eyebrow">Cómo trabajamos</div>
+        <h2 class="pg-h2">Del diagnóstico de capacidad al progreso medible</h2>
+        <p class="pg-intro">Cada etapa tiene una función concreta. Así sabes por qué haces cada ejercicio y qué cambio estamos buscando.</p>
+        <div class="pg-proceso">
+          <div class="pg-paso">
+            <h3>Valoración inicial</h3>
+            <p>Definimos tu punto de partida real a partir de tu historial, limitaciones actuales y objetivo.</p>
           </div>
-          <div class="faq-answer">
-            <p>Sí, y de hecho es uno de los perfiles que más atendemos. Tenemos programas específicos para personas que comienzan desde cero, con progresiones seguras adaptadas a tu condición actual. No hace falta experiencia previa ni condición física mínima para comenzar.</p>
+          <div class="pg-paso">
+            <h3>Programa</h3>
+            <p>Establecemos qué vas a entrenar, con qué progresión y en qué plazo evaluaremos los cambios.</p>
+          </div>
+          <div class="pg-paso">
+            <h3>Sesiones acompañadas</h3>
+            <p>Recibes asesoramiento en cada sesión y corrección de técnica. Nunca te entregamos solo una rutina impresa.</p>
+          </div>
+          <div class="pg-paso">
+            <h3>Medición y ajuste</h3>
+            <p>Seguimos métricas para confirmar el progreso real y ajustamos el trabajo cada semana según tu respuesta.</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="faq-item">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-            ¿Atienden a niños y adultos mayores?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-          </div>
-          <div class="faq-answer">
-            <p>Sí. Trabajamos con poblaciones especiales, incluyendo adultos mayores con programas de fuerza y equilibrio para prevenir caídas, y con menores que requieren rehabilitación o acondicionamiento físico supervisado. Cada programa se adapta completamente a la edad y condición del paciente.</p>
-          </div>
-        </div>
+    <section class="pg-section" id="programas">
+      <div class="pg-wrap">
+        <div class="pg-eyebrow">Áreas y programas</div>
+        <h2 class="pg-h2">Herramientas distintas para objetivos distintos</h2>
+        <p class="pg-intro">El equipo es un medio. La selección de cargas, ejercicios y volumen depende de tu capacidad actual y del resultado que buscamos.</p>
+        <div class="pg-fichas">
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenareadepesas.jpg" alt="Área de pesas con mancuernas, bancos y equipo para trabajo de fuerza" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">01</div>
+              <h3>Área de pesas</h3>
+              <dl>
+                <dt>¿Qué es?</dt>
+                <dd>Un espacio con pesos libres y equipo de resistencia para trabajar patrones de fuerza de forma guiada o libre, siempre con una carga adecuada para ti.</dd>
+                <dt>¿Para qué sirve?</dt>
+                <dd>Permite aumentar la fuerza, mejorar la composición corporal, sostener la masa muscular y dar mayor capacidad a músculos, huesos y articulaciones.</dd>
+                <dt>¿Para quién es?</dt>
+                <dd>Para quien empieza desde cero, busca mejorar su rendimiento o necesita un trabajo de fuerza estructurado para mantenerse activo a cualquier edad.</dd>
+              </dl>
+            </div>
+          </article>
 
-        <div class="faq-item">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-            ¿Qué diferencia hay entre rehabilitación y entrenamiento?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-          </div>
-          <div class="faq-answer">
-            <p>La rehabilitación busca recuperar la función perdida por una lesión, cirugía o condición de salud. El entrenamiento desarrolla fuerza, resistencia y capacidad física en general. En ZP Cuautla los combinamos: cuando terminas tu rehabilitación, no te quedas en el punto de partida — te volvemos más fuerte de lo que eras antes.</p>
-          </div>
-        </div>
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenparejaentrenandohombretrineo.jpg" alt="Dos figuras entrenando resistencia cardiovascular con un trineo en un gimnasio" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">02</div>
+              <h3>Equipos de cardio</h3>
+              <dl>
+                <dt>¿Qué es?</dt>
+                <dd>Equipo para dosificar trabajo cardiovascular desde intensidades suaves hasta esfuerzos exigentes, con control del tiempo, ritmo y recuperación.</dd>
+                <dt>¿Para qué sirve?</dt>
+                <dd>Ayuda a desarrollar resistencia, mejorar la tolerancia al esfuerzo, apoyar el control metabólico y recuperar mejor entre actividades y sesiones.</dd>
+                <dt>¿Para quién es?</dt>
+                <dd>Para personas que quieren mejorar su condición física, retomar actividad de manera gradual o entrenar con diabetes o hipertensión bajo supervisión.</dd>
+              </dl>
+            </div>
+          </article>
 
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenparejaentrenadotrineoesqui.jpg" alt="Dos figuras realizando estaciones de trineo y ergómetro de esquí en entrenamiento funcional" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">03</div>
+              <h3>Rutinas tipo Hyrox</h3>
+              <dl>
+                <dt>¿Qué es?</dt>
+                <dd>Entrenamiento funcional que integra carrera con estaciones de fuerza y resistencia, organizado en bloques que permiten progresar sin improvisar.</dd>
+                <dt>¿Para qué sirve?</dt>
+                <dd>Desarrolla capacidad aeróbica, fuerza bajo fatiga, eficiencia técnica y tolerancia a esfuerzos prolongados con indicadores que pueden medirse.</dd>
+                <dt>¿Para quién es?</dt>
+                <dd>Para personas activas que buscan un reto tipo Hyrox, quieren preparar una competencia o necesitan un objetivo exigente con progresión controlada.</dd>
+              </dl>
+            </div>
+          </article>
+
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenfuerzalesionhombro.jpg" alt="Figura realizando un ejercicio controlado de fuerza para recuperar la función del hombro" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">04</div>
+              <h3>Fortalecimiento post-lesión</h3>
+              <dl>
+                <dt>¿Qué es?</dt>
+                <dd>La fase de entrenamiento que continúa después de recuperar el movimiento básico, con cargas progresivas orientadas a la actividad cotidiana o deportiva.</dd>
+                <dt>¿Para qué sirve?</dt>
+                <dd>Recupera la fuerza que se perdió, mejora el control del movimiento y prepara al cuerpo para tolerar nuevamente las demandas que existían antes de la lesión.</dd>
+                <dt>¿Para quién es?</dt>
+                <dd>Para quien terminó rehabilitación o una etapa postoperatoria y necesita cerrar la brecha entre sentirse mejor y volver con seguridad a su actividad.</dd>
+              </dl>
+            </div>
+          </article>
+
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenmujeresmayoreshaciendofuerza.jpg" alt="Grupo de figuras adultas mayores realizando ejercicios de fuerza con supervisión" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">05</div>
+              <h3>Programas para adultos mayores</h3>
+              <dl>
+                <dt>¿Qué es?</dt>
+                <dd>Un programa adaptado a las capacidades y necesidades funcionales de personas mayores de 60 años, con ejercicios de fuerza, equilibrio y coordinación.</dd>
+                <dt>¿Para qué sirve?</dt>
+                <dd>Busca conservar masa muscular, reducir el riesgo de caídas y facilitar tareas como caminar, levantarse, subir escaleras y cargar objetos con mayor seguridad.</dd>
+                <dt>¿Para quién es?</dt>
+                <dd>Para adultos mayores que quieren mantener su independencia, retomar actividad o entrenar con condiciones como osteoporosis, diabetes o hipertensión.</dd>
+              </dl>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section class="pg-section pg-section--tinted" id="confianza">
+      <div class="pg-wrap">
+        <div class="pg-eyebrow">Experiencia aplicada</div>
+        <h2 class="pg-h2">Acompañamiento con criterio clínico y de entrenamiento</h2>
+        <p class="pg-intro">La progresión se decide con base en tu respuesta, no por seguir una rutina idéntica para todos.</p>
+        <div class="pg-prueba">
+          <figure class="pg-testimonio">
+            <blockquote>"Tengo osteoporosis y siempre tuve miedo de hacer ejercicio por las fracturas. Aquí me explicaron todo con claridad y me diseñaron un programa seguro. En seis meses mejoré mi densidad ósea y ya no me caigo como antes."</blockquote>
+            <figcaption><strong>Elena López</strong>72 años · Osteoporosis</figcaption>
+          </figure>
+          <div class="pg-credencial">
+            <h3>Héctor A. García</h3>
+            <p class="pg-credencial-rol">Fisioterapeuta y entrenador</p>
+            <p>La misma persona puede necesitar rehabilitación, fuerza general o preparación física en momentos distintos. El plan se ajusta a esa etapa.</p>
+            <dl>
+              <dt>Cédula profesional</dt>
+              <dd>8896266</dd>
+              <dt>Experiencia</dt>
+              <dd>+12 años</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-section" id="preguntas">
+      <div class="pg-wrap">
+        <div class="pg-eyebrow">Preguntas frecuentes</div>
+        <h2 class="pg-h2">Lo que necesitas saber antes de empezar</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+              ¿Puedo entrenar si nunca he hecho ejercicio?
+              <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+            </div>
+            <div class="faq-answer">
+              <p>Sí, y de hecho es uno de los perfiles que más atendemos. Tenemos programas específicos para personas que comienzan desde cero, con progresiones seguras adaptadas a tu condición actual. No hace falta experiencia previa ni condición física mínima para comenzar.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+              ¿Atienden a niños y adultos mayores?
+              <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+            </div>
+            <div class="faq-answer">
+              <p>Sí. Trabajamos con poblaciones especiales, incluyendo adultos mayores con programas de fuerza y equilibrio para prevenir caídas, y con menores que requieren rehabilitación o acondicionamiento físico supervisado. Cada programa se adapta completamente a la edad y condición del paciente.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+              ¿Qué diferencia hay entre rehabilitación y entrenamiento?
+              <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+            </div>
+            <div class="faq-answer">
+              <p>La rehabilitación busca recuperar la función perdida por una lesión, cirugía o condición de salud. El entrenamiento desarrolla fuerza, resistencia y capacidad física en general. En ZP Cuautla los combinamos: cuando terminas tu rehabilitación, no te quedas en el punto de partida — te volvemos más fuerte de lo que eras antes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-section">
+      <div class="pg-wrap">
+        <div class="pg-puente">
+          <div>
+            <div class="pg-puente-eyebrow">Antes de empezar</div>
+            <p>Si tienes dolor o una lesión sin resolver, conviene tratarla primero y recuperar la función antes de aumentar la exigencia del entrenamiento.</p>
+          </div>
+          <a href="/rehabilitacion-fisica-cuautla/" class="btn-secondary">Ver rehabilitación física</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-cierre">
+      <div class="pg-wrap">
+        <h2>Empieza con un punto de partida claro</h2>
+        <p>Cuéntanos qué quieres lograr y te orientamos sobre la valoración y el programa adecuado para comenzar.</p>
+        <a href="https://wa.me/527353384250?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20entrenar%20en%20ZP%20Cuautla.%20Mi%20objetivo%20es%3A%20" target="_blank" rel="noopener noreferrer" class="btn-cta-big">Escribir por WhatsApp</a>
       </div>
     </section>
   </main>

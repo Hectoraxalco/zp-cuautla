@@ -33,6 +33,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><text x='16' y='24' font-family='Arial Black,Impact,sans-serif' font-size='19' font-weight='900' fill='%23FF1E1E' text-anchor='middle' letter-spacing='-1'>ZP</text></svg>" />
   <link rel="stylesheet" href="/fonts.css" />
   <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/subpaginas.css" />
   <noscript>
     <style>
       /* Sin JavaScript los acordeones no abren: se muestra todo el contenido. */
@@ -118,7 +119,8 @@
   <nav id="navbar" aria-label="Navegación principal">
     <a href="/" class="nav-logo"><img src="/imageneszpweb/logozpblanco-removebg-preview.png" alt="ZP Cuautla" style="height:48px;width:auto;display:block;"></a>
     <ul class="nav-links">
-      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/rehabilitacion-fisica-cuautla/">Rehabilitación</a></li>
+      <li><a href="/gimnasio-entrenamiento-cuautla/">Gimnasio</a></li>
       <li><a href="/#sobre">Nosotros</a></li>
       <li><a href="/#poblaciones">Especialidades</a></li>
       <li><a href="/#entrenador">Equipo</a></li>
@@ -134,7 +136,8 @@
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/rehabilitacion-fisica-cuautla/">Rehabilitación</a></li>
+      <li><a href="/gimnasio-entrenamiento-cuautla/">Gimnasio</a></li>
       <li><a href="/#sobre">Nosotros</a></li>
       <li><a href="/#poblaciones">Especialidades</a></li>
       <li><a href="/#entrenador">Equipo</a></li>
@@ -146,231 +149,256 @@
 
 
   <main id="contenido">
-    <section id="servicios">
-      <div class="container">
-        <h1 class="section-title">Rehabilitación física en Cuautla, Morelos</h1>
-        <div class="servicios-grid">
-        <div class="srv-col">
-          <div class="img-placeholder-block reveal" style="overflow:hidden;">
-            <img src="/imageneszpweb/imagenelectroterapia.jpg" alt="Sesión de electroterapia para rehabilitación física en ZP Cuautla" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          </div>
-          <div class="srv-block reveal open" id="srvRehab">
-          <div class="srv-block-header" role="button" tabindex="0" aria-expanded="true">
-            <div class="srv-block-heading">
-              <div class="srv-block-title">Rehabilitación</div>
-              <div class="srv-block-subtitle">Contamos con equipos de alta tecnología</div>
-            </div>
-            <div class="srv-block-toggle">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
-          </div>
-          <div class="srv-block-body">
-            <!-- Intro bullets -->
-            <div class="srv-block-intro">
-              <ul class="srv-intro-list">
-                <li>Contamos con expertos en tratar diversas patologías que pueden afectar hombro, espalda y rodilla.</li>
-                <li>Somos de los pocos centros que integran gimnasio dentro del proceso de rehabilitación.</li>
-                <li>Más de 12 años de experiencia nos respaldan.</li>
-                <li>Todas las sesiones son personalizadas e individuales para la máxima comodidad del paciente.</li>
-              </ul>
-            </div>
-            <!-- Therapy images -->
-            <div class="srv-img-strip srv-img-strip--2col">
-              <div class="srv-img-strip-item">
-                <img src="/imageneszpweb/imagenlaserdealtaintensidad.jpg" alt="Terapia de láser de alta intensidad para recuperación de lesiones en ZP Cuautla" loading="lazy">
-                <span class="srv-img-strip-cap">Láser Alta Intensidad</span>
-              </div>
-              <div class="srv-img-strip-item">
-                <img src="/imageneszpweb/imagenterapiaondasdechoque.jpg" alt="Terapia de ondas de choque para tendinitis y calcificaciones en ZP Cuautla" loading="lazy">
-                <span class="srv-img-strip-cap">Ondas de Choque</span>
-              </div>
-              <div class="srv-img-strip-item">
-                <img src="/imageneszpweb/imagenmicroelectrolisispercutanea.jpg" alt="Microelectrólisis percutánea para tratamiento musculoesquelético en ZP Cuautla" loading="lazy">
-                <span class="srv-img-strip-cap">Microelectrolisis percutánea</span>
-              </div>
-              <div class="srv-img-strip-item">
-                <img src="/imageneszpweb/imagenecografiamusculoesqueleticamujer.jpg" alt="Ecografía musculoesquelética para diagnóstico de lesiones en ZP Cuautla" loading="lazy">
-                <span class="srv-img-strip-cap">Ecografía Musculoesquelética</span>
-              </div>
-            </div>
-            <!-- Sub-accordion -->
-            <h3 class="srv-sub-label">Tecnología &amp; Técnicas</h3>
-            <div class="srv-accordion" id="rehabAccordion">
-
-              <div class="srv-item">
-                <div class="srv-item-header" role="button" tabindex="0" aria-expanded="false">
-                  <div class="srv-item-left">
-                    <div class="srv-item-dot"></div>
-                    <div class="srv-item-name">Láser de alta intensidad</div>
-                  </div>
-                  <div class="srv-item-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-                </div>
-                <div class="srv-item-body">
-                  <div class="srv-item-inner">
-                    <div class="srv-detail-label">¿Qué es?</div>
-                    <p class="srv-detail-text">Es una terapia que utiliza luz de alta potencia para penetrar tejidos profundos y acelerar la recuperación celular.</p>
-                    <div class="srv-detail-label">¿Para qué sirve?</div>
-                    <p class="srv-detail-text">Reduce el dolor, disminuye la inflamación y promueve la regeneración de tejidos dañados como tendones, músculos y articulaciones.</p>
-                    <div class="srv-detail-label">¿Por qué es importante?</div>
-                    <p class="srv-detail-text">Permite llegar a estructuras que otras terapias no alcanzan, acortando significativamente los tiempos de recuperación sin cirugía ni medicamentos.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="srv-item">
-                <div class="srv-item-header" role="button" tabindex="0" aria-expanded="false">
-                  <div class="srv-item-left">
-                    <div class="srv-item-dot"></div>
-                    <div class="srv-item-name">Terapia de ondas de choque</div>
-                  </div>
-                  <div class="srv-item-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-                </div>
-                <div class="srv-item-body">
-                  <div class="srv-item-inner">
-                    <div class="srv-detail-label">¿Qué es?</div>
-                    <p class="srv-detail-text">Son impulsos de presión acústica que se aplican sobre la zona afectada para estimular los tejidos desde el interior.</p>
-                    <div class="srv-detail-label">¿Para qué sirve?</div>
-                    <p class="srv-detail-text">Trata calcificaciones, tendinitis crónicas, fascitis plantar y otras condiciones donde el tejido se ha deteriorado con el tiempo.</p>
-                    <div class="srv-detail-label">¿Por qué es importante?</div>
-                    <p class="srv-detail-text">Es especialmente eficaz en lesiones que no han respondido a tratamientos convencionales. Activa la reparación natural del cuerpo sin necesidad de reposo prolongado.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="srv-item">
-                <div class="srv-item-header" role="button" tabindex="0" aria-expanded="false">
-                  <div class="srv-item-left">
-                    <div class="srv-item-dot"></div>
-                    <div class="srv-item-name">Electroterapia</div>
-                  </div>
-                  <div class="srv-item-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-                </div>
-                <div class="srv-item-body">
-                  <div class="srv-item-inner">
-                    <div class="srv-detail-label">¿Qué es?</div>
-                    <p class="srv-detail-text">Utiliza corrientes eléctricas controladas para actuar sobre el sistema nervioso y muscular de manera terapéutica.</p>
-                    <div class="srv-detail-label">¿Para qué sirve?</div>
-                    <p class="srv-detail-text">Alivia el dolor, reduce la inflamación, mejora la circulación y estimula la activación muscular en zonas débiles o inhibidas.</p>
-                    <div class="srv-detail-label">¿Por qué es importante?</div>
-                    <p class="srv-detail-text">Complementa perfectamente el ejercicio terapéutico, preparando al músculo para trabajar correctamente y reduciendo el dolor que limita el movimiento.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="srv-item">
-                <div class="srv-item-header" role="button" tabindex="0" aria-expanded="false">
-                  <div class="srv-item-left">
-                    <div class="srv-item-dot"></div>
-                    <div class="srv-item-name">Presoterapia</div>
-                  </div>
-                  <div class="srv-item-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-                </div>
-                <div class="srv-item-body">
-                  <div class="srv-item-inner">
-                    <div class="srv-detail-label">¿Qué es?</div>
-                    <p class="srv-detail-text">Es un tratamiento que usa presión de aire controlada para estimular el sistema linfático y circulatorio de las extremidades.</p>
-                    <div class="srv-detail-label">¿Para qué sirve?</div>
-                    <p class="srv-detail-text">Reduce la retención de líquidos, mejora la circulación de retorno, alivia la pesadez y apoya la recuperación muscular post-esfuerzo.</p>
-                    <div class="srv-detail-label">¿Por qué es importante?</div>
-                    <p class="srv-detail-text">Fundamental en pacientes con edema, circulación deficiente o que están en etapas de recuperación post-operatoria o post-lesión.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="srv-item">
-                <div class="srv-item-header" role="button" tabindex="0" aria-expanded="false">
-                  <div class="srv-item-left">
-                    <div class="srv-item-dot"></div>
-                    <div class="srv-item-name">Camilla eléctrica de alta gama</div>
-                  </div>
-                  <div class="srv-item-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-                </div>
-                <div class="srv-item-body">
-                  <div class="srv-item-inner">
-                    <div class="srv-detail-label">¿Qué es?</div>
-                    <p class="srv-detail-text">Es una camilla motorizada que permite posicionar al paciente de forma óptima y segura para cada procedimiento terapéutico.</p>
-                    <div class="srv-detail-label">¿Para qué sirve?</div>
-                    <p class="srv-detail-text">Facilita la aplicación de todas las terapias con ergonomía correcta, garantizando la comodidad del paciente y la precisión del terapeuta.</p>
-                    <div class="srv-detail-label">¿Por qué es importante?</div>
-                    <p class="srv-detail-text">La posición correcta durante una sesión no es un detalle menor: influye directamente en la efectividad del tratamiento y en la experiencia del paciente.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="srv-cierre">
-              <p class="srv-cierre-texto">Si algo de esto se parece a lo que tienes, el siguiente paso es una valoración.</p>
-              <a href="https://wa.me/527353384250?text=Hola%2C%20quiero%20agendar%20una%20valoraci%C3%B3n%20de%20rehabilitaci%C3%B3n.%20Lo%20que%20me%20pasa%20es%3A%20" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Agendar valoración
-              </a>
-            </div>
-          </div>
-        </div>
-        </div><!-- /srv-col rehab -->
-
+    <section class="pg-hero">
+      <img class="pg-hero-img" src="/imageneszpweb/imagenelectroterapia.jpg" alt="Aplicación ilustrativa de electroterapia durante una sesión de rehabilitación física">
+      <div class="pg-wrap">
+        <div class="pg-breadcrumb"><a href="/">Inicio</a><span>/</span>Rehabilitación física</div>
+        <h1 class="pg-h1">Recupera el movimiento. Vuelve con más <em>fuerza</em>.</h1>
+        <p class="pg-lead">Evaluamos qué limita tu movimiento y construimos un proceso claro para reducir el dolor, recuperar función y evitar recaídas.</p>
+        <div class="pg-actions">
+          <a class="btn-primary" href="https://wa.me/527353384250?text=Hola%2C%20quiero%20agendar%20una%20valoraci%C3%B3n%20de%20rehabilitaci%C3%B3n.%20Lo%20que%20me%20pasa%20es%3A%20" target="_blank" rel="noopener noreferrer">Agendar valoración</a>
+          <a class="btn-secondary" href="tel:+527353384250">Llamar al 735 338 4250</a>
         </div>
       </div>
     </section>
 
-    <section id="siguiente-paso">
-      <div class="container">
-        <div class="srv-cierre" style="border-top:none;padding-top:0;">
-          <p class="srv-cierre-texto">¿Ya terminaste tu rehabilitación? El siguiente paso es no quedarte donde empezaste.</p>
-          <a href="/gimnasio-entrenamiento-cuautla/" class="btn-secondary">
-            Ver entrenamiento y gimnasio
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <p class="srv-cierre-texto" style="margin-top:0.5rem;">Trabajamos con adultos mayores, pacientes oncológicos y enfermedades crónicas. <a href="/#poblaciones" style="color:var(--red);">Ver poblaciones especiales</a>.</p>
+    <nav class="pg-subnav" aria-label="Contenido de rehabilitación">
+      <div class="pg-subnav-inner">
+        <a href="#para-ti">Para ti</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#tecnologias">Tecnologías</a>
+        <a href="#confianza">Confianza</a>
+        <a href="#preguntas">Preguntas</a>
+      </div>
+    </nav>
+
+    <section class="pg-section" id="para-ti">
+      <div class="pg-wrap">
+        <div class="pg-eyebrow">Cuándo buscar rehabilitación</div>
+        <h2 class="pg-h2">Esto puede ser para ti</h2>
+        <p class="pg-intro">No necesitas esperar a que el dolor sea insoportable. Una valoración permite entender qué está frenando tu recuperación y qué necesitas para avanzar.</p>
+        <div class="pg-casos-grid">
+          <div class="pg-caso"><div class="pg-caso-marca">01</div><p>Te operaron de rodilla, hombro o columna y todavía no recuperas el movimiento que tenías antes.</p></div>
+          <div class="pg-caso"><div class="pg-caso-marca">02</div><p>Llevas más de dos semanas con dolor y no mejora con reposo ni con los cuidados que has intentado.</p></div>
+          <div class="pg-caso"><div class="pg-caso-marca">03</div><p>Tienes tendinitis, fascitis plantar o una calcificación que no ha respondido al tratamiento inicial.</p></div>
+          <div class="pg-caso"><div class="pg-caso-marca">04</div><p>Sufriste un esguince o desgarro, ya puedes moverte, pero el miedo a recaer te impide volver a tu actividad.</p></div>
+          <div class="pg-caso"><div class="pg-caso-marca">05</div><p>Empezaste terapia en otro sitio, el proceso quedó a medias y todavía tienes dolor, debilidad o limitación.</p></div>
+          <div class="pg-caso"><div class="pg-caso-marca">06</div><p>Te dijeron que la cirugía era la única opción y quieres una valoración funcional antes de tomar una decisión.</p></div>
         </div>
       </div>
     </section>
 
-    <section id="faq">
-      <div class="container">
-        <div class="faq-list reveal" style="transition-delay:0.1s;">
-        <div class="faq-item">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-            ¿Necesito una orden médica para empezar?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+    <section class="pg-section pg-section--tinted" id="proceso">
+      <div class="pg-wrap">
+        <div class="pg-eyebrow">Cómo trabajamos</div>
+        <h2 class="pg-h2">Un proceso con dirección</h2>
+        <p class="pg-intro">Cada etapa responde a una pregunta concreta: qué tienes, cómo se va a tratar, cómo estás avanzando y cuándo estás listo para volver.</p>
+        <div class="pg-proceso">
+          <div class="pg-paso">
+            <h3>Valoración</h3>
+            <p>Revisamos tu historial, evaluamos el movimiento y, si hace falta, utilizamos ecografía musculoesquelética. Sales con un diagnóstico funcional que explica qué está limitando tu recuperación.</p>
           </div>
-          <div class="faq-answer">
-            <p>No es obligatorio, aunque si tienes una puede ser útil. Nuestro equipo hace una valoración inicial para entender tu condición, historial y objetivos. A partir de ahí diseñamos un plan personalizado. Si detectamos que necesitas atención médica previa, te lo decimos con claridad. Por esa razón trabajamos de la mano de especialistas; en caso de que necesitáramos un estudio o una valoración especializada te lo haremos saber y te daremos una línea directa con el especialista que necesites.</p>
+          <div class="pg-paso">
+            <h3>Plan</h3>
+            <p>Definimos las técnicas, las sesiones estimadas y las señales que usaremos para medir el progreso. Recibes una estimación honesta, ajustada a tu condición y respuesta.</p>
+          </div>
+          <div class="pg-paso">
+            <h3>Sesiones</h3>
+            <p>Las sesiones son individuales y acompañadas. Combinamos tecnología de rehabilitación con ejercicio terapéutico para recuperar movimiento, control y fuerza.</p>
+          </div>
+          <div class="pg-paso">
+            <h3>Retorno</h3>
+            <p>El proceso no termina cuando deja de doler. Termina cuando recuperas la fuerza y la capacidad necesarias para volver a tu actividad con menor riesgo de recaída.</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="faq-item">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-            ¿Cuántas sesiones necesito para ver resultados?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-          </div>
-          <div class="faq-answer">
-            <p>Desde la primera sesión muchas personas comienzan a notar cambios, y entre la primera y la tercera sesión los resultados empiezan a ser evidentes. Para el entrenamiento, los cambios funcionales se consolidan entre las 4 y 8 semanas. En tu primera valoración te damos una estimación honesta y realista.</p>
-          </div>
-        </div>
+    <section class="pg-section" id="tecnologias">
+      <div class="pg-wrap">
+        <div class="pg-eyebrow">Tecnología y técnicas</div>
+        <h2 class="pg-h2">Herramientas al servicio de tu recuperación</h2>
+        <p class="pg-intro">No aplicamos tecnología por rutina. Elegimos cada recurso según la valoración, la etapa del proceso y el objetivo funcional de la sesión.</p>
+        <div class="pg-fichas">
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenlaserdealtaintensidad.jpg" alt="Aplicación ilustrativa de láser de alta intensidad sobre una articulación" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">01</div>
+              <h3>Láser de alta intensidad</h3>
+              <dl>
+                <div><dt>¿Qué es?</dt><dd>Una terapia de luz de alta potencia que entrega energía de manera controlada y alcanza tejidos profundos sin procedimientos invasivos.</dd></div>
+                <div><dt>¿Para qué sirve?</dt><dd>Ayuda a modular el dolor y la inflamación, además de favorecer los procesos biológicos de reparación en músculos, tendones y articulaciones.</dd></div>
+                <div><dt>¿Cuándo lo usamos?</dt><dd>Puede integrarse cuando el dolor limita el movimiento, en lesiones de tejidos blandos o durante fases específicas de recuperación postoperatoria, siempre después de valorar la zona.</dd></div>
+              </dl>
+            </div>
+          </article>
 
-        <div class="faq-item">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-            ¿Qué diferencia hay entre rehabilitación y entrenamiento?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-          </div>
-          <div class="faq-answer">
-            <p>La rehabilitación busca recuperar la función perdida por una lesión, cirugía o condición de salud. El entrenamiento desarrolla fuerza, resistencia y capacidad física en general. En ZP Cuautla los combinamos: cuando terminas tu rehabilitación, no te quedas en el punto de partida — te volvemos más fuerte de lo que eras antes.</p>
-          </div>
-        </div>
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenterapiaondasdechoque.jpg" alt="Aplicación ilustrativa de terapia de ondas de choque en una extremidad" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">02</div>
+              <h3>Terapia de ondas de choque</h3>
+              <dl>
+                <div><dt>¿Qué es?</dt><dd>Un tratamiento que aplica impulsos acústicos de presión sobre una zona localizada para generar un estímulo mecánico dentro del tejido.</dd></div>
+                <div><dt>¿Para qué sirve?</dt><dd>Se utiliza para estimular la respuesta de reparación en tendones y fascias, trabajar calcificaciones y disminuir síntomas persistentes que no han cedido con medidas convencionales.</dd></div>
+                <div><dt>¿Cuándo lo usamos?</dt><dd>La consideramos en tendinitis crónicas, fascitis plantar, calcificaciones y lesiones de evolución prolongada, después de confirmar que está indicada para tu caso.</dd></div>
+              </dl>
+            </div>
+          </article>
 
-        <div class="faq-item">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-            ¿Cómo sé si mi dolor necesita rehabilitación o solo ejercicio?
-            <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-          </div>
-          <div class="faq-answer">
-            <p>Eso es exactamente lo que evaluamos en tu primera sesión. Si tienes dolor que limita tu movimiento, que lleva más de dos semanas sin mejorar, o que surgió tras una lesión o cirugía, lo más probable es que necesites rehabilitación primero. Pero eso es justo lo que podremos ver y determinaremos en tu primera consulta.</p>
-          </div>
-        </div>
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenelectroterapia.jpg" alt="Electrodos ilustrativos colocados durante una sesión de fisioterapia" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">03</div>
+              <h3>Electroterapia</h3>
+              <dl>
+                <div><dt>¿Qué es?</dt><dd>El uso terapéutico de corrientes eléctricas dosificadas para actuar de forma controlada sobre el sistema nervioso y el tejido muscular.</dd></div>
+                <div><dt>¿Para qué sirve?</dt><dd>Puede ayudar a reducir dolor, mejorar la circulación local y facilitar la activación de músculos que han perdido fuerza o están inhibidos después de una lesión.</dd></div>
+                <div><dt>¿Cuándo lo usamos?</dt><dd>La combinamos con movimiento y ejercicio terapéutico cuando el dolor dificulta empezar, existe debilidad muscular o necesitamos preparar una zona para trabajar con mejor control.</dd></div>
+              </dl>
+            </div>
+          </article>
 
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenbotaspresoterapia.jpg" alt="Botas ilustrativas de presoterapia colocadas en las piernas" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">04</div>
+              <h3>Presoterapia</h3>
+              <dl>
+                <div><dt>¿Qué es?</dt><dd>Un sistema de compresión neumática secuencial que aplica presión de aire graduada sobre las extremidades mediante botas especiales.</dd></div>
+                <div><dt>¿Para qué sirve?</dt><dd>Favorece el retorno circulatorio y linfático, ayuda a manejar la sensación de pesadez y puede apoyar la reducción de edema y la recuperación después del esfuerzo.</dd></div>
+                <div><dt>¿Cuándo lo usamos?</dt><dd>Puede formar parte del plan cuando hay inflamación o retención de líquidos, durante ciertas recuperaciones postoperatorias o como apoyo después de una carga física exigente.</dd></div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenmicroelectrolisispercutanea.jpg" alt="Procedimiento ilustrativo de microelectrólisis percutánea guiado en tejido musculoesquelético" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">05</div>
+              <h3>Microelectrólisis percutánea (MEP)</h3>
+              <dl>
+                <div><dt>¿Qué es?</dt><dd>Una técnica mínimamente invasiva que aplica una corriente galvánica dosificada mediante una aguja fina directamente sobre el tejido afectado.</dd></div>
+                <div><dt>¿Para qué sirve?</dt><dd>Busca provocar una respuesta local controlada que reactive los mecanismos de reparación en lesiones musculoesqueléticas persistentes, especialmente en tendones.</dd></div>
+                <div><dt>¿Cuándo lo usamos?</dt><dd>La valoramos en tendinopatías y lesiones crónicas que no han progresado como se esperaba. Se integra a un programa de carga y ejercicio; no sustituye el trabajo activo.</dd></div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="pg-ficha">
+            <div class="pg-ficha-media">
+              <img src="/imageneszpweb/imagenecografiamusculoesqueleticamujer.jpg" alt="Exploración ilustrativa con ecografía musculoesquelética en una articulación" loading="lazy">
+            </div>
+            <div>
+              <div class="pg-ficha-num">06</div>
+              <h3>Ecografía musculoesquelética</h3>
+              <dl>
+                <div><dt>¿Qué es?</dt><dd>Una herramienta de imagen en tiempo real que permite observar músculos, tendones, ligamentos y otras estructuras mientras están en reposo o movimiento.</dd></div>
+                <div><dt>¿Para qué sirve?</dt><dd>Ayuda a localizar tejido lesionado, comprender su estado y relacionar lo que vemos con las pruebas de movimiento para tomar decisiones más precisas.</dd></div>
+                <div><dt>¿Cuándo lo usamos?</dt><dd>La incorporamos cuando necesitamos aclarar la valoración, revisar la evolución de una lesión o guiar con precisión técnicas percutáneas dentro del plan terapéutico.</dd></div>
+              </dl>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section class="pg-section pg-section--tinted" id="confianza">
+      <div class="pg-wrap">
+        <div class="pg-eyebrow">Experiencia comprobable</div>
+        <h2 class="pg-h2">Confianza para sostener el proceso</h2>
+        <div class="pg-prueba">
+          <figure class="pg-testimonio">
+            <blockquote>"He avanzado bastante en mi proceso de recuperación. Tengo diagnóstico de hombro congelado más otras lesiones, sin evidencia de accidente — simplemente inició con un dolor simple. Estuve más de un año bajo revisión médica sin avance alguno. Hoy puedo decir con satisfacción que a casi 3 meses de rehabilitarme con los profesionales de ZP Cuautla, he avanzado en movilidad del brazo y hombro en un 65%. Todavía falta, pero voy por el 100% — y lo más importante: evitando por completo la cirugía."</blockquote>
+            <figcaption><strong>Nancy Sánchez</strong>52 años · Hombro congelado</figcaption>
+          </figure>
+          <div class="pg-credencial">
+            <h3>Héctor A. García</h3>
+            <p class="pg-credencial-rol">Fisioterapeuta y entrenador</p>
+            <p>Valoración, rehabilitación y fortalecimiento dentro de un mismo proceso para recuperar capacidad, no solo reducir síntomas.</p>
+            <dl>
+              <dt>Cédula profesional</dt>
+              <dd>8896266</dd>
+              <dt>Experiencia</dt>
+              <dd>+12 años</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-section" id="preguntas">
+      <div class="pg-wrap">
+        <div class="pg-eyebrow">Antes de empezar</div>
+        <h2 class="pg-h2">Preguntas frecuentes</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+              ¿Necesito una orden médica para empezar?
+              <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+            </div>
+            <div class="faq-answer">
+              <p>No es obligatorio, aunque si tienes una puede ser útil. Nuestro equipo hace una valoración inicial para entender tu condición, historial y objetivos. A partir de ahí diseñamos un plan personalizado. Si detectamos que necesitas atención médica previa, te lo decimos con claridad. Por esa razón trabajamos de la mano de especialistas; en caso de que necesitáramos un estudio o una valoración especializada te lo haremos saber y te daremos una línea directa con el especialista que necesites.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+              ¿Cuántas sesiones necesito para ver resultados?
+              <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+            </div>
+            <div class="faq-answer">
+              <p>Desde la primera sesión muchas personas comienzan a notar cambios, y entre la primera y la tercera sesión los resultados empiezan a ser evidentes. Para el entrenamiento, los cambios funcionales se consolidan entre las 4 y 8 semanas. En tu primera valoración te damos una estimación honesta y realista.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+              ¿Qué diferencia hay entre rehabilitación y entrenamiento?
+              <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+            </div>
+            <div class="faq-answer">
+              <p>La rehabilitación busca recuperar la función perdida por una lesión, cirugía o condición de salud. El entrenamiento desarrolla fuerza, resistencia y capacidad física en general. En ZP Cuautla los combinamos: cuando terminas tu rehabilitación, no te quedas en el punto de partida — te volvemos más fuerte de lo que eras antes.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+              ¿Cómo sé si mi dolor necesita rehabilitación o solo ejercicio?
+              <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+            </div>
+            <div class="faq-answer">
+              <p>Eso es exactamente lo que evaluamos en tu primera sesión. Si tienes dolor que limita tu movimiento, que lleva más de dos semanas sin mejorar, o que surgió tras una lesión o cirugía, lo más probable es que necesites rehabilitación primero. Pero eso es justo lo que podremos ver y determinaremos en tu primera consulta.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-section">
+      <div class="pg-wrap">
+        <div class="pg-puente">
+          <div>
+            <div class="pg-puente-eyebrow">Siguiente paso</div>
+            <p>Al terminar la rehabilitación, el objetivo es no quedarte donde empezaste: continúa desarrollando fuerza y capacidad para sostener lo que recuperaste.</p>
+          </div>
+          <a class="btn-secondary" href="/gimnasio-entrenamiento-cuautla/">Ver entrenamiento y gimnasio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-cierre">
+      <div class="pg-wrap">
+        <h2>Empieza con una valoración</h2>
+        <p>Cuéntanos qué te duele, desde cuándo y qué movimiento quieres recuperar. Revisaremos tu caso para definir el siguiente paso.</p>
+        <a class="btn-cta-big" href="https://wa.me/527353384250?text=Hola%2C%20quiero%20agendar%20una%20valoraci%C3%B3n%20de%20rehabilitaci%C3%B3n.%20Lo%20que%20me%20pasa%20es%3A%20" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
       </div>
     </section>
   </main>
