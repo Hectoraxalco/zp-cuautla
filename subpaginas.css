@@ -295,6 +295,14 @@
 .pg-credencial dt { color: rgba(255,255,255,0.5); }
 .pg-credencial dd { color: var(--white); margin-bottom: 0.6rem; }
 
+/* Enlace en linea dentro del cuerpo de las subpaginas */
+.pg-enlace {
+  color: var(--white);
+  border-bottom: 1px solid var(--red);
+  padding-bottom: 1px;
+}
+.pg-enlace:hover { color: var(--red); }
+
 /* ── CIERRE ─────────────────────────────────────────────────── */
 .pg-cierre {
   background: var(--red-cta);

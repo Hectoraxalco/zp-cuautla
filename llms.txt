@@ -68,16 +68,19 @@ Contenido detallado en: https://zpcuautla.com.mx/gimnasio-entrenamiento-cuautla/
 
 ### Rehabilitación física
 
-- ¿Necesito una orden médica para empezar?
-- ¿Cuántas sesiones necesito para ver resultados?
-- ¿Qué diferencia hay entre rehabilitación y entrenamiento?
-- ¿Cómo sé si mi dolor necesita rehabilitación o solo ejercicio?
+- ¿Qué es la terapia de ondas de choque y para qué sirve?
+- ¿Cuándo se usa el láser de alta intensidad en rehabilitación?
+- ¿Para qué sirve la ecografía musculoesquelética en una valoración?
+- ¿Puedo retomar mi rehabilitación si ya hice terapia en otro sitio?
+- ¿Cuándo se considera terminada una rehabilitación?
 
 ### Gimnasio y entrenamiento
 
-- ¿Puedo entrenar si nunca he hecho ejercicio?
-- ¿Atienden a niños y adultos mayores?
-- ¿Qué diferencia hay entre rehabilitación y entrenamiento?
+- ¿Qué incluye el área de pesas del gimnasio?
+- ¿En qué consiste el entrenamiento para adultos mayores?
+- ¿Puedo entrenar si tengo diabetes o hipertensión?
+- ¿Qué son las rutinas tipo Hyrox?
+- ¿Me entregan una rutina o hay acompañamiento en cada sesión?
 
 ## Resultados reportados por pacientes
 
@@ -88,6 +91,6 @@ Contenido detallado en: https://zpcuautla.com.mx/gimnasio-entrenamiento-cuautla/
 
 ## Páginas principales
 
-- [Inicio](https://zpcuautla.com.mx/): quiénes somos, poblaciones especiales, equipo, reseñas, ubicación y FAQ
-- [Rehabilitación física en Cuautla](https://zpcuautla.com.mx/rehabilitacion-fisica-cuautla/): rehabilitación post-operatoria y de lesiones, láser de alta intensidad, ondas de choque, electroterapia, presoterapia, microelectrólisis percutánea y ecografía musculoesquelética
-- [Gimnasio y entrenamiento en Cuautla](https://zpcuautla.com.mx/gimnasio-entrenamiento-cuautla/): área de pesas, equipos de cardio, rutinas tipo Hyrox, fortalecimiento post-lesión y programas para adultos mayores
+- [Fisioterapia, rehabilitación y gimnasio en Cuautla (inicio)](https://zpcuautla.com.mx/): qué es ZP Cuautla, poblaciones especiales, equipo, reseñas, ubicación y FAQ generales
+- [Rehabilitación física y post-operatoria en Cuautla](https://zpcuautla.com.mx/rehabilitacion-fisica-cuautla/): rehabilitación post-operatoria y de lesiones, láser de alta intensidad, ondas de choque, electroterapia, presoterapia, microelectrólisis percutánea y ecografía musculoesquelética
+- [Gimnasio y entrenamiento personalizado en Cuautla](https://zpcuautla.com.mx/gimnasio-entrenamiento-cuautla/): área de pesas, equipos de cardio, rutinas tipo Hyrox, fortalecimiento post-lesión y programas para adultos mayores

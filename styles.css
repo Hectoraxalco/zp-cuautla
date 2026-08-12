@@ -1390,7 +1390,9 @@
       margin: 0;
     }
     .faq-item.open .faq-answer {
-      max-height: 400px;
+      /* Tope alto para que la transicion siga funcionando sin recortar las
+         respuestas largas en pantallas estrechas. */
+      max-height: 1200px;
       padding-top: 0;
     }
     .faq-footer {
@@ -2466,7 +2468,7 @@
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: 3rem; }
+      .hero-title { font-size: clamp(2.6rem, 13vw, 3rem); }
       .adultos-pillars { grid-template-columns: 1fr; }
       .hero-stats { left: 0; right: 0; justify-content: center; position: relative; margin-top: 2rem; bottom: auto; }
       .galeria-grid { grid-template-columns: 1fr; height: auto; }
