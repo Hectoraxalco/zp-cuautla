@@ -1257,6 +1257,24 @@
 
     .schedule-row:last-child { border-bottom: none; }
 
+    /* Los dos turnos aplican de lunes a viernes: el dia encabeza, no compite. */
+    .schedule-dias {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white-dim);
+      margin: 0 0 0.35rem;
+      line-height: 1.5;
+    }
+
+    .schedule-dias span {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--white-muted);
+      white-space: nowrap;
+    }
+
     .schedule-time {
       font-family: var(--font-heading);
       font-size: 0.9rem;
