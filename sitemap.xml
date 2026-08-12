@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://zpcuautla.com.mx/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -69,7 +69,7 @@
   </url>
   <url>
     <loc>https://zpcuautla.com.mx/rehabilitacion-fisica-cuautla/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -95,7 +95,7 @@
   </url>
   <url>
     <loc>https://zpcuautla.com.mx/gimnasio-entrenamiento-cuautla/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -112,6 +112,17 @@
       <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenmujeresmayoreshaciendofuerza.webp</image:loc>
       <image:title>Entrenamiento de fuerza para adultos mayores en ZP Cuautla</image:title>
       <image:caption>Imagen ilustrativa. Programa de fuerza y equilibrio para adultos mayores en Cuautla, Morelos</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://zpcuautla.com.mx/fisioterapeuta-hector-garcia-cuautla/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://zpcuautla.com.mx/imageneszpweb/imagenfuerzalesionhombro.webp</image:loc>
+      <image:title>Ejercicio terapéutico supervisado por ZP Cuautla</image:title>
+      <image:caption>Imagen ilustrativa de un ejercicio terapéutico para recuperar fuerza y movilidad de hombro</image:caption>
     </image:image>
   </url>
 </urlset>
