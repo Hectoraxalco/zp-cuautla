@@ -2864,3 +2864,187 @@
   color: rgba(255,255,255,0.72);
   max-width: 46ch;
 }
+
+    /* ================================================
+       BARRA DE ACCION FIJA EN MOVIL
+       En el telefono la decision se toma con el pulgar. La accion deja de
+       depender de que la persona vuelva a buscar un boton hacia arriba.
+    ================================================ */
+    .accion-movil {
+      display: none;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 1000;
+      gap: 0.5rem;
+      padding: 0.6rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom));
+      background: rgba(8,8,8,0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--black-border);
+      transform: translateY(115%);
+      transition: transform 0.28s ease;
+    }
+
+    .accion-movil.visible { transform: translateY(0); }
+
+    .accion-movil a {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 52px;
+      padding: 0 0.75rem;
+      border-radius: 3px;
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .accion-movil-wa {
+      flex: 1.45 !important;
+      background: var(--red-cta);
+      color: var(--white);
+    }
+
+    .accion-movil-tel {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.28);
+    }
+
+    .accion-movil svg { flex-shrink: 0; }
+
+    @media (max-width: 860px) {
+      .accion-movil { display: flex; }
+      /* La barra sustituye al globo flotante: dos acciones fijas, no tres. */
+      .whatsapp-float { display: none; }
+      /* Espacio para que la barra no tape el final del contenido. */
+      body { padding-bottom: 76px; }
+    }
+
+/* ================================================
+   LISTAS DE LA BIFURCACION
+   Lo que antes vivia dentro de dos acordeones ahora se lee de un vistazo.
+================================================ */
+.bif-listas {
+  max-width: 1200px;
+  margin: 1.5rem auto 0;
+  display: grid;
+  grid-template-columns: 1.22fr 1fr;
+  gap: 1.25rem;
+}
+
+.bif-lista {
+  border-top: 1px solid var(--black-border);
+  padding-top: 1rem;
+}
+
+.bif-lista h3 {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+
+.bif-lista p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.66);
+}
+
+/* ================================================
+   CONDICIONES QUE ATENDEMOS
+   Sustituye once acordeones anidados por una rejilla legible.
+================================================ */
+.cond-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  gap: 1px;
+  background: var(--black-border);
+  border: 1px solid var(--black-border);
+  margin-top: 2.5rem;
+}
+
+.cond {
+  background: var(--black-bg);
+  padding: 1.6rem 1.5rem;
+  transition: background 0.25s ease;
+}
+
+.cond:hover { background: var(--black-card); }
+
+.cond h3 {
+  font-family: var(--font-heading);
+  font-size: 1.06rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+
+.cond h3::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.cond p {
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.62);
+}
+
+/* ================================================
+   CIERRE DE SECCION CON ACCION
+   Misma pieza en todas las secciones: una frase y un solo boton.
+================================================ */
+.seccion-cierre {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.seccion-cierre p {
+  flex: 1 1 320px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+}
+
+/* Nota de disponibilidad junto a cada peticion. */
+.disponibilidad {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 1rem;
+}
+
+.disponibilidad::before {
+  content: '';
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #25D366;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 860px) {
+  .bif-listas { grid-template-columns: 1fr; gap: 0.5rem; }
+  .cond-grid { grid-template-columns: 1fr; }
+  .cond { padding: 1.35rem 1.25rem; }
+}

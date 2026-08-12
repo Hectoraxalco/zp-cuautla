@@ -175,6 +175,7 @@ function initMobileNavLinks() {
    para saber qué parte de la página genera cada conversación.
 ================================================ */
 function origenDelEnlace(el) {
+  if (el.closest('.accion-movil')) return 'barra_movil';
   if (el.closest('.whatsapp-float')) return 'boton_flotante';
   if (el.closest('#navbar') || el.closest('#mobileMenu')) return 'nav';
   if (el.closest('footer')) return 'footer';
@@ -266,7 +267,25 @@ function initSeccionActiva() {
   observadas.forEach(s => observador.observe(s));
 }
 
+/* ================================================
+   BARRA DE ACCION MOVIL
+   Aparece cuando el hero deja de estar a la vista: mientras la persona
+   ve los botones del hero no hace falta repetirlos abajo.
+================================================ */
+function initAccionMovil() {
+  const barra = document.querySelector('.accion-movil');
+  const hero = document.querySelector('#hero, .pg-hero');
+  if (!barra || !hero) return;
+
+  const observador = new IntersectionObserver(([entrada]) => {
+    barra.classList.toggle('visible', !entrada.isIntersecting);
+  }, { rootMargin: '-70px 0px 0px 0px' });
+
+  observador.observe(hero);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initAccionMovil();
   initConversionTracking();
   initProgresoLectura();
   initSeccionActiva();
