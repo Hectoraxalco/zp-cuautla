@@ -1,6 +1,6 @@
-# ZP Cuautla
+# ZP Cuautla — Fisioterapia, Rehabilitación y Gimnasio en Cuautla
 
-> Centro de Cuautla, Morelos, que integra rehabilitación y entrenamiento en un mismo lugar, con seguimiento del mismo profesional. Dirigido por el fisioterapeuta Héctor A. García (cédula profesional 8896266, SEP), con más de 12 años de experiencia.
+> Centro de fisioterapia, rehabilitación física y gimnasio con entrenamiento personalizado en Cuautla, Morelos. Dirigido por el fisioterapeuta Héctor A. García (cédula profesional 8896266, SEP), con más de 12 años de experiencia.
 
 ## Datos del negocio
 
@@ -21,6 +21,7 @@
 - Cédula profesional: 8896266 (Secretaría de Educación Pública, México)
 - Más de 12 años de experiencia
 - Trabaja en coordinación con médicos especialistas: si el paciente requiere estudios o valoración médica, se le canaliza directamente
+- Perfil profesional: https://zpcuautla.com.mx/fisioterapeuta-hector-garcia-cuautla/
 
 ## Rehabilitación física
 
@@ -88,6 +89,7 @@ Contenido detallado en: https://zpcuautla.com.mx/gimnasio-entrenamiento-cuautla/
 
 ## Páginas principales
 
-- [Inicio](https://zpcuautla.com.mx/): quiénes somos, poblaciones especiales, equipo, reseñas, ubicación y FAQ
+- [Inicio](https://zpcuautla.com.mx/): fisioterapia, rehabilitación, gimnasio, poblaciones especiales, equipo, reseñas, ubicación y FAQ
 - [Rehabilitación física en Cuautla](https://zpcuautla.com.mx/rehabilitacion-fisica-cuautla/): rehabilitación post-operatoria y de lesiones, láser de alta intensidad, ondas de choque, electroterapia, presoterapia, microelectrólisis percutánea y ecografía musculoesquelética
 - [Gimnasio y entrenamiento en Cuautla](https://zpcuautla.com.mx/gimnasio-entrenamiento-cuautla/): área de pesas, equipos de cardio, rutinas tipo Hyrox, fortalecimiento post-lesión y programas para adultos mayores
+- [Héctor A. García, fisioterapeuta en Cuautla](https://zpcuautla.com.mx/fisioterapeuta-hector-garcia-cuautla/): responsable profesional, cédula, experiencia, áreas de trabajo y proceso de atención
